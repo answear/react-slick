@@ -172,24 +172,22 @@
 
         function _typeof(obj) {
           "@babel/helpers - typeof";
-          if (
-            typeof Symbol === "function" &&
-            typeof Symbol.iterator === "symbol"
-          ) {
-            _typeof = function _typeof(obj) {
-              return typeof obj;
-            };
-          } else {
-            _typeof = function _typeof(obj) {
-              return obj &&
-                typeof Symbol === "function" &&
-                obj.constructor === Symbol &&
-                obj !== Symbol.prototype
-                ? "symbol"
-                : typeof obj;
-            };
-          }
-          return _typeof(obj);
+          return (
+            (_typeof =
+              "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
+                ? function(obj) {
+                    return typeof obj;
+                  }
+                : function(obj) {
+                    return obj &&
+                      "function" == typeof Symbol &&
+                      obj.constructor === Symbol &&
+                      obj !== Symbol.prototype
+                      ? "symbol"
+                      : typeof obj;
+                  }),
+            _typeof(obj)
+          );
         }
 
         function _extends() {
@@ -213,37 +211,34 @@
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
             var symbols = Object.getOwnPropertySymbols(object);
-            if (enumerableOnly) {
-              symbols = symbols.filter(function(sym) {
+            enumerableOnly &&
+              (symbols = symbols.filter(function(sym) {
                 return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-              });
-            }
-            keys.push.apply(keys, symbols);
+              })),
+              keys.push.apply(keys, symbols);
           }
           return keys;
         }
 
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
-            if (i % 2) {
-              ownKeys(Object(source), true).forEach(function(key) {
-                _defineProperty(target, key, source[key]);
-              });
-            } else if (Object.getOwnPropertyDescriptors) {
-              Object.defineProperties(
-                target,
-                Object.getOwnPropertyDescriptors(source)
-              );
-            } else {
-              ownKeys(Object(source)).forEach(function(key) {
-                Object.defineProperty(
+            var source = null != arguments[i] ? arguments[i] : {};
+            i % 2
+              ? ownKeys(Object(source), !0).forEach(function(key) {
+                  _defineProperty(target, key, source[key]);
+                })
+              : Object.getOwnPropertyDescriptors
+              ? Object.defineProperties(
                   target,
-                  key,
-                  Object.getOwnPropertyDescriptor(source, key)
-                );
-              });
-            }
+                  Object.getOwnPropertyDescriptors(source)
+                )
+              : ownKeys(Object(source)).forEach(function(key) {
+                  Object.defineProperty(
+                    target,
+                    key,
+                    Object.getOwnPropertyDescriptor(source, key)
+                  );
+                });
           }
           return target;
         }
@@ -267,6 +262,7 @@
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
+          Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
 
@@ -286,6 +282,7 @@
               }
             }
           );
+          Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
 
@@ -800,24 +797,22 @@
 
         function _typeof(obj) {
           "@babel/helpers - typeof";
-          if (
-            typeof Symbol === "function" &&
-            typeof Symbol.iterator === "symbol"
-          ) {
-            _typeof = function _typeof(obj) {
-              return typeof obj;
-            };
-          } else {
-            _typeof = function _typeof(obj) {
-              return obj &&
-                typeof Symbol === "function" &&
-                obj.constructor === Symbol &&
-                obj !== Symbol.prototype
-                ? "symbol"
-                : typeof obj;
-            };
-          }
-          return _typeof(obj);
+          return (
+            (_typeof =
+              "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
+                ? function(obj) {
+                    return typeof obj;
+                  }
+                : function(obj) {
+                    return obj &&
+                      "function" == typeof Symbol &&
+                      obj.constructor === Symbol &&
+                      obj !== Symbol.prototype
+                      ? "symbol"
+                      : typeof obj;
+                  }),
+            _typeof(obj)
+          );
         }
 
         function _extends() {
@@ -871,37 +866,34 @@
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
             var symbols = Object.getOwnPropertySymbols(object);
-            if (enumerableOnly) {
-              symbols = symbols.filter(function(sym) {
+            enumerableOnly &&
+              (symbols = symbols.filter(function(sym) {
                 return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-              });
-            }
-            keys.push.apply(keys, symbols);
+              })),
+              keys.push.apply(keys, symbols);
           }
           return keys;
         }
 
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
-            if (i % 2) {
-              ownKeys(Object(source), true).forEach(function(key) {
-                _defineProperty(target, key, source[key]);
-              });
-            } else if (Object.getOwnPropertyDescriptors) {
-              Object.defineProperties(
-                target,
-                Object.getOwnPropertyDescriptors(source)
-              );
-            } else {
-              ownKeys(Object(source)).forEach(function(key) {
-                Object.defineProperty(
+            var source = null != arguments[i] ? arguments[i] : {};
+            i % 2
+              ? ownKeys(Object(source), !0).forEach(function(key) {
+                  _defineProperty(target, key, source[key]);
+                })
+              : Object.getOwnPropertyDescriptors
+              ? Object.defineProperties(
                   target,
-                  key,
-                  Object.getOwnPropertyDescriptor(source, key)
-                );
-              });
-            }
+                  Object.getOwnPropertyDescriptors(source)
+                )
+              : ownKeys(Object(source)).forEach(function(key) {
+                  Object.defineProperty(
+                    target,
+                    key,
+                    Object.getOwnPropertyDescriptor(source, key)
+                  );
+                });
           }
           return target;
         }
@@ -925,6 +917,7 @@
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
+          Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
 
@@ -944,6 +937,7 @@
               }
             }
           );
+          Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
 
@@ -2156,7 +2150,8 @@
                   "centerPadding",
                   "targetSlide",
                   "useCSS",
-                  "omitLazyForSlides"
+                  "omitLazyForSlides",
+                  "slideClass"
                 ]);
                 var pauseOnHover = _this.props.pauseOnHover;
                 trackProps = _objectSpread(
@@ -3195,37 +3190,34 @@
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
             var symbols = Object.getOwnPropertySymbols(object);
-            if (enumerableOnly) {
-              symbols = symbols.filter(function(sym) {
+            enumerableOnly &&
+              (symbols = symbols.filter(function(sym) {
                 return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-              });
-            }
-            keys.push.apply(keys, symbols);
+              })),
+              keys.push.apply(keys, symbols);
           }
           return keys;
         }
 
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
-            if (i % 2) {
-              ownKeys(Object(source), true).forEach(function(key) {
-                _defineProperty(target, key, source[key]);
-              });
-            } else if (Object.getOwnPropertyDescriptors) {
-              Object.defineProperties(
-                target,
-                Object.getOwnPropertyDescriptors(source)
-              );
-            } else {
-              ownKeys(Object(source)).forEach(function(key) {
-                Object.defineProperty(
+            var source = null != arguments[i] ? arguments[i] : {};
+            i % 2
+              ? ownKeys(Object(source), !0).forEach(function(key) {
+                  _defineProperty(target, key, source[key]);
+                })
+              : Object.getOwnPropertyDescriptors
+              ? Object.defineProperties(
                   target,
-                  key,
-                  Object.getOwnPropertyDescriptor(source, key)
-                );
-              });
-            }
+                  Object.getOwnPropertyDescriptors(source)
+                )
+              : ownKeys(Object(source)).forEach(function(key) {
+                  Object.defineProperty(
+                    target,
+                    key,
+                    Object.getOwnPropertyDescriptor(source, key)
+                  );
+                });
           }
           return target;
         }
@@ -4331,24 +4323,22 @@
 
         function _typeof(obj) {
           "@babel/helpers - typeof";
-          if (
-            typeof Symbol === "function" &&
-            typeof Symbol.iterator === "symbol"
-          ) {
-            _typeof = function _typeof(obj) {
-              return typeof obj;
-            };
-          } else {
-            _typeof = function _typeof(obj) {
-              return obj &&
-                typeof Symbol === "function" &&
-                obj.constructor === Symbol &&
-                obj !== Symbol.prototype
-                ? "symbol"
-                : typeof obj;
-            };
-          }
-          return _typeof(obj);
+          return (
+            (_typeof =
+              "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
+                ? function(obj) {
+                    return typeof obj;
+                  }
+                : function(obj) {
+                    return obj &&
+                      "function" == typeof Symbol &&
+                      obj.constructor === Symbol &&
+                      obj !== Symbol.prototype
+                      ? "symbol"
+                      : typeof obj;
+                  }),
+            _typeof(obj)
+          );
         }
 
         function _extends() {
@@ -4387,6 +4377,7 @@
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
+          Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
 
@@ -4406,6 +4397,7 @@
               }
             }
           );
+          Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
 
@@ -4485,37 +4477,34 @@
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
             var symbols = Object.getOwnPropertySymbols(object);
-            if (enumerableOnly) {
-              symbols = symbols.filter(function(sym) {
+            enumerableOnly &&
+              (symbols = symbols.filter(function(sym) {
                 return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-              });
-            }
-            keys.push.apply(keys, symbols);
+              })),
+              keys.push.apply(keys, symbols);
           }
           return keys;
         }
 
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
-            if (i % 2) {
-              ownKeys(Object(source), true).forEach(function(key) {
-                _defineProperty(target, key, source[key]);
-              });
-            } else if (Object.getOwnPropertyDescriptors) {
-              Object.defineProperties(
-                target,
-                Object.getOwnPropertyDescriptors(source)
-              );
-            } else {
-              ownKeys(Object(source)).forEach(function(key) {
-                Object.defineProperty(
+            var source = null != arguments[i] ? arguments[i] : {};
+            i % 2
+              ? ownKeys(Object(source), !0).forEach(function(key) {
+                  _defineProperty(target, key, source[key]);
+                })
+              : Object.getOwnPropertyDescriptors
+              ? Object.defineProperties(
                   target,
-                  key,
-                  Object.getOwnPropertyDescriptor(source, key)
-                );
-              });
-            }
+                  Object.getOwnPropertyDescriptors(source)
+                )
+              : ownKeys(Object(source)).forEach(function(key) {
+                  Object.defineProperty(
+                    target,
+                    key,
+                    Object.getOwnPropertyDescriptor(source, key)
+                  );
+                });
           }
           return target;
         }
@@ -4693,7 +4682,13 @@
                     index: index
                   }
                 )
-              ); // push a cloned element of the desired slide
+              );
+
+              var propsSlideClass = function propsSlideClass(index) {
+                return spec.slideClass && typeof spec.slideClass === "function"
+                  ? spec.slideClass(index)
+                  : "";
+              }; // push a cloned element of the desired slide
 
               slides.push(
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(
@@ -4703,7 +4698,8 @@
                     "data-index": index,
                     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
                       slideClasses,
-                      slideClass
+                      slideClass,
+                      propsSlideClass(index)
                     ),
                     tabIndex: "-1",
                     "aria-hidden": !slideClasses["slick-active"],
@@ -4939,61 +4935,56 @@
 
         function _typeof(obj) {
           "@babel/helpers - typeof";
-          if (
-            typeof Symbol === "function" &&
-            typeof Symbol.iterator === "symbol"
-          ) {
-            _typeof = function _typeof(obj) {
-              return typeof obj;
-            };
-          } else {
-            _typeof = function _typeof(obj) {
-              return obj &&
-                typeof Symbol === "function" &&
-                obj.constructor === Symbol &&
-                obj !== Symbol.prototype
-                ? "symbol"
-                : typeof obj;
-            };
-          }
-          return _typeof(obj);
+          return (
+            (_typeof =
+              "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
+                ? function(obj) {
+                    return typeof obj;
+                  }
+                : function(obj) {
+                    return obj &&
+                      "function" == typeof Symbol &&
+                      obj.constructor === Symbol &&
+                      obj !== Symbol.prototype
+                      ? "symbol"
+                      : typeof obj;
+                  }),
+            _typeof(obj)
+          );
         }
 
         function ownKeys(object, enumerableOnly) {
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
             var symbols = Object.getOwnPropertySymbols(object);
-            if (enumerableOnly) {
-              symbols = symbols.filter(function(sym) {
+            enumerableOnly &&
+              (symbols = symbols.filter(function(sym) {
                 return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-              });
-            }
-            keys.push.apply(keys, symbols);
+              })),
+              keys.push.apply(keys, symbols);
           }
           return keys;
         }
 
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
-            if (i % 2) {
-              ownKeys(Object(source), true).forEach(function(key) {
-                _defineProperty(target, key, source[key]);
-              });
-            } else if (Object.getOwnPropertyDescriptors) {
-              Object.defineProperties(
-                target,
-                Object.getOwnPropertyDescriptors(source)
-              );
-            } else {
-              ownKeys(Object(source)).forEach(function(key) {
-                Object.defineProperty(
+            var source = null != arguments[i] ? arguments[i] : {};
+            i % 2
+              ? ownKeys(Object(source), !0).forEach(function(key) {
+                  _defineProperty(target, key, source[key]);
+                })
+              : Object.getOwnPropertyDescriptors
+              ? Object.defineProperties(
                   target,
-                  key,
-                  Object.getOwnPropertyDescriptor(source, key)
-                );
-              });
-            }
+                  Object.getOwnPropertyDescriptors(source)
+                )
+              : ownKeys(Object(source)).forEach(function(key) {
+                  Object.defineProperty(
+                    target,
+                    key,
+                    Object.getOwnPropertyDescriptor(source, key)
+                  );
+                });
           }
           return target;
         }
@@ -5031,6 +5022,7 @@
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
+          Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
 
@@ -5050,6 +5042,7 @@
               }
             }
           );
+          Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
 
@@ -5292,24 +5285,22 @@
 
         function _typeof(obj) {
           "@babel/helpers - typeof";
-          if (
-            typeof Symbol === "function" &&
-            typeof Symbol.iterator === "symbol"
-          ) {
-            _typeof = function _typeof(obj) {
-              return typeof obj;
-            };
-          } else {
-            _typeof = function _typeof(obj) {
-              return obj &&
-                typeof Symbol === "function" &&
-                obj.constructor === Symbol &&
-                obj !== Symbol.prototype
-                ? "symbol"
-                : typeof obj;
-            };
-          }
-          return _typeof(obj);
+          return (
+            (_typeof =
+              "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
+                ? function(obj) {
+                    return typeof obj;
+                  }
+                : function(obj) {
+                    return obj &&
+                      "function" == typeof Symbol &&
+                      obj.constructor === Symbol &&
+                      obj !== Symbol.prototype
+                      ? "symbol"
+                      : typeof obj;
+                  }),
+            _typeof(obj)
+          );
         }
 
         function _extends() {
@@ -5333,37 +5324,34 @@
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
             var symbols = Object.getOwnPropertySymbols(object);
-            if (enumerableOnly) {
-              symbols = symbols.filter(function(sym) {
+            enumerableOnly &&
+              (symbols = symbols.filter(function(sym) {
                 return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-              });
-            }
-            keys.push.apply(keys, symbols);
+              })),
+              keys.push.apply(keys, symbols);
           }
           return keys;
         }
 
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i] != null ? arguments[i] : {};
-            if (i % 2) {
-              ownKeys(Object(source), true).forEach(function(key) {
-                _defineProperty(target, key, source[key]);
-              });
-            } else if (Object.getOwnPropertyDescriptors) {
-              Object.defineProperties(
-                target,
-                Object.getOwnPropertyDescriptors(source)
-              );
-            } else {
-              ownKeys(Object(source)).forEach(function(key) {
-                Object.defineProperty(
+            var source = null != arguments[i] ? arguments[i] : {};
+            i % 2
+              ? ownKeys(Object(source), !0).forEach(function(key) {
+                  _defineProperty(target, key, source[key]);
+                })
+              : Object.getOwnPropertyDescriptors
+              ? Object.defineProperties(
                   target,
-                  key,
-                  Object.getOwnPropertyDescriptor(source, key)
-                );
-              });
-            }
+                  Object.getOwnPropertyDescriptors(source)
+                )
+              : ownKeys(Object(source)).forEach(function(key) {
+                  Object.defineProperty(
+                    target,
+                    key,
+                    Object.getOwnPropertyDescriptor(source, key)
+                  );
+                });
           }
           return target;
         }
@@ -5401,6 +5389,7 @@
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
+          Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
 
@@ -5420,6 +5409,7 @@
               }
             }
           );
+          Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
 

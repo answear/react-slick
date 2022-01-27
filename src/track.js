@@ -86,7 +86,8 @@ const getSlideStyle = spec => {
 
 const getKey = (child, fallbackKey) => child.key || fallbackKey;
 
-const shouldOmitLazy = (omitLazyForSlides = [], index) => omitLazyForSlides.includes(index);
+const shouldOmitLazy = (omitLazyForSlides = [], index) =>
+  omitLazyForSlides.includes(index);
 
 const renderSlides = spec => {
   let key;
@@ -119,12 +120,16 @@ const renderSlides = spec => {
     let childStyle = getSlideStyle({ ...spec, index });
     let slideClass = child.props.className || "";
     let slideClasses = getSlideClasses({ ...spec, index });
+    const propsSlideClass = index =>
+      spec.slideClass && typeof spec.slideClass === "function"
+        ? spec.slideClass(index)
+        : "";
     // push a cloned element of the desired slide
     slides.push(
       React.cloneElement(child, {
         key: "original" + getKey(child, index),
         "data-index": index,
-        className: classnames(slideClasses, slideClass),
+        className: classnames(slideClasses, slideClass, propsSlideClass(index)),
         tabIndex: "-1",
         "aria-hidden": !slideClasses["slick-active"],
         style: { outline: "none", ...(child.props.style || {}), ...childStyle },
