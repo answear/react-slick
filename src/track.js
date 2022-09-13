@@ -128,7 +128,7 @@ const renderSlides = spec => {
         className: classnames(
           slideClasses,
           slideClass,
-          this.props.classess.slickSlide
+          spec.classes.slickSlide
         ),
         tabIndex: "-1",
         "aria-hidden": !slideClasses["slick-active"],

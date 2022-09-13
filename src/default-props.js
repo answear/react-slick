@@ -13,7 +13,7 @@ let defaultProps = {
   centerPadding: "50px",
   className: "",
   cssEase: "ease",
-  classess: {
+  classes: {
     slickArrow: "slickArrow-answear", // done
     slickPrev: "slickPrev-answear", // done
     slickNext: "slickNext-answear", // done

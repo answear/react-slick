@@ -643,7 +643,8 @@ export class InnerSlider extends React.Component {
       "centerPadding",
       "targetSlide",
       "useCSS",
-      "omitLazyForSlides"
+      "omitLazyForSlides",
+      "classes"
     ]);
     const { pauseOnHover } = this.props;
     trackProps = {
@@ -670,7 +671,8 @@ export class InnerSlider extends React.Component {
         "children",
         "customPaging",
         "infinite",
-        "appendDots"
+        "appendDots",
+        "classes"
       ]);
       const { pauseOnDotsHover } = this.props;
       dotProps = {
