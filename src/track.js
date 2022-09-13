@@ -86,7 +86,8 @@ const getSlideStyle = spec => {
 
 const getKey = (child, fallbackKey) => child.key || fallbackKey;
 
-const shouldOmitLazy = (omitLazyForSlides = [], index) => omitLazyForSlides.includes(index);
+const shouldOmitLazy = (omitLazyForSlides = [], index) =>
+  omitLazyForSlides.includes(index);
 
 const renderSlides = spec => {
   let key;
@@ -124,7 +125,11 @@ const renderSlides = spec => {
       React.cloneElement(child, {
         key: "original" + getKey(child, index),
         "data-index": index,
-        className: classnames(slideClasses, slideClass),
+        className: classnames(
+          slideClasses,
+          slideClass,
+          this.props.classess.slickSlide
+        ),
         tabIndex: "-1",
         "aria-hidden": !slideClasses["slick-active"],
         style: { outline: "none", ...(child.props.style || {}), ...childStyle },
@@ -214,7 +219,7 @@ export class Track extends React.PureComponent {
     return (
       <div
         ref={this.handleRef}
-        className="slick-track"
+        className={classnames("slick-track", this.props.classes.slickSlider)}
         style={this.props.trackStyle}
         {...mouseEvents}
       >

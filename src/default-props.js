@@ -13,6 +13,16 @@ let defaultProps = {
   centerPadding: "50px",
   className: "",
   cssEase: "ease",
+  classess: {
+    slickArrow: "slickArrow-answear", // done
+    slickPrev: "slickPrev-answear", // done
+    slickNext: "slickNext-answear", // done
+    slickSlide: "slickSlide-answear", //
+    slickDisable: "slickDisable-answear",
+    slickSlider: "slickSlider-answear", // done
+    slickList: "slickList-answear", // done
+    slickDot: "slickDot-answear" // done
+  },
   customPaging: i => <button>{i + 1}</button>,
   dots: false,
   dotsClass: "slick-dots",
