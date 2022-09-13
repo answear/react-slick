@@ -125,11 +125,7 @@ const renderSlides = spec => {
       React.cloneElement(child, {
         key: "original" + getKey(child, index),
         "data-index": index,
-        className: classnames(
-          slideClasses,
-          slideClass,
-          spec.classes.slickSlide
-        ),
+        className: classnames(slideClasses, slideClass, spec.classes.slide),
         tabIndex: "-1",
         "aria-hidden": !slideClasses["slick-active"],
         style: { outline: "none", ...(child.props.style || {}), ...childStyle },
@@ -219,7 +215,7 @@ export class Track extends React.PureComponent {
     return (
       <div
         ref={this.handleRef}
-        className={classnames("slick-track", this.props.classes.slickSlider)}
+        className={classnames("slick-track", this.props.classes.slider)}
         style={this.props.trackStyle}
         {...mouseEvents}
       >

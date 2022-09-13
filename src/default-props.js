@@ -14,14 +14,14 @@ let defaultProps = {
   className: "",
   cssEase: "ease",
   classes: {
-    slickArrow: "slickArrow-answear", // done
-    slickPrev: "slickPrev-answear", // done
-    slickNext: "slickNext-answear", // done
-    slickSlide: "slickSlide-answear", //
-    slickDisable: "slickDisable-answear",
-    slickSlider: "slickSlider-answear", // done
-    slickList: "slickList-answear", // done
-    slickDot: "slickDot-answear" // done
+    arrow: null,
+    prev: null,
+    next: null,
+    slide: null,
+    disable: null,
+    slider: null,
+    list: null,
+    dot: null
   },
   customPaging: i => <button>{i + 1}</button>,
   dots: false,

@@ -693,7 +693,8 @@ export class InnerSlider extends React.Component {
       "slideCount",
       "slidesToShow",
       "prevArrow",
-      "nextArrow"
+      "nextArrow",
+      "classes"
     ]);
     arrowProps.clickHandler = this.changeSlide;
 
@@ -729,7 +730,7 @@ export class InnerSlider extends React.Component {
     const listStyle = { ...verticalHeightStyle, ...centerPaddingStyle };
     const touchMove = this.props.touchMove;
     let listProps = {
-      className: classnames(this.props.classes.slickList, "slick-list"),
+      className: classnames(this.props.classes.list, "slick-list"),
       style: listStyle,
       onClick: this.clickHandler,
       onMouseDown: touchMove ? this.swipeStart : null,
