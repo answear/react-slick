@@ -215,7 +215,7 @@ export class Track extends React.PureComponent {
     return (
       <div
         ref={this.handleRef}
-        className={classnames("slick-track", this.props.classes.slider)}
+        className={classnames("slick-track", this.props.classes.track)}
         style={this.props.trackStyle}
         {...mouseEvents}
       >

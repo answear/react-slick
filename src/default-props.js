@@ -19,7 +19,7 @@ let defaultProps = {
     next: null,
     slide: null,
     disable: null,
-    slider: null,
+    track: null,
     list: null,
     dot: null
   },
