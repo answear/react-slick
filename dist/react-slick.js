@@ -2115,6 +2115,7 @@
                 var className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(
                   "slick-slider",
                   _this.props.className,
+                  _this.props.classes.slider,
                   {
                     "slick-vertical": _this.props.vertical,
                     "slick-initialized": true
@@ -4900,7 +4901,7 @@
                       ref: this.handleRef,
                       className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
                         "slick-track",
-                        this.props.classes.slider
+                        this.props.classes.track
                       ),
                       style: this.props.trackStyle
                     },
@@ -6818,7 +6819,8 @@
             next: null,
             slide: null,
             disable: null,
-            slider: null,
+            track: "track-answear",
+            slider: "slider-answear",
             list: null,
             dot: null
           },
