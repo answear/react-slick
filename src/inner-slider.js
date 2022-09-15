@@ -617,7 +617,7 @@ export class InnerSlider extends React.Component {
     var className = classnames(
       "slick-slider",
       this.props.className,
-      this.props.classes.slider,
+      this.props.classes?.slider,
       {
         "slick-vertical": this.props.vertical,
         "slick-initialized": true
@@ -735,7 +735,7 @@ export class InnerSlider extends React.Component {
     const listStyle = { ...verticalHeightStyle, ...centerPaddingStyle };
     const touchMove = this.props.touchMove;
     let listProps = {
-      className: classnames(this.props.classes.list, "slick-list"),
+      className: classnames(this.props.classes?.list, "slick-list"),
       style: listStyle,
       onClick: this.clickHandler,
       onMouseDown: touchMove ? this.swipeStart : null,

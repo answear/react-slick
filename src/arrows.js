@@ -21,7 +21,8 @@ export class PrevArrow extends React.PureComponent {
         this.props.slideCount <= this.props.slidesToShow)
     ) {
       prevClasses["slick-disabled"] = true;
-      prevClasses[this.props.classes.disable] = true;
+      prevClasses[this.props.classes?.disabled] = !!this.props.classes
+        ?.disabled;
       prevHandler = null;
     }
 
@@ -73,7 +74,8 @@ export class NextArrow extends React.PureComponent {
 
     if (!canGoNext(this.props)) {
       nextClasses["slick-disabled"] = true;
-      nextClasses[this.props.classes.disable] = true;
+      nextClasses[this.props.classes?.disabled] = !!this.props.classes
+        ?.disabled;
       nextHandler = null;
     }
 

@@ -18,11 +18,14 @@ let defaultProps = {
     prev: null,
     next: null,
     slide: null,
-    disable: null,
-    track: "track-answear",
-    slider: "slider-answear",
+    disabled: null,
+    track: null,
+    slider: null,
     list: null,
-    dot: null
+    dot: null,
+    dots: null,
+    activeDot: null,
+    cloned: null
   },
   customPaging: i => <button>{i + 1}</button>,
   dots: false,

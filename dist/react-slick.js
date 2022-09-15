@@ -2112,10 +2112,15 @@
               _assertThisInitialized(_this),
               "render",
               function() {
+                var _this$props$classes, _this$props$classes2;
+
                 var className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(
                   "slick-slider",
                   _this.props.className,
-                  _this.props.classes.slider,
+                  (_this$props$classes = _this.props.classes) === null ||
+                    _this$props$classes === void 0
+                    ? void 0
+                    : _this$props$classes.slider,
                   {
                     "slick-vertical": _this.props.vertical,
                     "slick-initialized": true
@@ -2272,7 +2277,10 @@
                 var touchMove = _this.props.touchMove;
                 var listProps = {
                   className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(
-                    _this.props.classes.list,
+                    (_this$props$classes2 = _this.props.classes) === null ||
+                      _this$props$classes2 === void 0
+                      ? void 0
+                      : _this$props$classes2.list,
                     "slick-list"
                   ),
                   style: listStyle,
@@ -4541,6 +4549,8 @@
         // given specifications/props for a slide, fetch all the classes that need to be applied to the slide
 
         var getSlideClasses = function getSlideClasses(spec) {
+          var _spec$classes, _spec$classes2, _ref;
+
           var slickActive, slickCenter, slickCloned;
           var centerOffset, index;
 
@@ -4579,13 +4589,30 @@
           }
 
           var slickCurrent = index === focusedSlide;
-          return {
-            "slick-slide": true,
-            "slick-active": slickActive,
-            "slick-center": slickCenter,
-            "slick-cloned": slickCloned,
-            "slick-current": slickCurrent // dubious in case of RTL
-          };
+          return (
+            (_ref = {
+              "slick-slide": true,
+              "slick-active": slickActive,
+              "slick-center": slickCenter,
+              "slick-cloned": slickCloned
+            }),
+            _defineProperty(
+              _ref,
+              "slick-cloned ".concat(
+                (_spec$classes = spec.classes) === null ||
+                  _spec$classes === void 0
+                  ? void 0
+                  : _spec$classes.cloned
+              ),
+              slickCloned &&
+                ((_spec$classes2 = spec.classes) === null ||
+                _spec$classes2 === void 0
+                  ? void 0
+                  : _spec$classes2.cloned)
+            ),
+            _defineProperty(_ref, "slick-current", slickCurrent),
+            _ref
+          );
         };
 
         var getSlideStyle = function getSlideStyle(spec) {
@@ -4658,6 +4685,8 @@
           react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.forEach(
             spec.children,
             function(elem, index) {
+              var _spec$classes3;
+
               var child;
               var childOnClickOptions = {
                 message: "children",
@@ -4708,7 +4737,10 @@
                     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
                       slideClasses,
                       slideClass,
-                      spec.classes.slide
+                      (_spec$classes3 = spec.classes) === null ||
+                        _spec$classes3 === void 0
+                        ? void 0
+                        : _spec$classes3.slide
                     ),
                     tabIndex: "-1",
                     "aria-hidden": !slideClasses["slick-active"],
@@ -4746,6 +4778,8 @@
                     )(spec) &&
                   childrenCount !== spec.slidesToShow
                 ) {
+                  var _spec$classes4;
+
                   key = -preCloneNo;
 
                   if (key >= startIndex) {
@@ -4770,7 +4804,11 @@
                         tabIndex: "-1",
                         className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
                           slideClasses,
-                          slideClass
+                          slideClass,
+                          (_spec$classes4 = spec.classes) === null ||
+                            _spec$classes4 === void 0
+                            ? void 0
+                            : _spec$classes4.slide
                         ),
                         "aria-hidden": !slideClasses["slick-active"],
                         style: _objectSpread(
@@ -4792,6 +4830,8 @@
                 }
 
                 if (childrenCount !== spec.slidesToShow) {
+                  var _spec$classes5;
+
                   key = childrenCount + index;
 
                   if (key < endIndex) {
@@ -4816,7 +4856,11 @@
                         tabIndex: "-1",
                         className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
                           slideClasses,
-                          slideClass
+                          slideClass,
+                          (_spec$classes5 = spec.classes) === null ||
+                            _spec$classes5 === void 0
+                            ? void 0
+                            : _spec$classes5.slide
                         ),
                         "aria-hidden": !slideClasses["slick-active"],
                         style: _objectSpread(
@@ -4884,6 +4928,8 @@
             {
               key: "render",
               value: function render() {
+                var _this$props$classes;
+
                 var slides = renderSlides(this.props);
                 var _this$props = this.props,
                   onMouseEnter = _this$props.onMouseEnter,
@@ -4901,7 +4947,10 @@
                       ref: this.handleRef,
                       className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
                         "slick-track",
-                        this.props.classes.track
+                        (_this$props$classes = this.props.classes) === null ||
+                          _this$props$classes === void 0
+                          ? void 0
+                          : _this$props$classes.track
                       ),
                       style: this.props.trackStyle
                     },
@@ -5213,13 +5262,25 @@
                         ]
                       )(_leftBound, 0, slideCount - 1);
                   var className = classnames__WEBPACK_IMPORTED_MODULE_1___default()(
-                    classes.dot,
-                    {
-                      "slick-active": infinite
+                    classes === null || classes === void 0
+                      ? void 0
+                      : classes.dot,
+                    _defineProperty(
+                      {},
+                      classes !== null &&
+                        classes !== void 0 &&
+                        classes.activeDot
+                        ? "slick-active ".concat(
+                            classes === null || classes === void 0
+                              ? void 0
+                              : classes.activeDot
+                          )
+                        : "slick-active",
+                      infinite
                         ? currentSlide >= leftBound &&
-                          currentSlide <= rightBound
+                            currentSlide <= rightBound
                         : currentSlide === leftBound
-                    }
+                    )
                   );
                   var dotOptions = {
                     message: "dots",
@@ -5249,7 +5310,12 @@
                   this.props.appendDots(dots),
                   _objectSpread(
                     {
-                      className: this.props.dotsClass
+                      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
+                        this.props.dotsClass,
+                        classes === null || classes === void 0
+                          ? void 0
+                          : classes.dots
+                      )
                     },
                     mouseEvents
                   )
@@ -5524,7 +5590,7 @@
             {
               key: "render",
               value: function render() {
-                var _this$props$classes, _this$props$classes2;
+                var _this$props$classes3, _this$props$classes4;
 
                 var prevClasses = {
                   "slick-arrow": true,
@@ -5539,8 +5605,19 @@
                   (this.props.currentSlide === 0 ||
                     this.props.slideCount <= this.props.slidesToShow)
                 ) {
+                  var _this$props$classes, _this$props$classes2;
+
                   prevClasses["slick-disabled"] = true;
-                  prevClasses[this.props.classes.disable] = true;
+                  prevClasses[
+                    (_this$props$classes = this.props.classes) === null ||
+                    _this$props$classes === void 0
+                      ? void 0
+                      : _this$props$classes.disabled
+                  ] = !!(
+                    (_this$props$classes2 = this.props.classes) !== null &&
+                    _this$props$classes2 !== void 0 &&
+                    _this$props$classes2.disabled
+                  );
                   prevHandler = null;
                 }
 
@@ -5549,14 +5626,14 @@
                   "data-role": "none",
                   className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
                     prevClasses,
-                    (_this$props$classes = this.props.classes) === null ||
-                      _this$props$classes === void 0
+                    (_this$props$classes3 = this.props.classes) === null ||
+                      _this$props$classes3 === void 0
                       ? void 0
-                      : _this$props$classes.arrow,
-                    (_this$props$classes2 = this.props.classes) === null ||
-                      _this$props$classes2 === void 0
+                      : _this$props$classes3.arrow,
+                    (_this$props$classes4 = this.props.classes) === null ||
+                      _this$props$classes4 === void 0
                       ? void 0
-                      : _this$props$classes2.prev
+                      : _this$props$classes4.prev
                   ),
                   style: {
                     display: "block"
@@ -5624,7 +5701,7 @@
             {
               key: "render",
               value: function render() {
-                var _this$props$classes3, _this$props$classes4;
+                var _this$props$classes7, _this$props$classes8;
 
                 var nextClasses = {
                   "slick-arrow": true,
@@ -5641,8 +5718,19 @@
                     ]
                   )(this.props)
                 ) {
+                  var _this$props$classes5, _this$props$classes6;
+
                   nextClasses["slick-disabled"] = true;
-                  nextClasses[this.props.classes.disable] = true;
+                  nextClasses[
+                    (_this$props$classes5 = this.props.classes) === null ||
+                    _this$props$classes5 === void 0
+                      ? void 0
+                      : _this$props$classes5.disabled
+                  ] = !!(
+                    (_this$props$classes6 = this.props.classes) !== null &&
+                    _this$props$classes6 !== void 0 &&
+                    _this$props$classes6.disabled
+                  );
                   nextHandler = null;
                 }
 
@@ -5651,14 +5739,14 @@
                   "data-role": "none",
                   className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(
                     nextClasses,
-                    (_this$props$classes3 = this.props.classes) === null ||
-                      _this$props$classes3 === void 0
+                    (_this$props$classes7 = this.props.classes) === null ||
+                      _this$props$classes7 === void 0
                       ? void 0
-                      : _this$props$classes3.arrow,
-                    (_this$props$classes4 = this.props.classes) === null ||
-                      _this$props$classes4 === void 0
+                      : _this$props$classes7.arrow,
+                    (_this$props$classes8 = this.props.classes) === null ||
+                      _this$props$classes8 === void 0
                       ? void 0
-                      : _this$props$classes4.next
+                      : _this$props$classes8.next
                   ),
                   style: {
                     display: "block"
@@ -6818,11 +6906,14 @@
             prev: null,
             next: null,
             slide: null,
-            disable: null,
-            track: "track-answear",
-            slider: "slider-answear",
+            disabled: null,
+            track: null,
+            slider: null,
             list: null,
-            dot: null
+            dot: null,
+            dots: null,
+            activeDot: null,
+            cloned: null
           },
           customPaging: function customPaging(i) {
             return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
