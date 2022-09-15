@@ -614,10 +614,15 @@ export class InnerSlider extends React.Component {
     this.autoPlay("blur");
 
   render = () => {
-    var className = classnames("slick-slider", this.props.className, {
-      "slick-vertical": this.props.vertical,
-      "slick-initialized": true
-    });
+    var className = classnames(
+      "slick-slider",
+      this.props.className,
+      this.props.classes.slider,
+      {
+        "slick-vertical": this.props.vertical,
+        "slick-initialized": true
+      }
+    );
     let spec = { ...this.props, ...this.state };
     let trackProps = extractObject(spec, [
       "fade",
