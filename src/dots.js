@@ -34,7 +34,8 @@ export class Dots extends React.PureComponent {
       slidesToScroll,
       slidesToShow,
       slideCount,
-      currentSlide
+      currentSlide,
+      classes
     } = this.props;
     let dotCount = getDotCount({
       slideCount,
@@ -55,8 +56,10 @@ export class Dots extends React.PureComponent {
         ? _leftBound
         : clamp(_leftBound, 0, slideCount - 1);
 
-      let className = classnames({
-        "slick-active": infinite
+      let className = classnames(classes?.dot, {
+        [classes?.activeDot
+          ? `slick-active ${classes?.activeDot}`
+          : "slick-active"]: infinite
           ? currentSlide >= leftBound && currentSlide <= rightBound
           : currentSlide === leftBound
       });
@@ -77,7 +80,7 @@ export class Dots extends React.PureComponent {
     }
 
     return React.cloneElement(this.props.appendDots(dots), {
-      className: this.props.dotsClass,
+      className: classnames(this.props.dotsClass, classes?.dots),
       ...mouseEvents
     });
   }

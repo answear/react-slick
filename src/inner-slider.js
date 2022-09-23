@@ -304,7 +304,8 @@ export class InnerSlider extends React.Component {
   };
   checkImagesLoad = () => {
     let images =
-      (this.list && this.list.querySelectorAll &&
+      (this.list &&
+        this.list.querySelectorAll &&
         this.list.querySelectorAll(".slick-slide img")) ||
       [];
     let imagesCount = images.length,
@@ -316,7 +317,7 @@ export class InnerSlider extends React.Component {
         image.onclick = () => image.parentNode.focus();
       } else {
         const prevClickHandler = image.onclick;
-        image.onclick = (e) => {
+        image.onclick = e => {
           prevClickHandler(e);
           image.parentNode.focus();
         };
@@ -613,10 +614,15 @@ export class InnerSlider extends React.Component {
     this.autoPlay("blur");
 
   render = () => {
-    var className = classnames("slick-slider", this.props.className, {
-      "slick-vertical": this.props.vertical,
-      "slick-initialized": true
-    });
+    var className = classnames(
+      "slick-slider",
+      this.props.className,
+      this.props.classes?.slider,
+      {
+        "slick-vertical": this.props.vertical,
+        "slick-initialized": true
+      }
+    );
     let spec = { ...this.props, ...this.state };
     let trackProps = extractObject(spec, [
       "fade",
@@ -642,7 +648,8 @@ export class InnerSlider extends React.Component {
       "centerPadding",
       "targetSlide",
       "useCSS",
-      "omitLazyForSlides"
+      "omitLazyForSlides",
+      "classes"
     ]);
     const { pauseOnHover } = this.props;
     trackProps = {
@@ -669,7 +676,8 @@ export class InnerSlider extends React.Component {
         "children",
         "customPaging",
         "infinite",
-        "appendDots"
+        "appendDots",
+        "classes"
       ]);
       const { pauseOnDotsHover } = this.props;
       dotProps = {
@@ -690,7 +698,8 @@ export class InnerSlider extends React.Component {
       "slideCount",
       "slidesToShow",
       "prevArrow",
-      "nextArrow"
+      "nextArrow",
+      "classes"
     ]);
     arrowProps.clickHandler = this.changeSlide;
 
@@ -726,7 +735,7 @@ export class InnerSlider extends React.Component {
     const listStyle = { ...verticalHeightStyle, ...centerPaddingStyle };
     const touchMove = this.props.touchMove;
     let listProps = {
-      className: "slick-list",
+      className: classnames(this.props.classes?.list, "slick-list"),
       style: listStyle,
       onClick: this.clickHandler,
       onMouseDown: touchMove ? this.swipeStart : null,

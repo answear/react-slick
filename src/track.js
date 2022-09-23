@@ -48,6 +48,8 @@ const getSlideClasses = spec => {
     "slick-active": slickActive,
     "slick-center": slickCenter,
     "slick-cloned": slickCloned,
+    [`slick-cloned ${spec.classes?.cloned}`]:
+      slickCloned && spec.classes?.cloned,
     "slick-current": slickCurrent // dubious in case of RTL
   };
 };
@@ -86,7 +88,8 @@ const getSlideStyle = spec => {
 
 const getKey = (child, fallbackKey) => child.key || fallbackKey;
 
-const shouldOmitLazy = (omitLazyForSlides = [], index) => omitLazyForSlides.includes(index);
+const shouldOmitLazy = (omitLazyForSlides = [], index) =>
+  omitLazyForSlides.includes(index);
 
 const renderSlides = spec => {
   let key;
@@ -124,7 +127,7 @@ const renderSlides = spec => {
       React.cloneElement(child, {
         key: "original" + getKey(child, index),
         "data-index": index,
-        className: classnames(slideClasses, slideClass),
+        className: classnames(slideClasses, slideClass, spec.classes?.slide),
         tabIndex: "-1",
         "aria-hidden": !slideClasses["slick-active"],
         style: { outline: "none", ...(child.props.style || {}), ...childStyle },
@@ -154,7 +157,11 @@ const renderSlides = spec => {
             key: "precloned" + getKey(child, key),
             "data-index": key,
             tabIndex: "-1",
-            className: classnames(slideClasses, slideClass),
+            className: classnames(
+              slideClasses,
+              slideClass,
+              spec.classes?.slide
+            ),
             "aria-hidden": !slideClasses["slick-active"],
             style: { ...(child.props.style || {}), ...childStyle },
             onClick: e => {
@@ -178,7 +185,11 @@ const renderSlides = spec => {
             key: "postcloned" + getKey(child, key),
             "data-index": key,
             tabIndex: "-1",
-            className: classnames(slideClasses, slideClass),
+            className: classnames(
+              slideClasses,
+              slideClass,
+              spec.classes?.slide
+            ),
             "aria-hidden": !slideClasses["slick-active"],
             style: { ...(child.props.style || {}), ...childStyle },
             onClick: e => {
@@ -214,7 +225,7 @@ export class Track extends React.PureComponent {
     return (
       <div
         ref={this.handleRef}
-        className="slick-track"
+        className={classnames("slick-track", this.props.classes?.track)}
         style={this.props.trackStyle}
         {...mouseEvents}
       >
