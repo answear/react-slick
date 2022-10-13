@@ -756,7 +756,9 @@ export class InnerSlider extends React.Component {
     };
 
     if (this.props.unslick) {
-      listProps = { className: "slick-list" };
+      listProps = {
+        className: classnames(this.props.classes?.list, "slick-list")
+      };
       innerSliderProps = { className };
     }
     return (
