@@ -189,7 +189,6 @@
             _typeof(obj)
           );
         }
-
         function _extends() {
           _extends = Object.assign
             ? Object.assign.bind()
@@ -206,7 +205,6 @@
               };
           return _extends.apply(this, arguments);
         }
-
         function ownKeys(object, enumerableOnly) {
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
@@ -219,7 +217,6 @@
           }
           return keys;
         }
-
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = null != arguments[i] ? arguments[i] : {};
@@ -242,30 +239,30 @@
           }
           return target;
         }
-
         function _classCallCheck(instance, Constructor) {
           if (!(instance instanceof Constructor)) {
             throw new TypeError("Cannot call a class as a function");
           }
         }
-
         function _defineProperties(target, props) {
           for (var i = 0; i < props.length; i++) {
             var descriptor = props[i];
             descriptor.enumerable = descriptor.enumerable || false;
             descriptor.configurable = true;
             if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
+            Object.defineProperty(
+              target,
+              _toPropertyKey(descriptor.key),
+              descriptor
+            );
           }
         }
-
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
           Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
-
         function _inherits(subClass, superClass) {
           if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
@@ -285,7 +282,6 @@
           Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
-
         function _setPrototypeOf(o, p) {
           _setPrototypeOf = Object.setPrototypeOf
             ? Object.setPrototypeOf.bind()
@@ -295,7 +291,6 @@
               };
           return _setPrototypeOf(o, p);
         }
-
         function _createSuper(Derived) {
           var hasNativeReflectConstruct = _isNativeReflectConstruct();
           return function _createSuperInternal() {
@@ -310,7 +305,6 @@
             return _possibleConstructorReturn(this, result);
           };
         }
-
         function _possibleConstructorReturn(self, call) {
           if (
             call &&
@@ -324,7 +318,6 @@
           }
           return _assertThisInitialized(self);
         }
-
         function _assertThisInitialized(self) {
           if (self === void 0) {
             throw new ReferenceError(
@@ -333,7 +326,6 @@
           }
           return self;
         }
-
         function _isNativeReflectConstruct() {
           if (typeof Reflect === "undefined" || !Reflect.construct)
             return false;
@@ -348,7 +340,6 @@
             return false;
           }
         }
-
         function _getPrototypeOf(o) {
           _getPrototypeOf = Object.setPrototypeOf
             ? Object.getPrototypeOf.bind()
@@ -357,8 +348,8 @@
               };
           return _getPrototypeOf(o);
         }
-
         function _defineProperty(obj, key, value) {
+          key = _toPropertyKey(key);
           if (key in obj) {
             Object.defineProperty(obj, key, {
               value: value,
@@ -371,24 +362,32 @@
           }
           return obj;
         }
+        function _toPropertyKey(arg) {
+          var key = _toPrimitive(arg, "string");
+          return _typeof(key) === "symbol" ? key : String(key);
+        }
+        function _toPrimitive(input, hint) {
+          if (_typeof(input) !== "object" || input === null) return input;
+          var prim = input[Symbol.toPrimitive];
+          if (prim !== undefined) {
+            var res = prim.call(input, hint || "default");
+            if (_typeof(res) !== "object") return res;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
+          }
+          return (hint === "string" ? String : Number)(input);
+        }
 
         var enquire =
           Object(
             _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__["canUseDOM"]
           )() && __webpack_require__(16);
-
         var Slider = /*#__PURE__*/ (function(_React$Component) {
           _inherits(Slider, _React$Component);
-
           var _super = _createSuper(Slider);
-
           function Slider(props) {
             var _this;
-
             _classCallCheck(this, Slider);
-
             _this = _super.call(this, props);
-
             _defineProperty(
               _assertThisInitialized(_this),
               "innerSliderRefHandler",
@@ -396,7 +395,6 @@
                 return (_this.innerSlider = ref);
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slickPrev",
@@ -404,7 +402,6 @@
                 return _this.innerSlider.slickPrev();
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slickNext",
@@ -412,7 +409,6 @@
                 return _this.innerSlider.slickNext();
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slickGoTo",
@@ -424,7 +420,6 @@
                 return _this.innerSlider.slickGoTo(slide, dontAnimate);
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slickPause",
@@ -432,7 +427,6 @@
                 return _this.innerSlider.pause("paused");
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slickPlay",
@@ -440,32 +434,30 @@
                 return _this.innerSlider.autoPlay("play");
               }
             );
-
             _this.state = {
               breakpoint: null
             };
             _this._responsiveMediaHandlers = [];
             return _this;
           }
-
           _createClass(Slider, [
             {
               key: "media",
               value: function media(query, handler) {
                 // javascript handler for  css media query
                 enquire.register(query, handler);
-
                 this._responsiveMediaHandlers.push({
                   query: query,
                   handler: handler
                 });
-              } // handles responsive breakpoints
+              }
+
+              // handles responsive breakpoints
             },
             {
               key: "componentDidMount",
               value: function componentDidMount() {
                 var _this2 = this;
-
                 // performance monitoring
                 //if (process.env.NODE_ENV !== 'production') {
                 //const { whyDidYouUpdate } = require('why-did-you-update')
@@ -476,15 +468,14 @@
                     breakpt
                   ) {
                     return breakpt.breakpoint;
-                  }); // sort them in increasing order of their numerical value
-
+                  });
+                  // sort them in increasing order of their numerical value
                   breakpoints.sort(function(x, y) {
                     return x - y;
                   });
                   breakpoints.forEach(function(breakpoint, index) {
                     // media query for each breakpoint
                     var bQuery;
-
                     if (index === 0) {
                       bQuery = json2mq__WEBPACK_IMPORTED_MODULE_2___default()({
                         minWidth: 0,
@@ -495,8 +486,8 @@
                         minWidth: breakpoints[index - 1] + 1,
                         maxWidth: breakpoint
                       });
-                    } // when not using server side rendering
-
+                    }
+                    // when not using server side rendering
                     Object(
                       _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
                         "canUseDOM"
@@ -507,9 +498,10 @@
                           breakpoint: breakpoint
                         });
                       });
-                  }); // Register media query for full screen. Need to support resize from small to large
-                  // convert javascript object to media query string
+                  });
 
+                  // Register media query for full screen. Need to support resize from small to large
+                  // convert javascript object to media query string
                   var query = json2mq__WEBPACK_IMPORTED_MODULE_2___default()({
                     minWidth: breakpoints.slice(-1)[0]
                   });
@@ -538,10 +530,8 @@
               key: "render",
               value: function render() {
                 var _this3 = this;
-
                 var settings;
                 var newProps;
-
                 if (this.state.breakpoint) {
                   newProps = this.props.responsive.filter(function(resp) {
                     return resp.breakpoint === _this3.state.breakpoint;
@@ -569,8 +559,9 @@
                     ),
                     this.props
                   );
-                } // force scrolling by one if centerMode is on
+                }
 
+                // force scrolling by one if centerMode is on
                 if (settings.centerMode) {
                   if (settings.slidesToScroll > 1 && "none" !== "production") {
                     console.warn(
@@ -579,10 +570,9 @@
                       )
                     );
                   }
-
                   settings.slidesToScroll = 1;
-                } // force showing one slide and scrolling by one if the fade mode is on
-
+                }
+                // force showing one slide and scrolling by one if the fade mode is on
                 if (settings.fade) {
                   if (settings.slidesToShow > 1 && "none" !== "production") {
                     console.warn(
@@ -591,7 +581,6 @@
                       )
                     );
                   }
-
                   if (settings.slidesToScroll > 1 && "none" !== "production") {
                     console.warn(
                       "slidesToScroll should be equal to 1 when fade is true, you're using ".concat(
@@ -599,24 +588,25 @@
                       )
                     );
                   }
-
                   settings.slidesToShow = 1;
                   settings.slidesToScroll = 1;
-                } // makes sure that children is an array, even when there is only 1 child
+                }
 
+                // makes sure that children is an array, even when there is only 1 child
                 var children = react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.toArray(
                   this.props.children
-                ); // Children may contain false or null, so we should filter them
-                // children may also contain string filled with spaces (in certain cases where we use jsx strings)
+                );
 
+                // Children may contain false or null, so we should filter them
+                // children may also contain string filled with spaces (in certain cases where we use jsx strings)
                 children = children.filter(function(child) {
                   if (typeof child === "string") {
                     return !!child.trim();
                   }
-
                   return !!child;
-                }); // rows and slidesPerRow logic is handled here
+                });
 
+                // rows and slidesPerRow logic is handled here
                 if (
                   settings.variableWidth &&
                   (settings.rows > 1 || settings.slidesPerRow > 1)
@@ -626,29 +616,24 @@
                   );
                   settings.variableWidth = false;
                 }
-
                 var newChildren = [];
                 var currentWidth = null;
-
                 for (
                   var i = 0;
                   i < children.length;
                   i += settings.rows * settings.slidesPerRow
                 ) {
                   var newSlide = [];
-
                   for (
                     var j = i;
                     j < i + settings.rows * settings.slidesPerRow;
                     j += settings.slidesPerRow
                   ) {
                     var row = [];
-
                     for (var k = j; k < j + settings.slidesPerRow; k += 1) {
                       if (settings.variableWidth && children[k].props.style) {
                         currentWidth = children[k].props.style.width;
                       }
-
                       if (k >= children.length) break;
                       row.push(
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(
@@ -667,7 +652,6 @@
                         )
                       );
                     }
-
                     newSlide.push(
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                         "div",
@@ -678,7 +662,6 @@
                       )
                     );
                   }
-
                   if (settings.variableWidth) {
                     newChildren.push(
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
@@ -704,7 +687,6 @@
                     );
                   }
                 }
-
                 if (settings === "unslick") {
                   var className =
                     "regular slider " + (this.props.className || "");
@@ -718,7 +700,6 @@
                 } else if (newChildren.length <= settings.slidesToShow) {
                   settings.unslick = true;
                 }
-
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                   react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
                   null,
@@ -737,7 +718,6 @@
               }
             }
           ]);
-
           return Slider;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
@@ -798,7 +778,6 @@
         );
 
         var _excluded = ["animating"];
-
         function _typeof(obj) {
           "@babel/helpers - typeof";
           return (
@@ -818,7 +797,6 @@
             _typeof(obj)
           );
         }
-
         function _extends() {
           _extends = Object.assign
             ? Object.assign.bind()
@@ -835,7 +813,6 @@
               };
           return _extends.apply(this, arguments);
         }
-
         function _objectWithoutProperties(source, excluded) {
           if (source == null) return {};
           var target = _objectWithoutPropertiesLoose(source, excluded);
@@ -852,7 +829,6 @@
           }
           return target;
         }
-
         function _objectWithoutPropertiesLoose(source, excluded) {
           if (source == null) return {};
           var target = {};
@@ -865,7 +841,6 @@
           }
           return target;
         }
-
         function ownKeys(object, enumerableOnly) {
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
@@ -878,7 +853,6 @@
           }
           return keys;
         }
-
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = null != arguments[i] ? arguments[i] : {};
@@ -901,30 +875,30 @@
           }
           return target;
         }
-
         function _classCallCheck(instance, Constructor) {
           if (!(instance instanceof Constructor)) {
             throw new TypeError("Cannot call a class as a function");
           }
         }
-
         function _defineProperties(target, props) {
           for (var i = 0; i < props.length; i++) {
             var descriptor = props[i];
             descriptor.enumerable = descriptor.enumerable || false;
             descriptor.configurable = true;
             if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
+            Object.defineProperty(
+              target,
+              _toPropertyKey(descriptor.key),
+              descriptor
+            );
           }
         }
-
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
           Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
-
         function _inherits(subClass, superClass) {
           if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
@@ -944,7 +918,6 @@
           Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
-
         function _setPrototypeOf(o, p) {
           _setPrototypeOf = Object.setPrototypeOf
             ? Object.setPrototypeOf.bind()
@@ -954,7 +927,6 @@
               };
           return _setPrototypeOf(o, p);
         }
-
         function _createSuper(Derived) {
           var hasNativeReflectConstruct = _isNativeReflectConstruct();
           return function _createSuperInternal() {
@@ -969,7 +941,6 @@
             return _possibleConstructorReturn(this, result);
           };
         }
-
         function _possibleConstructorReturn(self, call) {
           if (
             call &&
@@ -983,7 +954,6 @@
           }
           return _assertThisInitialized(self);
         }
-
         function _assertThisInitialized(self) {
           if (self === void 0) {
             throw new ReferenceError(
@@ -992,7 +962,6 @@
           }
           return self;
         }
-
         function _isNativeReflectConstruct() {
           if (typeof Reflect === "undefined" || !Reflect.construct)
             return false;
@@ -1007,7 +976,6 @@
             return false;
           }
         }
-
         function _getPrototypeOf(o) {
           _getPrototypeOf = Object.setPrototypeOf
             ? Object.getPrototypeOf.bind()
@@ -1016,8 +984,8 @@
               };
           return _getPrototypeOf(o);
         }
-
         function _defineProperty(obj, key, value) {
+          key = _toPropertyKey(key);
           if (key in obj) {
             Object.defineProperty(obj, key, {
               value: value,
@@ -1030,19 +998,28 @@
           }
           return obj;
         }
+        function _toPropertyKey(arg) {
+          var key = _toPrimitive(arg, "string");
+          return _typeof(key) === "symbol" ? key : String(key);
+        }
+        function _toPrimitive(input, hint) {
+          if (_typeof(input) !== "object" || input === null) return input;
+          var prim = input[Symbol.toPrimitive];
+          if (prim !== undefined) {
+            var res = prim.call(input, hint || "default");
+            if (_typeof(res) !== "object") return res;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
+          }
+          return (hint === "string" ? String : Number)(input);
+        }
 
         var InnerSlider = /*#__PURE__*/ (function(_React$Component) {
           _inherits(InnerSlider, _React$Component);
-
           var _super = _createSuper(InnerSlider);
-
           function InnerSlider(props) {
             var _this;
-
             _classCallCheck(this, InnerSlider);
-
             _this = _super.call(this, props);
-
             _defineProperty(
               _assertThisInitialized(_this),
               "listRefHandler",
@@ -1050,7 +1027,6 @@
                 return (_this.list = ref);
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "trackRefHandler",
@@ -1058,7 +1034,6 @@
                 return (_this.track = ref);
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "adaptHeight",
@@ -1067,7 +1042,6 @@
                   var elem = _this.list.querySelector(
                     '[data-index="'.concat(_this.state.currentSlide, '"]')
                   );
-
                   _this.list.style.height =
                     Object(
                       _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
@@ -1077,20 +1051,17 @@
                 }
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "componentDidMount",
               function() {
                 _this.props.onInit && _this.props.onInit();
-
                 if (_this.props.lazyLoad) {
                   var slidesToLoad = Object(
                     _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
                       "getOnDemandLazySlides"
                     ]
                   )(_objectSpread(_objectSpread({}, _this.props), _this.state));
-
                   if (slidesToLoad.length > 0) {
                     _this.setState(function(prevState) {
                       return {
@@ -1099,13 +1070,11 @@
                         )
                       };
                     });
-
                     if (_this.props.onLazyLoad) {
                       _this.props.onLazyLoad(slidesToLoad);
                     }
                   }
                 }
-
                 var spec = _objectSpread(
                   {
                     listRef: _this.list,
@@ -1113,26 +1082,21 @@
                   },
                   _this.props
                 );
-
                 _this.updateState(spec, true, function() {
                   _this.adaptHeight();
-
                   _this.props.autoplay && _this.autoPlay("update");
                 });
-
                 if (_this.props.lazyLoad === "progressive") {
                   _this.lazyLoadTimer = setInterval(
                     _this.progressiveLazyLoad,
                     1000
                   );
                 }
-
                 _this.ro = new resize_observer_polyfill__WEBPACK_IMPORTED_MODULE_8__[
                   "default"
                 ](function() {
                   if (_this.state.animating) {
                     _this.onWindowResized(false); // don't set trackStyle hence don't break animation
-
                     _this.callbackTimers.push(
                       setTimeout(function() {
                         return _this.onWindowResized();
@@ -1142,9 +1106,7 @@
                     _this.onWindowResized();
                   }
                 });
-
                 _this.ro.observe(_this.list);
-
                 document.querySelectorAll &&
                   Array.prototype.forEach.call(
                     document.querySelectorAll(".slick-slide"),
@@ -1157,7 +1119,6 @@
                         : null;
                     }
                   );
-
                 if (window.addEventListener) {
                   window.addEventListener("resize", _this.onWindowResized);
                 } else {
@@ -1165,7 +1126,6 @@
                 }
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "componentWillUnmount",
@@ -1173,48 +1133,38 @@
                 if (_this.animationEndCallback) {
                   clearTimeout(_this.animationEndCallback);
                 }
-
                 if (_this.lazyLoadTimer) {
                   clearInterval(_this.lazyLoadTimer);
                 }
-
                 if (_this.callbackTimers.length) {
                   _this.callbackTimers.forEach(function(timer) {
                     return clearTimeout(timer);
                   });
-
                   _this.callbackTimers = [];
                 }
-
                 if (window.addEventListener) {
                   window.removeEventListener("resize", _this.onWindowResized);
                 } else {
                   window.detachEvent("onresize", _this.onWindowResized);
                 }
-
                 if (_this.autoplayTimer) {
                   clearInterval(_this.autoplayTimer);
                 }
-
                 _this.ro.disconnect();
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "componentDidUpdate",
               function(prevProps) {
                 _this.checkImagesLoad();
-
                 _this.props.onReInit && _this.props.onReInit();
-
                 if (_this.props.lazyLoad) {
                   var slidesToLoad = Object(
                     _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
                       "getOnDemandLazySlides"
                     ]
                   )(_objectSpread(_objectSpread({}, _this.props), _this.state));
-
                   if (slidesToLoad.length > 0) {
                     _this.setState(function(prevState) {
                       return {
@@ -1223,17 +1173,15 @@
                         )
                       };
                     });
-
                     if (_this.props.onLazyLoad) {
                       _this.props.onLazyLoad(slidesToLoad);
                     }
                   }
-                } // if (this.props.onLazyLoad) {
+                }
+                // if (this.props.onLazyLoad) {
                 //   this.props.onLazyLoad([leftMostSlide])
                 // }
-
                 _this.adaptHeight();
-
                 var spec = _objectSpread(
                   _objectSpread(
                     {
@@ -1244,9 +1192,7 @@
                   ),
                   _this.state
                 );
-
                 var setTrackStyle = _this.didPropsChange(prevProps);
-
                 setTrackStyle &&
                   _this.updateState(spec, setTrackStyle, function() {
                     if (
@@ -1264,7 +1210,6 @@
                         currentSlide: _this.state.currentSlide
                       });
                     }
-
                     if (_this.props.autoplay) {
                       _this.autoPlay("update");
                     } else {
@@ -1273,7 +1218,6 @@
                   });
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "onWindowResized",
@@ -1285,11 +1229,9 @@
                   },
                   50
                 );
-
                 _this.debouncedResize();
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "resizeWindow",
@@ -1298,10 +1240,9 @@
                   arguments.length > 0 && arguments[0] !== undefined
                     ? arguments[0]
                     : true;
-                var isTrackMounted = Boolean(_this.track && _this.track.node); // prevent warning: setting state on unmounted component (server side rendering)
-
+                var isTrackMounted = Boolean(_this.track && _this.track.node);
+                // prevent warning: setting state on unmounted component (server side rendering)
                 if (!isTrackMounted) return;
-
                 var spec = _objectSpread(
                   _objectSpread(
                     {
@@ -1312,21 +1253,18 @@
                   ),
                   _this.state
                 );
-
                 _this.updateState(spec, setTrackStyle, function() {
                   if (_this.props.autoplay) _this.autoPlay("update");
                   else _this.pause("paused");
-                }); // animating state should be cleared while resizing, otherwise autoplay stops working
-
+                });
+                // animating state should be cleared while resizing, otherwise autoplay stops working
                 _this.setState({
                   animating: false
                 });
-
                 clearTimeout(_this.animationEndCallback);
                 delete _this.animationEndCallback;
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "updateState",
@@ -1360,7 +1298,6 @@
                     "getTrackCSS"
                   ]
                 )(spec);
-
                 if (
                   setTrackStyle ||
                   react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
@@ -1372,11 +1309,9 @@
                 ) {
                   updatedState["trackStyle"] = trackStyle;
                 }
-
                 _this.setState(updatedState, callback);
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "ssrInit",
@@ -1417,31 +1352,25 @@
                       }
                     )
                   );
-
                   _this.props.children.forEach(function(child) {
                     childrenWidths.push(child.props.style.width);
                     _trackWidth += child.props.style.width;
                   });
-
                   for (var i = 0; i < preClones; i++) {
                     _trackLeft += childrenWidths[childrenWidths.length - 1 - i];
                     _trackWidth +=
                       childrenWidths[childrenWidths.length - 1 - i];
                   }
-
                   for (var _i = 0; _i < postClones; _i++) {
                     _trackWidth += childrenWidths[_i];
                   }
-
                   for (var _i2 = 0; _i2 < _this.state.currentSlide; _i2++) {
                     _trackLeft += childrenWidths[_i2];
                   }
-
                   var _trackStyle = {
                     width: _trackWidth + "px",
                     left: -_trackLeft + "px"
                   };
-
                   if (_this.props.centerMode) {
                     var currentWidth = "".concat(
                       childrenWidths[_this.state.currentSlide],
@@ -1451,16 +1380,13 @@
                       .concat(_trackStyle.left, " + (100% - ")
                       .concat(currentWidth, ") / 2 ) ");
                   }
-
                   return {
                     trackStyle: _trackStyle
                   };
                 }
-
                 var childrenCount = react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
                   _this.props.children
                 );
-
                 var spec = _objectSpread(
                   _objectSpread(_objectSpread({}, _this.props), _this.state),
                   {},
@@ -1468,7 +1394,6 @@
                     slideCount: childrenCount
                   }
                 );
-
                 var slideCount =
                   Object(
                     _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
@@ -1493,11 +1418,9 @@
                       _this.state.currentSlide) *
                     trackWidth) /
                   100;
-
                 if (_this.props.centerMode) {
                   trackLeft += (100 - (slideWidth * trackWidth) / 100) / 2;
                 }
-
                 var trackStyle = {
                   width: trackWidth + "%",
                   left: trackLeft + "%"
@@ -1508,7 +1431,6 @@
                 };
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "checkImagesLoad",
@@ -1528,32 +1450,27 @@
                       _this.onWindowResized()
                     );
                   };
-
                   if (!image.onclick) {
                     image.onclick = function() {
                       return image.parentNode.focus();
                     };
                   } else {
                     var prevClickHandler = image.onclick;
-
                     image.onclick = function(e) {
                       prevClickHandler(e);
                       image.parentNode.focus();
                     };
                   }
-
                   if (!image.onload) {
                     if (_this.props.lazyLoad) {
                       image.onload = function() {
                         _this.adaptHeight();
-
                         _this.callbackTimers.push(
                           setTimeout(_this.onWindowResized, _this.props.speed)
                         );
                       };
                     } else {
                       image.onload = handler;
-
                       image.onerror = function() {
                         handler();
                         _this.props.onLazyLoadError &&
@@ -1564,18 +1481,15 @@
                 });
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "progressiveLazyLoad",
               function() {
                 var slidesToLoad = [];
-
                 var spec = _objectSpread(
                   _objectSpread({}, _this.props),
                   _this.state
                 );
-
                 for (
                   var index = _this.state.currentSlide;
                   index <
@@ -1592,7 +1506,6 @@
                     break;
                   }
                 }
-
                 for (
                   var _index = _this.state.currentSlide - 1;
                   _index >=
@@ -1608,14 +1521,12 @@
                     break;
                   }
                 }
-
                 if (slidesToLoad.length > 0) {
                   _this.setState(function(state) {
                     return {
                       lazyLoadedList: state.lazyLoadedList.concat(slidesToLoad)
                     };
                   });
-
                   if (_this.props.onLazyLoad) {
                     _this.props.onLazyLoad(slidesToLoad);
                   }
@@ -1627,7 +1538,6 @@
                 }
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slideHandler",
@@ -1641,10 +1551,9 @@
                   beforeChange = _this$props.beforeChange,
                   onLazyLoad = _this$props.onLazyLoad,
                   speed = _this$props.speed,
-                  afterChange = _this$props.afterChange; // capture currentslide before state is updated
-
+                  afterChange = _this$props.afterChange;
+                // capture currentslide before state is updated
                 var currentSlide = _this.state.currentSlide;
-
                 var _slideHandler = Object(
                     _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
                       "slideHandler"
@@ -1669,7 +1578,6 @@
                   ),
                   state = _slideHandler.state,
                   nextState = _slideHandler.nextState;
-
                 if (!state) return;
                 beforeChange && beforeChange(currentSlide, state.currentSlide);
                 var slidesToLoad = state.lazyLoadedList.filter(function(value) {
@@ -1678,20 +1586,17 @@
                 onLazyLoad &&
                   slidesToLoad.length > 0 &&
                   onLazyLoad(slidesToLoad);
-
                 if (!_this.props.waitForAnimate && _this.animationEndCallback) {
                   clearTimeout(_this.animationEndCallback);
                   afterChange && afterChange(currentSlide);
                   delete _this.animationEndCallback;
                 }
-
                 _this.setState(state, function() {
                   // asNavForIndex check is to avoid recursive calls of slideHandler in waitForAnimate=false mode
                   if (asNavFor && _this.asNavForIndex !== index) {
                     _this.asNavForIndex = index;
                     asNavFor.innerSlider.slideHandler(index);
                   }
-
                   if (!nextState) return;
                   _this.animationEndCallback = setTimeout(function() {
                     var animating = nextState.animating,
@@ -1699,7 +1604,6 @@
                         nextState,
                         _excluded
                       );
-
                     _this.setState(firstBatch, function() {
                       _this.callbackTimers.push(
                         setTimeout(function() {
@@ -1708,7 +1612,6 @@
                           });
                         }, 10)
                       );
-
                       afterChange && afterChange(state.currentSlide);
                       delete _this.animationEndCallback;
                     });
@@ -1716,7 +1619,6 @@
                 });
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "changeSlide",
@@ -1725,35 +1627,28 @@
                   arguments.length > 1 && arguments[1] !== undefined
                     ? arguments[1]
                     : false;
-
                 var spec = _objectSpread(
                   _objectSpread({}, _this.props),
                   _this.state
                 );
-
                 var targetSlide = Object(
                   _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
                     "changeSlide"
                   ]
                 )(spec, options);
                 if (targetSlide !== 0 && !targetSlide) return;
-
                 if (dontAnimate === true) {
                   _this.slideHandler(targetSlide, dontAnimate);
                 } else {
                   _this.slideHandler(targetSlide);
                 }
-
                 _this.props.autoplay && _this.autoPlay("update");
-
                 if (_this.props.focusOnSelect) {
                   var nodes = _this.list.querySelectorAll(".slick-current");
-
                   nodes[0] && nodes[0].focus();
                 }
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "clickHandler",
@@ -1762,11 +1657,9 @@
                   e.stopPropagation();
                   e.preventDefault();
                 }
-
                 _this.clickable = true;
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "keyHandler",
@@ -1782,7 +1675,6 @@
                   });
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "selectHandler",
@@ -1790,7 +1682,6 @@
                 _this.changeSlide(options);
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "disableBodyScroll",
@@ -1800,11 +1691,9 @@
                   if (e.preventDefault) e.preventDefault();
                   e.returnValue = false;
                 };
-
                 window.ontouchmove = preventDefault;
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "enableBodyScroll",
@@ -1812,7 +1701,6 @@
                 window.ontouchmove = null;
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "swipeStart",
@@ -1820,7 +1708,6 @@
                 if (_this.props.verticalSwiping) {
                   _this.disableBodyScroll();
                 }
-
                 var state = Object(
                   _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
                     "swipeStart"
@@ -1829,7 +1716,6 @@
                 state !== "" && _this.setState(state);
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "swipeMove",
@@ -1851,15 +1737,12 @@
                   )
                 );
                 if (!state) return;
-
                 if (state["swiping"]) {
                   _this.clickable = false;
                 }
-
                 _this.setState(state);
               }
             );
-
             _defineProperty(_assertThisInitialized(_this), "swipeEnd", function(
               e
             ) {
@@ -1880,26 +1763,19 @@
               if (!state) return;
               var triggerSlideHandler = state["triggerSlideHandler"];
               delete state["triggerSlideHandler"];
-
               _this.setState(state);
-
               if (triggerSlideHandler === undefined) return;
-
               _this.slideHandler(triggerSlideHandler);
-
               if (_this.props.verticalSwiping) {
                 _this.enableBodyScroll();
               }
             });
-
             _defineProperty(_assertThisInitialized(_this), "touchEnd", function(
               e
             ) {
               _this.swipeEnd(e);
-
               _this.clickable = true;
             });
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slickPrev",
@@ -1916,7 +1792,6 @@
                 );
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slickNext",
@@ -1930,7 +1805,6 @@
                 );
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "slickGoTo",
@@ -1941,7 +1815,6 @@
                     : false;
                 slide = Number(slide);
                 if (isNaN(slide)) return "";
-
                 _this.callbackTimers.push(
                   setTimeout(function() {
                     return _this.changeSlide(
@@ -1956,10 +1829,8 @@
                 );
               }
             );
-
             _defineProperty(_assertThisInitialized(_this), "play", function() {
               var nextIndex;
-
               if (_this.props.rtl) {
                 nextIndex =
                   _this.state.currentSlide - _this.props.slidesToScroll;
@@ -1977,19 +1848,15 @@
                   return false;
                 }
               }
-
               _this.slideHandler(nextIndex);
             });
-
             _defineProperty(_assertThisInitialized(_this), "autoPlay", function(
               playType
             ) {
               if (_this.autoplayTimer) {
                 clearInterval(_this.autoplayTimer);
               }
-
               var autoplaying = _this.state.autoplaying;
-
               if (playType === "update") {
                 if (
                   autoplaying === "hovered" ||
@@ -2007,17 +1874,14 @@
                   return;
                 }
               }
-
               _this.autoplayTimer = setInterval(
                 _this.play,
                 _this.props.autoplaySpeed + 50
               );
-
               _this.setState({
                 autoplaying: "playing"
               });
             });
-
             _defineProperty(_assertThisInitialized(_this), "pause", function(
               pauseType
             ) {
@@ -2025,9 +1889,7 @@
                 clearInterval(_this.autoplayTimer);
                 _this.autoplayTimer = null;
               }
-
               var autoplaying = _this.state.autoplaying;
-
               if (pauseType === "paused") {
                 _this.setState({
                   autoplaying: "paused"
@@ -2047,7 +1909,6 @@
                 }
               }
             });
-
             _defineProperty(
               _assertThisInitialized(_this),
               "onDotsOver",
@@ -2055,7 +1916,6 @@
                 return _this.props.autoplay && _this.pause("hovered");
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "onDotsLeave",
@@ -2067,7 +1927,6 @@
                 );
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "onTrackOver",
@@ -2075,7 +1934,6 @@
                 return _this.props.autoplay && _this.pause("hovered");
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "onTrackLeave",
@@ -2087,7 +1945,6 @@
                 );
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "onSlideFocus",
@@ -2095,7 +1952,6 @@
                 return _this.props.autoplay && _this.pause("focused");
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "onSlideBlur",
@@ -2107,13 +1963,11 @@
                 );
               }
             );
-
             _defineProperty(
               _assertThisInitialized(_this),
               "render",
               function() {
                 var _this$props$classes, _this$props$classes2;
-
                 var className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(
                   "slick-slider",
                   _this.props.className,
@@ -2126,12 +1980,10 @@
                     "slick-initialized": true
                   }
                 );
-
                 var spec = _objectSpread(
                   _objectSpread({}, _this.props),
                   _this.state
                 );
-
                 var trackProps = Object(
                   _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
                     "extractObject"
@@ -2178,7 +2030,6 @@
                   }
                 );
                 var dots;
-
                 if (
                   _this.props.dots === true &&
                   _this.state.slideCount >= _this.props.slidesToShow
@@ -2216,7 +2067,6 @@
                     dotProps
                   );
                 }
-
                 var prevArrow, nextArrow;
                 var arrowProps = Object(
                   _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
@@ -2233,7 +2083,6 @@
                   "classes"
                 ]);
                 arrowProps.clickHandler = _this.changeSlide;
-
                 if (_this.props.arrows) {
                   prevArrow = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                     _arrows__WEBPACK_IMPORTED_MODULE_7__["PrevArrow"],
@@ -2244,17 +2093,13 @@
                     arrowProps
                   );
                 }
-
                 var verticalHeightStyle = null;
-
                 if (_this.props.vertical) {
                   verticalHeightStyle = {
                     height: _this.state.listHeight
                   };
                 }
-
                 var centerPaddingStyle = null;
-
                 if (_this.props.vertical === false) {
                   if (_this.props.centerMode === true) {
                     centerPaddingStyle = {
@@ -2268,20 +2113,18 @@
                     };
                   }
                 }
-
                 var listStyle = _objectSpread(
                   _objectSpread({}, verticalHeightStyle),
                   centerPaddingStyle
                 );
-
                 var touchMove = _this.props.touchMove;
                 var listProps = {
                   className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(
+                    "slick-list",
                     (_this$props$classes2 = _this.props.classes) === null ||
                       _this$props$classes2 === void 0
                       ? void 0
-                      : _this$props$classes2.list,
-                    "slick-list"
+                      : _this$props$classes2.list
                   ),
                   style: listStyle,
                   onClick: _this.clickHandler,
@@ -2304,7 +2147,6 @@
                   dir: "ltr",
                   style: _this.props.style
                 };
-
                 if (_this.props.unslick) {
                   listProps = {
                     className: "slick-list"
@@ -2313,7 +2155,6 @@
                     className: className
                   };
                 }
-
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                   "div",
                   innerSliderProps,
@@ -2342,7 +2183,6 @@
                 );
               }
             );
-
             _this.list = null;
             _this.track = null;
             _this.state = _objectSpread(
@@ -2361,47 +2201,39 @@
             _this.callbackTimers = [];
             _this.clickable = true;
             _this.debouncedResize = null;
-
             var ssrState = _this.ssrInit();
-
             _this.state = _objectSpread(
               _objectSpread({}, _this.state),
               ssrState
             );
             return _this;
           }
-
           _createClass(InnerSlider, [
             {
               key: "didPropsChange",
               value: function didPropsChange(prevProps) {
                 var setTrackStyle = false;
-
                 for (
                   var _i3 = 0, _Object$keys = Object.keys(this.props);
                   _i3 < _Object$keys.length;
                   _i3++
                 ) {
                   var key = _Object$keys[_i3];
-
                   if (!prevProps.hasOwnProperty(key)) {
                     setTrackStyle = true;
                     break;
                   }
-
                   if (
                     _typeof(prevProps[key]) === "object" ||
                     typeof prevProps[key] === "function"
                   ) {
                     continue;
                   }
-
                   if (prevProps[key] !== this.props[key]) {
                     setTrackStyle = true;
                     break;
                   }
                 }
-
                 return (
                   setTrackStyle ||
                   react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
@@ -2414,7 +2246,6 @@
               }
             }
           ]);
-
           return InnerSlider;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
@@ -3209,6 +3040,25 @@
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
+        function _typeof(obj) {
+          "@babel/helpers - typeof";
+          return (
+            (_typeof =
+              "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
+                ? function(obj) {
+                    return typeof obj;
+                  }
+                : function(obj) {
+                    return obj &&
+                      "function" == typeof Symbol &&
+                      obj.constructor === Symbol &&
+                      obj !== Symbol.prototype
+                      ? "symbol"
+                      : typeof obj;
+                  }),
+            _typeof(obj)
+          );
+        }
         function ownKeys(object, enumerableOnly) {
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
@@ -3221,7 +3071,6 @@
           }
           return keys;
         }
-
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = null != arguments[i] ? arguments[i] : {};
@@ -3244,8 +3093,8 @@
           }
           return target;
         }
-
         function _defineProperty(obj, key, value) {
+          key = _toPropertyKey(key);
           if (key in obj) {
             Object.defineProperty(obj, key, {
               value: value,
@@ -3258,13 +3107,26 @@
           }
           return obj;
         }
+        function _toPropertyKey(arg) {
+          var key = _toPrimitive(arg, "string");
+          return _typeof(key) === "symbol" ? key : String(key);
+        }
+        function _toPrimitive(input, hint) {
+          if (_typeof(input) !== "object" || input === null) return input;
+          var prim = input[Symbol.toPrimitive];
+          if (prim !== undefined) {
+            var res = prim.call(input, hint || "default");
+            if (_typeof(res) !== "object") return res;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
+          }
+          return (hint === "string" ? String : Number)(input);
+        }
 
         function clamp(number, lowerBound, upperBound) {
           return Math.max(lowerBound, Math.min(number, upperBound));
         }
         var safePreventDefault = function safePreventDefault(event) {
           var passiveEvents = ["onTouchStart", "onTouchMove", "onWheel"];
-
           if (!passiveEvents.includes(event._reactName)) {
             event.preventDefault();
           }
@@ -3273,7 +3135,6 @@
           var onDemandSlides = [];
           var startIndex = lazyStartIndex(spec);
           var endIndex = lazyEndIndex(spec);
-
           for (
             var slideIndex = startIndex;
             slideIndex < endIndex;
@@ -3283,15 +3144,14 @@
               onDemandSlides.push(slideIndex);
             }
           }
-
           return onDemandSlides;
-        }; // return list of slides that need to be present
+        };
 
+        // return list of slides that need to be present
         var getRequiredLazySlides = function getRequiredLazySlides(spec) {
           var requiredSlides = [];
           var startIndex = lazyStartIndex(spec);
           var endIndex = lazyEndIndex(spec);
-
           for (
             var slideIndex = startIndex;
             slideIndex < endIndex;
@@ -3299,10 +3159,10 @@
           ) {
             requiredSlides.push(slideIndex);
           }
-
           return requiredSlides;
-        }; // startIndex that needs to be present
+        };
 
+        // startIndex that needs to be present
         var lazyStartIndex = function lazyStartIndex(spec) {
           var startIndex = spec.currentSlide - lazySlidesOnLeft(spec);
           if (spec.lazyLoad === "anticipated") startIndex -= 1;
@@ -3325,8 +3185,9 @@
                 1 +
                 (parseInt(spec.centerPadding) > 0 ? 1 : 0)
             : spec.slidesToShow;
-        }; // get width of an element
+        };
 
+        // get width of an element
         var getWidth = function getWidth(elem) {
           return (elem && elem.offsetWidth) || 0;
         };
@@ -3343,22 +3204,18 @@
           yDist = touchObject.startY - touchObject.curY;
           r = Math.atan2(yDist, xDist);
           swipeAngle = Math.round((r * 180) / Math.PI);
-
           if (swipeAngle < 0) {
             swipeAngle = 360 - Math.abs(swipeAngle);
           }
-
           if (
             (swipeAngle <= 45 && swipeAngle >= 0) ||
             (swipeAngle <= 360 && swipeAngle >= 315)
           ) {
             return "left";
           }
-
           if (swipeAngle >= 135 && swipeAngle <= 225) {
             return "right";
           }
-
           if (verticalSwiping === true) {
             if (swipeAngle >= 35 && swipeAngle <= 135) {
               return "up";
@@ -3366,13 +3223,12 @@
               return "down";
             }
           }
-
           return "vertical";
-        }; // whether or not we can go next
+        };
 
+        // whether or not we can go next
         var canGoNext = function canGoNext(spec) {
           var canGo = true;
-
           if (!spec.infinite) {
             if (spec.centerMode && spec.currentSlide >= spec.slideCount - 1) {
               canGo = false;
@@ -3383,18 +3239,19 @@
               canGo = false;
             }
           }
-
           return canGo;
-        }; // given an object and a list of keys, return new object with given keys
+        };
 
+        // given an object and a list of keys, return new object with given keys
         var extractObject = function extractObject(spec, keys) {
           var newObject = {};
           keys.forEach(function(key) {
             return (newObject[key] = spec[key]);
           });
           return newObject;
-        }; // get initialized state
+        };
 
+        // get initialized state
         var initializedState = function initializedState(spec) {
           // spec also contains listRef, trackRef
           var slideCount = react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
@@ -3405,25 +3262,21 @@
           var trackNode = spec.trackRef && spec.trackRef.node;
           var trackWidth = Math.ceil(getWidth(trackNode));
           var slideWidth;
-
           if (!spec.vertical) {
             var centerPaddingAdj =
               spec.centerMode && parseInt(spec.centerPadding) * 2;
-
             if (
               typeof spec.centerPadding === "string" &&
               spec.centerPadding.slice(-1) === "%"
             ) {
               centerPaddingAdj *= listWidth / 100;
             }
-
             slideWidth = Math.ceil(
               (listWidth - centerPaddingAdj) / spec.slidesToShow
             );
           } else {
             slideWidth = listWidth;
           }
-
           var slideHeight =
             listNode && getHeight(listNode.querySelector('[data-index="0"]'));
           var listHeight = slideHeight * spec.slidesToShow;
@@ -3431,11 +3284,9 @@
             spec.currentSlide === undefined
               ? spec.initialSlide
               : spec.currentSlide;
-
           if (spec.rtl && spec.currentSlide === undefined) {
             currentSlide = slideCount - 1 - spec.initialSlide;
           }
-
           var lazyLoadedList = spec.lazyLoadedList || [];
           var slidesToLoad = getOnDemandLazySlides(
             _objectSpread(
@@ -3458,11 +3309,9 @@
             listHeight: listHeight,
             lazyLoadedList: lazyLoadedList
           };
-
           if (spec.autoplaying === null && spec.autoplay) {
             state["autoplaying"] = "playing";
           }
-
           return state;
         };
         var slideHandler = function slideHandler(spec) {
@@ -3487,20 +3336,16 @@
           var state = {},
             nextState = {};
           var targetSlide = infinite ? index : clamp(index, 0, slideCount - 1);
-
           if (fade) {
             if (!infinite && (index < 0 || index >= slideCount)) return {};
-
             if (index < 0) {
               animationSlide = index + slideCount;
             } else if (index >= slideCount) {
               animationSlide = index - slideCount;
             }
-
             if (lazyLoad && lazyLoadedList.indexOf(animationSlide) < 0) {
               lazyLoadedList = lazyLoadedList.concat(animationSlide);
             }
-
             state = {
               animating: true,
               currentSlide: animationSlide,
@@ -3513,7 +3358,6 @@
             };
           } else {
             finalSlide = animationSlide;
-
             if (animationSlide < 0) {
               finalSlide = animationSlide + slideCount;
               if (!infinite) finalSlide = 0;
@@ -3529,11 +3373,9 @@
               if (!infinite) finalSlide = slideCount - slidesToShow;
               else if (slideCount % slidesToScroll !== 0) finalSlide = 0;
             }
-
             if (!infinite && animationSlide + slidesToShow >= slideCount) {
               finalSlide = slideCount - slidesToShow;
             }
-
             animationLeft = getTrackLeft(
               _objectSpread(
                 _objectSpread({}, spec),
@@ -3552,12 +3394,10 @@
                 }
               )
             );
-
             if (!infinite) {
               if (animationLeft === finalLeft) animationSlide = finalSlide;
               animationLeft = finalLeft;
             }
-
             if (lazyLoad) {
               lazyLoadedList = lazyLoadedList.concat(
                 getOnDemandLazySlides(
@@ -3571,7 +3411,6 @@
                 )
               );
             }
-
             if (!useCSS) {
               state = {
                 currentSlide: finalSlide,
@@ -3620,7 +3459,6 @@
               };
             }
           }
-
           return {
             state: state,
             nextState: nextState
@@ -3639,29 +3477,24 @@
           indexOffset = unevenOffset
             ? 0
             : (slideCount - currentSlide) % slidesToScroll;
-
           if (options.message === "previous") {
             slideOffset =
               indexOffset === 0 ? slidesToScroll : slidesToShow - indexOffset;
             targetSlide = currentSlide - slideOffset;
-
             if (lazyLoad && !infinite) {
               previousInt = currentSlide - slideOffset;
               targetSlide = previousInt === -1 ? slideCount - 1 : previousInt;
             }
-
             if (!infinite) {
               targetSlide = previousTargetSlide - slidesToScroll;
             }
           } else if (options.message === "next") {
             slideOffset = indexOffset === 0 ? slidesToScroll : indexOffset;
             targetSlide = currentSlide + slideOffset;
-
             if (lazyLoad && !infinite) {
               targetSlide =
                 ((currentSlide + slidesToScroll) % slideCount) + indexOffset;
             }
-
             if (!infinite) {
               targetSlide = previousTargetSlide + slidesToScroll;
             }
@@ -3671,7 +3504,6 @@
           } else if (options.message === "children") {
             // Click on the slides
             targetSlide = options.index;
-
             if (infinite) {
               var direction = siblingDirection(
                 _objectSpread(
@@ -3682,7 +3514,6 @@
                   }
                 )
               );
-
               if (targetSlide > options.currentSlide && direction === "left") {
                 targetSlide = targetSlide - slideCount;
               } else if (
@@ -3695,7 +3526,6 @@
           } else if (options.message === "index") {
             targetSlide = Number(options.index);
           }
-
           return targetSlide;
         };
         var keyHandler = function keyHandler(e, accessibility, rtl) {
@@ -3755,13 +3585,11 @@
           var verticalSwipeLength = Math.round(
             Math.sqrt(Math.pow(touchObject.curY - touchObject.startY, 2))
           );
-
           if (!verticalSwiping && !swiping && verticalSwipeLength > 10) {
             return {
               scrolling: true
             };
           }
-
           if (verticalSwiping) touchObject.swipeLength = verticalSwipeLength;
           var positionOffset =
             (!rtl ? 1 : -1) * (touchObject.curX > touchObject.startX ? 1 : -1);
@@ -3773,7 +3601,6 @@
             verticalSwiping
           );
           var touchSwipeLength = touchObject.swipeLength;
-
           if (!infinite) {
             if (
               (currentSlide === 0 &&
@@ -3784,19 +3611,16 @@
                 (swipeDirection === "left" || swipeDirection === "up"))
             ) {
               touchSwipeLength = touchObject.swipeLength * edgeFriction;
-
               if (edgeDragged === false && onEdge) {
                 onEdge(swipeDirection);
                 state["edgeDragged"] = true;
               }
             }
           }
-
           if (!swiped && swipeEvent) {
             swipeEvent(swipeDirection);
             state["swiped"] = true;
           }
-
           if (!vertical) {
             if (!rtl) {
               swipeLeft = curLeft + touchSwipeLength * positionOffset;
@@ -3808,11 +3632,9 @@
               curLeft +
               touchSwipeLength * (listHeight / listWidth) * positionOffset;
           }
-
           if (verticalSwiping) {
             swipeLeft = curLeft + touchSwipeLength * positionOffset;
           }
-
           state = _objectSpread(
             _objectSpread({}, state),
             {},
@@ -3830,19 +3652,16 @@
               )
             }
           );
-
           if (
             Math.abs(touchObject.curX - touchObject.startX) <
             Math.abs(touchObject.curY - touchObject.startY) * 0.8
           ) {
             return state;
           }
-
           if (touchObject.swipeLength > 10) {
             state["swiping"] = true;
             safePreventDefault(e);
           }
-
           return state;
         };
         var swipeEnd = function swipeEnd(e, spec) {
@@ -3859,17 +3678,15 @@
             targetSlide = spec.targetSlide,
             currentSlide = spec.currentSlide,
             infinite = spec.infinite;
-
           if (!dragging) {
             if (swipe) safePreventDefault(e);
             return {};
           }
-
           var minSwipe = verticalSwiping
             ? listHeight / touchThreshold
             : listWidth / touchThreshold;
-          var swipeDirection = getSwipeDirection(touchObject, verticalSwiping); // reset the state of touch related state variables.
-
+          var swipeDirection = getSwipeDirection(touchObject, verticalSwiping);
+          // reset the state of touch related state variables.
           var state = {
             dragging: false,
             edgeDragged: false,
@@ -3879,25 +3696,19 @@
             swipeLeft: null,
             touchObject: {}
           };
-
           if (scrolling) {
             return state;
           }
-
           if (!touchObject.swipeLength) {
             return state;
           }
-
           if (touchObject.swipeLength > minSwipe) {
             safePreventDefault(e);
-
             if (onSwipe) {
               onSwipe(swipeDirection);
             }
-
             var slideCount, newSlide;
             var activeSlide = infinite ? currentSlide : targetSlide;
-
             switch (swipeDirection) {
               case "left":
               case "up":
@@ -3907,7 +3718,6 @@
                   : newSlide;
                 state["currentDirection"] = 0;
                 break;
-
               case "right":
               case "down":
                 newSlide = activeSlide - getSlideCount(spec);
@@ -3916,11 +3726,9 @@
                   : newSlide;
                 state["currentDirection"] = 1;
                 break;
-
               default:
                 slideCount = activeSlide;
             }
-
             state["triggerSlideHandler"] = slideCount;
           } else {
             // Adjust the track back to it's original position.
@@ -3935,7 +3743,6 @@
               )
             );
           }
-
           return state;
         };
         var getNavigableIndexes = function getNavigableIndexes(spec) {
@@ -3943,19 +3750,16 @@
           var breakpoint = spec.infinite ? spec.slidesToShow * -1 : 0;
           var counter = spec.infinite ? spec.slidesToShow * -1 : 0;
           var indexes = [];
-
           while (breakpoint < max) {
             indexes.push(breakpoint);
             breakpoint = counter + spec.slidesToScroll;
             counter += Math.min(spec.slidesToScroll, spec.slidesToShow);
           }
-
           return indexes;
         };
         var checkNavigable = function checkNavigable(spec, index) {
           var navigables = getNavigableIndexes(spec);
           var prevNavigable = 0;
-
           if (index > navigables[navigables.length - 1]) {
             index = navigables[navigables.length - 1];
           } else {
@@ -3964,18 +3768,15 @@
                 index = prevNavigable;
                 break;
               }
-
               prevNavigable = navigables[n];
             }
           }
-
           return index;
         };
         var getSlideCount = function getSlideCount(spec) {
           var centerOffset = spec.centerMode
             ? spec.slideWidth * Math.floor(spec.slidesToShow / 2)
             : 0;
-
           if (spec.swipeToSlide) {
             var swipedSlide;
             var slickList = spec.listRef;
@@ -4001,14 +3802,11 @@
                   return false;
                 }
               }
-
               return true;
             });
-
             if (!swipedSlide) {
               return 0;
             }
-
             var currentIndex =
               spec.rtl === true
                 ? spec.slideCount - spec.currentSlide
@@ -4037,19 +3835,16 @@
           ]);
           var trackWidth, trackHeight;
           var trackChildren = spec.slideCount + 2 * spec.slidesToShow;
-
           if (!spec.vertical) {
             trackWidth = getTotalSlides(spec) * spec.slideWidth;
           } else {
             trackHeight = trackChildren * spec.slideHeight;
           }
-
           var style = {
             opacity: 1,
             transition: "",
             WebkitTransition: ""
           };
-
           if (spec.useTransform) {
             var WebkitTransform = !spec.vertical
               ? "translate3d(" + spec.left + "px, 0px, 0px)"
@@ -4076,14 +3871,14 @@
               style["left"] = spec.left;
             }
           }
-
           if (spec.fade)
             style = {
               opacity: 1
             };
           if (trackWidth) style.width = trackWidth;
-          if (trackHeight) style.height = trackHeight; // Fallback for IE8
+          if (trackHeight) style.height = trackHeight;
 
+          // Fallback for IE8
           if (window && !window.addEventListener && window.attachEvent) {
             if (!spec.vertical) {
               style.marginLeft = spec.left + "px";
@@ -4091,7 +3886,6 @@
               style.marginTop = spec.left + "px";
             }
           }
-
           return style;
         };
         var getTrackAnimateCSS = function getTrackAnimateCSS(spec) {
@@ -4104,8 +3898,8 @@
             "speed",
             "cssEase"
           ]);
-          var style = getTrackCSS(spec); // useCSS is true by default so it can be undefined
-
+          var style = getTrackCSS(spec);
+          // useCSS is true by default so it can be undefined
           if (spec.useTransform) {
             style.WebkitTransition =
               "-webkit-transform " + spec.speed + "ms " + spec.cssEase;
@@ -4117,14 +3911,12 @@
               style.transition = "left " + spec.speed + "ms " + spec.cssEase;
             }
           }
-
           return style;
         };
         var getTrackLeft = function getTrackLeft(spec) {
           if (spec.unslick) {
             return 0;
           }
-
           checkSpecKeys(spec, [
             "slideIndex",
             "trackRef",
@@ -4155,17 +3947,13 @@
           var targetLeft;
           var targetSlide;
           var verticalOffset = 0;
-
           if (fade || spec.slideCount === 1) {
             return 0;
           }
-
           var slidesToOffset = 0;
-
           if (infinite) {
             slidesToOffset = -getPreClones(spec); // bring active slide to the beginning of visual area
             // if next scroll doesn't have enough children, just reach till the end of original slides instead of shifting slidesToScroll children
-
             if (
               slideCount % slidesToScroll !== 0 &&
               slideIndex + slidesToScroll > slideCount
@@ -4173,8 +3961,8 @@
               slidesToOffset = -(slideIndex > slideCount
                 ? slidesToShow - (slideIndex - slideCount)
                 : slideCount % slidesToScroll);
-            } // shift current slide to center of the frame
-
+            }
+            // shift current slide to center of the frame
             if (centerMode) {
               slidesToOffset += parseInt(slidesToShow / 2);
             }
@@ -4185,66 +3973,55 @@
             ) {
               slidesToOffset = slidesToShow - (slideCount % slidesToScroll);
             }
-
             if (centerMode) {
               slidesToOffset = parseInt(slidesToShow / 2);
             }
           }
-
           slideOffset = slidesToOffset * slideWidth;
           verticalOffset = slidesToOffset * slideHeight;
-
           if (!vertical) {
             targetLeft = slideIndex * slideWidth * -1 + slideOffset;
           } else {
             targetLeft = slideIndex * slideHeight * -1 + verticalOffset;
           }
-
           if (variableWidth === true) {
             var targetSlideIndex;
             var trackElem = trackRef && trackRef.node;
             targetSlideIndex = slideIndex + getPreClones(spec);
             targetSlide = trackElem && trackElem.childNodes[targetSlideIndex];
             targetLeft = targetSlide ? targetSlide.offsetLeft * -1 : 0;
-
             if (centerMode === true) {
               targetSlideIndex = infinite
                 ? slideIndex + getPreClones(spec)
                 : slideIndex;
               targetSlide = trackElem && trackElem.children[targetSlideIndex];
               targetLeft = 0;
-
               for (var slide = 0; slide < targetSlideIndex; slide++) {
                 targetLeft -=
                   trackElem &&
                   trackElem.children[slide] &&
                   trackElem.children[slide].offsetWidth;
               }
-
               targetLeft -= parseInt(spec.centerPadding);
               targetLeft +=
                 targetSlide && (listWidth - targetSlide.offsetWidth) / 2;
             }
           }
-
           return targetLeft;
         };
         var getPreClones = function getPreClones(spec) {
           if (spec.unslick || !spec.infinite) {
             return 0;
           }
-
           if (spec.variableWidth) {
             return spec.slideCount;
           }
-
           return spec.slidesToShow + (spec.centerMode ? 1 : 0);
         };
         var getPostClones = function getPostClones(spec) {
           if (spec.unslick || !spec.infinite) {
             return 0;
           }
-
           return spec.slideCount;
         };
         var getTotalSlides = function getTotalSlides(spec) {
@@ -4257,13 +4034,11 @@
             if (spec.targetSlide > spec.currentSlide + slidesOnRight(spec)) {
               return "left";
             }
-
             return "right";
           } else {
             if (spec.targetSlide < spec.currentSlide - slidesOnLeft(spec)) {
               return "right";
             }
-
             return "left";
           }
         };
@@ -4272,7 +4047,6 @@
             centerMode = _ref.centerMode,
             rtl = _ref.rtl,
             centerPadding = _ref.centerPadding;
-
           // returns no of slides on the right of active slide
           if (centerMode) {
             var right = (slidesToShow - 1) / 2 + 1;
@@ -4280,11 +4054,9 @@
             if (rtl && slidesToShow % 2 === 0) right += 1;
             return right;
           }
-
           if (rtl) {
             return 0;
           }
-
           return slidesToShow - 1;
         };
         var slidesOnLeft = function slidesOnLeft(_ref2) {
@@ -4292,7 +4064,6 @@
             centerMode = _ref2.centerMode,
             rtl = _ref2.rtl,
             centerPadding = _ref2.centerPadding;
-
           // returns no of slides on the left of active slide
           if (centerMode) {
             var left = (slidesToShow - 1) / 2 + 1;
@@ -4300,11 +4071,9 @@
             if (!rtl && slidesToShow % 2 === 0) left += 1;
             return left;
           }
-
           if (rtl) {
             return slidesToShow - 1;
           }
-
           return 0;
         };
         var canUseDOM = function canUseDOM() {
@@ -4363,7 +4132,6 @@
             _typeof(obj)
           );
         }
-
         function _extends() {
           _extends = Object.assign
             ? Object.assign.bind()
@@ -4380,30 +4148,30 @@
               };
           return _extends.apply(this, arguments);
         }
-
         function _classCallCheck(instance, Constructor) {
           if (!(instance instanceof Constructor)) {
             throw new TypeError("Cannot call a class as a function");
           }
         }
-
         function _defineProperties(target, props) {
           for (var i = 0; i < props.length; i++) {
             var descriptor = props[i];
             descriptor.enumerable = descriptor.enumerable || false;
             descriptor.configurable = true;
             if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
+            Object.defineProperty(
+              target,
+              _toPropertyKey(descriptor.key),
+              descriptor
+            );
           }
         }
-
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
           Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
-
         function _inherits(subClass, superClass) {
           if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
@@ -4423,7 +4191,6 @@
           Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
-
         function _setPrototypeOf(o, p) {
           _setPrototypeOf = Object.setPrototypeOf
             ? Object.setPrototypeOf.bind()
@@ -4433,7 +4200,6 @@
               };
           return _setPrototypeOf(o, p);
         }
-
         function _createSuper(Derived) {
           var hasNativeReflectConstruct = _isNativeReflectConstruct();
           return function _createSuperInternal() {
@@ -4448,7 +4214,6 @@
             return _possibleConstructorReturn(this, result);
           };
         }
-
         function _possibleConstructorReturn(self, call) {
           if (
             call &&
@@ -4462,7 +4227,6 @@
           }
           return _assertThisInitialized(self);
         }
-
         function _assertThisInitialized(self) {
           if (self === void 0) {
             throw new ReferenceError(
@@ -4471,7 +4235,6 @@
           }
           return self;
         }
-
         function _isNativeReflectConstruct() {
           if (typeof Reflect === "undefined" || !Reflect.construct)
             return false;
@@ -4486,7 +4249,6 @@
             return false;
           }
         }
-
         function _getPrototypeOf(o) {
           _getPrototypeOf = Object.setPrototypeOf
             ? Object.getPrototypeOf.bind()
@@ -4495,7 +4257,6 @@
               };
           return _getPrototypeOf(o);
         }
-
         function ownKeys(object, enumerableOnly) {
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
@@ -4508,7 +4269,6 @@
           }
           return keys;
         }
-
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = null != arguments[i] ? arguments[i] : {};
@@ -4531,8 +4291,8 @@
           }
           return target;
         }
-
         function _defineProperty(obj, key, value) {
+          key = _toPropertyKey(key);
           if (key in obj) {
             Object.defineProperty(obj, key, {
               value: value,
@@ -4545,27 +4305,35 @@
           }
           return obj;
         }
+        function _toPropertyKey(arg) {
+          var key = _toPrimitive(arg, "string");
+          return _typeof(key) === "symbol" ? key : String(key);
+        }
+        function _toPrimitive(input, hint) {
+          if (_typeof(input) !== "object" || input === null) return input;
+          var prim = input[Symbol.toPrimitive];
+          if (prim !== undefined) {
+            var res = prim.call(input, hint || "default");
+            if (_typeof(res) !== "object") return res;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
+          }
+          return (hint === "string" ? String : Number)(input);
+        }
 
         // given specifications/props for a slide, fetch all the classes that need to be applied to the slide
-
         var getSlideClasses = function getSlideClasses(spec) {
           var _spec$classes, _spec$classes2, _ref;
-
           var slickActive, slickCenter, slickCloned;
           var centerOffset, index;
-
           if (spec.rtl) {
             index = spec.slideCount - 1 - spec.index;
           } else {
             index = spec.index;
           }
-
           slickCloned = index < 0 || index >= spec.slideCount;
-
           if (spec.centerMode) {
             centerOffset = Math.floor(spec.slidesToShow / 2);
             slickCenter = (index - spec.currentSlide) % spec.slideCount === 0;
-
             if (
               index > spec.currentSlide - centerOffset - 1 &&
               index <= spec.currentSlide + centerOffset
@@ -4577,9 +4345,7 @@
               spec.currentSlide <= index &&
               index < spec.currentSlide + spec.slidesToShow;
           }
-
           var focusedSlide;
-
           if (spec.targetSlide < 0) {
             focusedSlide = spec.targetSlide + spec.slideCount;
           } else if (spec.targetSlide >= spec.slideCount) {
@@ -4587,7 +4353,6 @@
           } else {
             focusedSlide = spec.targetSlide;
           }
-
           var slickCurrent = index === focusedSlide;
           return (
             (_ref = {
@@ -4614,28 +4379,22 @@
             _ref
           );
         };
-
         var getSlideStyle = function getSlideStyle(spec) {
           var style = {};
-
           if (
             spec.variableWidth === undefined ||
             spec.variableWidth === false
           ) {
             style.width = spec.slideWidth;
           }
-
           if (spec.fade) {
             style.position = "relative";
-
             if (spec.vertical) {
               style.top = -spec.index * parseInt(spec.slideHeight);
             } else {
               style.left = -spec.index * parseInt(spec.slideWidth);
             }
-
             style.opacity = spec.currentSlide === spec.index ? 1 : 0;
-
             if (spec.useCSS) {
               style.transition =
                 "opacity " +
@@ -4649,14 +4408,11 @@
                 spec.cssEase;
             }
           }
-
           return style;
         };
-
         var getKey = function getKey(child, fallbackKey) {
           return child.key || fallbackKey;
         };
-
         var shouldOmitLazy = function shouldOmitLazy() {
           var omitLazyForSlides =
             arguments.length > 0 && arguments[0] !== undefined
@@ -4665,7 +4421,6 @@
           var index = arguments.length > 1 ? arguments[1] : undefined;
           return omitLazyForSlides.includes(index);
         };
-
         var renderSlides = function renderSlides(spec) {
           var key;
           var slides = [];
@@ -4686,15 +4441,15 @@
             spec.children,
             function(elem, index) {
               var _spec$classes3;
-
               var child;
               var childOnClickOptions = {
                 message: "children",
                 index: index,
                 slidesToScroll: spec.slidesToScroll,
                 currentSlide: spec.currentSlide
-              }; // in case of lazyLoad, whether or not we want to fetch the slide
+              };
 
+              // in case of lazyLoad, whether or not we want to fetch the slide
               if (
                 !spec.lazyLoad ||
                 (spec.lazyLoad && spec.lazyLoadedList.indexOf(index) >= 0) ||
@@ -4707,7 +4462,6 @@
                   null
                 );
               }
-
               var childStyle = getSlideStyle(
                 _objectSpread(
                   _objectSpread({}, spec),
@@ -4726,8 +4480,8 @@
                     index: index
                   }
                 )
-              ); // push a cloned element of the desired slide
-
+              );
+              // push a cloned element of the desired slide
               slides.push(
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(
                   child,
@@ -4757,18 +4511,17 @@
                       child.props &&
                         child.props.onClick &&
                         child.props.onClick(e);
-
                       if (spec.focusOnSelect) {
                         spec.focusOnSelect(childOnClickOptions);
                       }
                     }
                   }
                 )
-              ); // if slide needs to be precloned or postcloned
+              );
 
+              // if slide needs to be precloned or postcloned
               if (spec.infinite && spec.fade === false) {
                 var preCloneNo = childrenCount - index;
-
                 if (
                   preCloneNo <=
                     Object(
@@ -4779,13 +4532,10 @@
                   childrenCount !== spec.slidesToShow
                 ) {
                   var _spec$classes4;
-
                   key = -preCloneNo;
-
                   if (key >= startIndex) {
                     child = elem;
                   }
-
                   slideClasses = getSlideClasses(
                     _objectSpread(
                       _objectSpread({}, spec),
@@ -4819,7 +4569,6 @@
                           child.props &&
                             child.props.onClick &&
                             child.props.onClick(e);
-
                           if (spec.focusOnSelect) {
                             spec.focusOnSelect(childOnClickOptions);
                           }
@@ -4828,16 +4577,12 @@
                     )
                   );
                 }
-
                 if (childrenCount !== spec.slidesToShow) {
                   var _spec$classes5;
-
                   key = childrenCount + index;
-
                   if (key < endIndex) {
                     child = elem;
                   }
-
                   slideClasses = getSlideClasses(
                     _objectSpread(
                       _objectSpread({}, spec),
@@ -4871,7 +4616,6 @@
                           child.props &&
                             child.props.onClick &&
                             child.props.onClick(e);
-
                           if (spec.focusOnSelect) {
                             spec.focusOnSelect(childOnClickOptions);
                           }
@@ -4883,24 +4627,18 @@
               }
             }
           );
-
           if (spec.rtl) {
             return preCloneSlides.concat(slides, postCloneSlides).reverse();
           } else {
             return preCloneSlides.concat(slides, postCloneSlides);
           }
         };
-
         var Track = /*#__PURE__*/ (function(_React$PureComponent) {
           _inherits(Track, _React$PureComponent);
-
           var _super = _createSuper(Track);
-
           function Track() {
             var _this;
-
             _classCallCheck(this, Track);
-
             for (
               var _len = arguments.length, args = new Array(_len), _key = 0;
               _key < _len;
@@ -4908,11 +4646,8 @@
             ) {
               args[_key] = arguments[_key];
             }
-
             _this = _super.call.apply(_super, [this].concat(args));
-
             _defineProperty(_assertThisInitialized(_this), "node", null);
-
             _defineProperty(
               _assertThisInitialized(_this),
               "handleRef",
@@ -4920,16 +4655,13 @@
                 _this.node = ref;
               }
             );
-
             return _this;
           }
-
           _createClass(Track, [
             {
               key: "render",
               value: function render() {
                 var _this$props$classes;
-
                 var slides = renderSlides(this.props);
                 var _this$props = this.props,
                   onMouseEnter = _this$props.onMouseEnter,
@@ -4961,7 +4693,6 @@
               }
             }
           ]);
-
           return Track;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
 
@@ -5013,7 +4744,6 @@
             _typeof(obj)
           );
         }
-
         function ownKeys(object, enumerableOnly) {
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
@@ -5026,7 +4756,6 @@
           }
           return keys;
         }
-
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = null != arguments[i] ? arguments[i] : {};
@@ -5049,8 +4778,8 @@
           }
           return target;
         }
-
         function _defineProperty(obj, key, value) {
+          key = _toPropertyKey(key);
           if (key in obj) {
             Object.defineProperty(obj, key, {
               value: value,
@@ -5063,30 +4792,44 @@
           }
           return obj;
         }
-
         function _classCallCheck(instance, Constructor) {
           if (!(instance instanceof Constructor)) {
             throw new TypeError("Cannot call a class as a function");
           }
         }
-
         function _defineProperties(target, props) {
           for (var i = 0; i < props.length; i++) {
             var descriptor = props[i];
             descriptor.enumerable = descriptor.enumerable || false;
             descriptor.configurable = true;
             if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
+            Object.defineProperty(
+              target,
+              _toPropertyKey(descriptor.key),
+              descriptor
+            );
           }
         }
-
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
           Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
-
+        function _toPropertyKey(arg) {
+          var key = _toPrimitive(arg, "string");
+          return _typeof(key) === "symbol" ? key : String(key);
+        }
+        function _toPrimitive(input, hint) {
+          if (_typeof(input) !== "object" || input === null) return input;
+          var prim = input[Symbol.toPrimitive];
+          if (prim !== undefined) {
+            var res = prim.call(input, hint || "default");
+            if (_typeof(res) !== "object") return res;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
+          }
+          return (hint === "string" ? String : Number)(input);
+        }
         function _inherits(subClass, superClass) {
           if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
@@ -5106,7 +4849,6 @@
           Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
-
         function _setPrototypeOf(o, p) {
           _setPrototypeOf = Object.setPrototypeOf
             ? Object.setPrototypeOf.bind()
@@ -5116,7 +4858,6 @@
               };
           return _setPrototypeOf(o, p);
         }
-
         function _createSuper(Derived) {
           var hasNativeReflectConstruct = _isNativeReflectConstruct();
           return function _createSuperInternal() {
@@ -5131,7 +4872,6 @@
             return _possibleConstructorReturn(this, result);
           };
         }
-
         function _possibleConstructorReturn(self, call) {
           if (
             call &&
@@ -5145,7 +4885,6 @@
           }
           return _assertThisInitialized(self);
         }
-
         function _assertThisInitialized(self) {
           if (self === void 0) {
             throw new ReferenceError(
@@ -5154,7 +4893,6 @@
           }
           return self;
         }
-
         function _isNativeReflectConstruct() {
           if (typeof Reflect === "undefined" || !Reflect.construct)
             return false;
@@ -5169,7 +4907,6 @@
             return false;
           }
         }
-
         function _getPrototypeOf(o) {
           _getPrototypeOf = Object.setPrototypeOf
             ? Object.getPrototypeOf.bind()
@@ -5181,7 +4918,6 @@
 
         var getDotCount = function getDotCount(spec) {
           var dots;
-
           if (spec.infinite) {
             dots = Math.ceil(spec.slideCount / spec.slidesToScroll);
           } else {
@@ -5190,21 +4926,15 @@
                 (spec.slideCount - spec.slidesToShow) / spec.slidesToScroll
               ) + 1;
           }
-
           return dots;
         };
-
         var Dots = /*#__PURE__*/ (function(_React$PureComponent) {
           _inherits(Dots, _React$PureComponent);
-
           var _super = _createSuper(Dots);
-
           function Dots() {
             _classCallCheck(this, Dots);
-
             return _super.apply(this, arguments);
           }
-
           _createClass(Dots, [
             {
               key: "clickHandler",
@@ -5240,10 +4970,8 @@
                   onMouseLeave: onMouseLeave
                 };
                 var dots = [];
-
                 for (var i = 0; i < dotCount; i++) {
                   var _rightBound = (i + 1) * slidesToScroll - 1;
-
                   var rightBound = infinite
                     ? _rightBound
                     : Object(
@@ -5251,9 +4979,7 @@
                           "clamp"
                         ]
                       )(_rightBound, 0, slideCount - 1);
-
                   var _leftBound = rightBound - (slidesToScroll - 1);
-
                   var leftBound = infinite
                     ? _leftBound
                     : Object(
@@ -5305,7 +5031,6 @@
                     )
                   );
                 }
-
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(
                   this.props.appendDots(dots),
                   _objectSpread(
@@ -5323,7 +5048,6 @@
               }
             }
           ]);
-
           return Dots;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
 
@@ -5382,7 +5106,6 @@
             _typeof(obj)
           );
         }
-
         function _extends() {
           _extends = Object.assign
             ? Object.assign.bind()
@@ -5399,7 +5122,6 @@
               };
           return _extends.apply(this, arguments);
         }
-
         function ownKeys(object, enumerableOnly) {
           var keys = Object.keys(object);
           if (Object.getOwnPropertySymbols) {
@@ -5412,7 +5134,6 @@
           }
           return keys;
         }
-
         function _objectSpread(target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = null != arguments[i] ? arguments[i] : {};
@@ -5435,8 +5156,8 @@
           }
           return target;
         }
-
         function _defineProperty(obj, key, value) {
+          key = _toPropertyKey(key);
           if (key in obj) {
             Object.defineProperty(obj, key, {
               value: value,
@@ -5449,30 +5170,44 @@
           }
           return obj;
         }
-
         function _classCallCheck(instance, Constructor) {
           if (!(instance instanceof Constructor)) {
             throw new TypeError("Cannot call a class as a function");
           }
         }
-
         function _defineProperties(target, props) {
           for (var i = 0; i < props.length; i++) {
             var descriptor = props[i];
             descriptor.enumerable = descriptor.enumerable || false;
             descriptor.configurable = true;
             if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
+            Object.defineProperty(
+              target,
+              _toPropertyKey(descriptor.key),
+              descriptor
+            );
           }
         }
-
         function _createClass(Constructor, protoProps, staticProps) {
           if (protoProps) _defineProperties(Constructor.prototype, protoProps);
           if (staticProps) _defineProperties(Constructor, staticProps);
           Object.defineProperty(Constructor, "prototype", { writable: false });
           return Constructor;
         }
-
+        function _toPropertyKey(arg) {
+          var key = _toPrimitive(arg, "string");
+          return _typeof(key) === "symbol" ? key : String(key);
+        }
+        function _toPrimitive(input, hint) {
+          if (_typeof(input) !== "object" || input === null) return input;
+          var prim = input[Symbol.toPrimitive];
+          if (prim !== undefined) {
+            var res = prim.call(input, hint || "default");
+            if (_typeof(res) !== "object") return res;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
+          }
+          return (hint === "string" ? String : Number)(input);
+        }
         function _inherits(subClass, superClass) {
           if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
@@ -5492,7 +5227,6 @@
           Object.defineProperty(subClass, "prototype", { writable: false });
           if (superClass) _setPrototypeOf(subClass, superClass);
         }
-
         function _setPrototypeOf(o, p) {
           _setPrototypeOf = Object.setPrototypeOf
             ? Object.setPrototypeOf.bind()
@@ -5502,7 +5236,6 @@
               };
           return _setPrototypeOf(o, p);
         }
-
         function _createSuper(Derived) {
           var hasNativeReflectConstruct = _isNativeReflectConstruct();
           return function _createSuperInternal() {
@@ -5517,7 +5250,6 @@
             return _possibleConstructorReturn(this, result);
           };
         }
-
         function _possibleConstructorReturn(self, call) {
           if (
             call &&
@@ -5531,7 +5263,6 @@
           }
           return _assertThisInitialized(self);
         }
-
         function _assertThisInitialized(self) {
           if (self === void 0) {
             throw new ReferenceError(
@@ -5540,7 +5271,6 @@
           }
           return self;
         }
-
         function _isNativeReflectConstruct() {
           if (typeof Reflect === "undefined" || !Reflect.construct)
             return false;
@@ -5555,7 +5285,6 @@
             return false;
           }
         }
-
         function _getPrototypeOf(o) {
           _getPrototypeOf = Object.setPrototypeOf
             ? Object.getPrototypeOf.bind()
@@ -5567,15 +5296,11 @@
 
         var PrevArrow = /*#__PURE__*/ (function(_React$PureComponent) {
           _inherits(PrevArrow, _React$PureComponent);
-
           var _super = _createSuper(PrevArrow);
-
           function PrevArrow() {
             _classCallCheck(this, PrevArrow);
-
             return _super.apply(this, arguments);
           }
-
           _createClass(PrevArrow, [
             {
               key: "clickHandler",
@@ -5583,7 +5308,6 @@
                 if (e) {
                   e.preventDefault();
                 }
-
                 this.props.clickHandler(options, e);
               }
             },
@@ -5591,7 +5315,6 @@
               key: "render",
               value: function render() {
                 var _this$props$classes3, _this$props$classes4;
-
                 var prevClasses = {
                   "slick-arrow": true,
                   "slick-prev": true
@@ -5599,14 +5322,12 @@
                 var prevHandler = this.clickHandler.bind(this, {
                   message: "previous"
                 });
-
                 if (
                   !this.props.infinite &&
                   (this.props.currentSlide === 0 ||
                     this.props.slideCount <= this.props.slidesToShow)
                 ) {
                   var _this$props$classes, _this$props$classes2;
-
                   prevClasses["slick-disabled"] = true;
                   prevClasses[
                     (_this$props$classes = this.props.classes) === null ||
@@ -5620,7 +5341,6 @@
                   );
                   prevHandler = null;
                 }
-
                 var prevArrowProps = {
                   key: "0",
                   "data-role": "none",
@@ -5645,7 +5365,6 @@
                   slideCount: this.props.slideCount
                 };
                 var prevArrow;
-
                 if (this.props.prevArrow) {
                   prevArrow = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(
                     this.props.prevArrow,
@@ -5668,25 +5387,19 @@
                     "Previous"
                   );
                 }
-
                 return prevArrow;
               }
             }
           ]);
-
           return PrevArrow;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
         var NextArrow = /*#__PURE__*/ (function(_React$PureComponent2) {
           _inherits(NextArrow, _React$PureComponent2);
-
           var _super2 = _createSuper(NextArrow);
-
           function NextArrow() {
             _classCallCheck(this, NextArrow);
-
             return _super2.apply(this, arguments);
           }
-
           _createClass(NextArrow, [
             {
               key: "clickHandler",
@@ -5694,7 +5407,6 @@
                 if (e) {
                   e.preventDefault();
                 }
-
                 this.props.clickHandler(options, e);
               }
             },
@@ -5702,7 +5414,6 @@
               key: "render",
               value: function render() {
                 var _this$props$classes7, _this$props$classes8;
-
                 var nextClasses = {
                   "slick-arrow": true,
                   "slick-next": true
@@ -5710,7 +5421,6 @@
                 var nextHandler = this.clickHandler.bind(this, {
                   message: "next"
                 });
-
                 if (
                   !Object(
                     _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_2__[
@@ -5719,7 +5429,6 @@
                   )(this.props)
                 ) {
                   var _this$props$classes5, _this$props$classes6;
-
                   nextClasses["slick-disabled"] = true;
                   nextClasses[
                     (_this$props$classes5 = this.props.classes) === null ||
@@ -5733,7 +5442,6 @@
                   );
                   nextHandler = null;
                 }
-
                 var nextArrowProps = {
                   key: "1",
                   "data-role": "none",
@@ -5758,7 +5466,6 @@
                   slideCount: this.props.slideCount
                 };
                 var nextArrow;
-
                 if (this.props.nextArrow) {
                   nextArrow = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(
                     this.props.nextArrow,
@@ -5781,12 +5488,10 @@
                     "Next"
                   );
                 }
-
                 return nextArrow;
               }
             }
           ]);
-
           return NextArrow;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
 
