@@ -170,192 +170,185 @@
           8
         );
 
-        function _typeof(obj) {
+        function _typeof(o) {
           "@babel/helpers - typeof";
           return (
             (_typeof =
               "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-                ? function(obj) {
-                    return typeof obj;
+                ? function(o) {
+                    return typeof o;
                   }
-                : function(obj) {
-                    return obj &&
+                : function(o) {
+                    return o &&
                       "function" == typeof Symbol &&
-                      obj.constructor === Symbol &&
-                      obj !== Symbol.prototype
+                      o.constructor === Symbol &&
+                      o !== Symbol.prototype
                       ? "symbol"
-                      : typeof obj;
+                      : typeof o;
                   }),
-            _typeof(obj)
+            _typeof(o)
           );
         }
         function _extends() {
-          _extends = Object.assign
-            ? Object.assign.bind()
-            : function(target) {
-                for (var i = 1; i < arguments.length; i++) {
-                  var source = arguments[i];
-                  for (var key in source) {
-                    if (Object.prototype.hasOwnProperty.call(source, key)) {
-                      target[key] = source[key];
-                    }
+          return (
+            (_extends = Object.assign
+              ? Object.assign.bind()
+              : function(n) {
+                  for (var e = 1; e < arguments.length; e++) {
+                    var t = arguments[e];
+                    for (var r in t)
+                      ({}.hasOwnProperty.call(t, r) && (n[r] = t[r]));
                   }
-                }
-                return target;
-              };
-          return _extends.apply(this, arguments);
+                  return n;
+                }),
+            _extends.apply(null, arguments)
+          );
         }
-        function ownKeys(object, enumerableOnly) {
-          var keys = Object.keys(object);
+        function ownKeys(e, r) {
+          var t = Object.keys(e);
           if (Object.getOwnPropertySymbols) {
-            var symbols = Object.getOwnPropertySymbols(object);
-            enumerableOnly &&
-              (symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            var o = Object.getOwnPropertySymbols(e);
+            r &&
+              (o = o.filter(function(r) {
+                return Object.getOwnPropertyDescriptor(e, r).enumerable;
               })),
-              keys.push.apply(keys, symbols);
+              t.push.apply(t, o);
           }
-          return keys;
+          return t;
         }
-        function _objectSpread(target) {
-          for (var i = 1; i < arguments.length; i++) {
-            var source = null != arguments[i] ? arguments[i] : {};
-            i % 2
-              ? ownKeys(Object(source), !0).forEach(function(key) {
-                  _defineProperty(target, key, source[key]);
+        function _objectSpread(e) {
+          for (var r = 1; r < arguments.length; r++) {
+            var t = null != arguments[r] ? arguments[r] : {};
+            r % 2
+              ? ownKeys(Object(t), !0).forEach(function(r) {
+                  _defineProperty(e, r, t[r]);
                 })
               : Object.getOwnPropertyDescriptors
-              ? Object.defineProperties(
-                  target,
-                  Object.getOwnPropertyDescriptors(source)
-                )
-              : ownKeys(Object(source)).forEach(function(key) {
+              ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
+              : ownKeys(Object(t)).forEach(function(r) {
                   Object.defineProperty(
-                    target,
-                    key,
-                    Object.getOwnPropertyDescriptor(source, key)
+                    e,
+                    r,
+                    Object.getOwnPropertyDescriptor(t, r)
                   );
                 });
           }
-          return target;
+          return e;
         }
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
+        function _classCallCheck(a, n) {
+          if (!(a instanceof n))
             throw new TypeError("Cannot call a class as a function");
+        }
+        function _defineProperties(e, r) {
+          for (var t = 0; t < r.length; t++) {
+            var o = r[t];
+            (o.enumerable = o.enumerable || !1),
+              (o.configurable = !0),
+              "value" in o && (o.writable = !0),
+              Object.defineProperty(e, _toPropertyKey(o.key), o);
           }
         }
-        function _defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps) _defineProperties(Constructor, staticProps);
-          Object.defineProperty(Constructor, "prototype", { writable: false });
-          return Constructor;
-        }
-        function _inherits(subClass, superClass) {
-          if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError(
-              "Super expression must either be null or a function"
-            );
-          }
-          subClass.prototype = Object.create(
-            superClass && superClass.prototype,
-            {
-              constructor: {
-                value: subClass,
-                writable: true,
-                configurable: true
-              }
-            }
+        function _createClass(e, r, t) {
+          return (
+            r && _defineProperties(e.prototype, r),
+            t && _defineProperties(e, t),
+            Object.defineProperty(e, "prototype", { writable: !1 }),
+            e
           );
-          Object.defineProperty(subClass, "prototype", { writable: false });
-          if (superClass) _setPrototypeOf(subClass, superClass);
         }
-        function _setPrototypeOf(o, p) {
-          _setPrototypeOf = Object.setPrototypeOf
-            ? Object.setPrototypeOf.bind()
-            : function _setPrototypeOf(o, p) {
-                o.__proto__ = p;
-                return o;
-              };
-          return _setPrototypeOf(o, p);
+        function _callSuper(t, o, e) {
+          return (
+            (o = _getPrototypeOf(o)),
+            _possibleConstructorReturn(
+              t,
+              _isNativeReflectConstruct()
+                ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor)
+                : o.apply(t, e)
+            )
+          );
         }
-        function _createSuper(Derived) {
-          var hasNativeReflectConstruct = _isNativeReflectConstruct();
-          return function _createSuperInternal() {
-            var Super = _getPrototypeOf(Derived),
-              result;
-            if (hasNativeReflectConstruct) {
-              var NewTarget = _getPrototypeOf(this).constructor;
-              result = Reflect.construct(Super, arguments, NewTarget);
-            } else {
-              result = Super.apply(this, arguments);
-            }
-            return _possibleConstructorReturn(this, result);
-          };
-        }
-        function _possibleConstructorReturn(self, call) {
-          if (
-            call &&
-            (_typeof(call) === "object" || typeof call === "function")
-          ) {
-            return call;
-          } else if (call !== void 0) {
+        function _possibleConstructorReturn(t, e) {
+          if (e && ("object" == _typeof(e) || "function" == typeof e)) return e;
+          if (void 0 !== e)
             throw new TypeError(
               "Derived constructors may only return object or undefined"
             );
-          }
-          return _assertThisInitialized(self);
+          return _assertThisInitialized(t);
         }
-        function _assertThisInitialized(self) {
-          if (self === void 0) {
+        function _assertThisInitialized(e) {
+          if (void 0 === e)
             throw new ReferenceError(
               "this hasn't been initialised - super() hasn't been called"
             );
-          }
-          return self;
+          return e;
         }
         function _isNativeReflectConstruct() {
-          if (typeof Reflect === "undefined" || !Reflect.construct)
-            return false;
-          if (Reflect.construct.sham) return false;
-          if (typeof Proxy === "function") return true;
           try {
-            Boolean.prototype.valueOf.call(
+            var t = !Boolean.prototype.valueOf.call(
               Reflect.construct(Boolean, [], function() {})
             );
-            return true;
-          } catch (e) {
-            return false;
-          }
+          } catch (t) {}
+          return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
+            return !!t;
+          })();
         }
-        function _getPrototypeOf(o) {
-          _getPrototypeOf = Object.setPrototypeOf
-            ? Object.getPrototypeOf.bind()
-            : function _getPrototypeOf(o) {
-                return o.__proto__ || Object.getPrototypeOf(o);
-              };
-          return _getPrototypeOf(o);
+        function _getPrototypeOf(t) {
+          return (
+            (_getPrototypeOf = Object.setPrototypeOf
+              ? Object.getPrototypeOf.bind()
+              : function(t) {
+                  return t.__proto__ || Object.getPrototypeOf(t);
+                }),
+            _getPrototypeOf(t)
+          );
         }
-        function _defineProperty(obj, key, value) {
-          if (key in obj) {
-            Object.defineProperty(obj, key, {
-              value: value,
-              enumerable: true,
-              configurable: true,
-              writable: true
-            });
-          } else {
-            obj[key] = value;
+        function _inherits(t, e) {
+          if ("function" != typeof e && null !== e)
+            throw new TypeError(
+              "Super expression must either be null or a function"
+            );
+          (t.prototype = Object.create(e && e.prototype, {
+            constructor: { value: t, writable: !0, configurable: !0 }
+          })),
+            Object.defineProperty(t, "prototype", { writable: !1 }),
+            e && _setPrototypeOf(t, e);
+        }
+        function _setPrototypeOf(t, e) {
+          return (
+            (_setPrototypeOf = Object.setPrototypeOf
+              ? Object.setPrototypeOf.bind()
+              : function(t, e) {
+                  return (t.__proto__ = e), t;
+                }),
+            _setPrototypeOf(t, e)
+          );
+        }
+        function _defineProperty(e, r, t) {
+          return (
+            (r = _toPropertyKey(r)) in e
+              ? Object.defineProperty(e, r, {
+                  value: t,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0
+                })
+              : (e[r] = t),
+            e
+          );
+        }
+        function _toPropertyKey(t) {
+          var i = _toPrimitive(t, "string");
+          return "symbol" == _typeof(i) ? i : i + "";
+        }
+        function _toPrimitive(t, r) {
+          if ("object" != _typeof(t) || !t) return t;
+          var e = t[Symbol.toPrimitive];
+          if (void 0 !== e) {
+            var i = e.call(t, r || "default");
+            if ("object" != _typeof(i)) return i;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
           }
-          return obj;
+          return ("string" === r ? String : Number)(t);
         }
 
         var enquire =
@@ -363,65 +356,40 @@
             _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__["canUseDOM"]
           )() && __webpack_require__(16);
         var Slider = /*#__PURE__*/ (function(_React$Component) {
-          _inherits(Slider, _React$Component);
-          var _super = _createSuper(Slider);
           function Slider(props) {
             var _this;
             _classCallCheck(this, Slider);
-            _this = _super.call(this, props);
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "innerSliderRefHandler",
-              function(ref) {
-                return (_this.innerSlider = ref);
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slickPrev",
-              function() {
-                return _this.innerSlider.slickPrev();
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slickNext",
-              function() {
-                return _this.innerSlider.slickNext();
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slickGoTo",
-              function(slide) {
-                var dontAnimate =
-                  arguments.length > 1 && arguments[1] !== undefined
-                    ? arguments[1]
-                    : false;
-                return _this.innerSlider.slickGoTo(slide, dontAnimate);
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slickPause",
-              function() {
-                return _this.innerSlider.pause("paused");
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slickPlay",
-              function() {
-                return _this.innerSlider.autoPlay("play");
-              }
-            );
+            _this = _callSuper(this, Slider, [props]);
+            _defineProperty(_this, "innerSliderRefHandler", function(ref) {
+              return (_this.innerSlider = ref);
+            });
+            _defineProperty(_this, "slickPrev", function() {
+              return _this.innerSlider.slickPrev();
+            });
+            _defineProperty(_this, "slickNext", function() {
+              return _this.innerSlider.slickNext();
+            });
+            _defineProperty(_this, "slickGoTo", function(slide) {
+              var dontAnimate =
+                arguments.length > 1 && arguments[1] !== undefined
+                  ? arguments[1]
+                  : false;
+              return _this.innerSlider.slickGoTo(slide, dontAnimate);
+            });
+            _defineProperty(_this, "slickPause", function() {
+              return _this.innerSlider.pause("paused");
+            });
+            _defineProperty(_this, "slickPlay", function() {
+              return _this.innerSlider.autoPlay("play");
+            });
             _this.state = {
               breakpoint: null
             };
             _this._responsiveMediaHandlers = [];
             return _this;
           }
-          _createClass(Slider, [
+          _inherits(Slider, _React$Component);
+          return _createClass(Slider, [
             {
               key: "media",
               value: function media(query, handler) {
@@ -699,7 +667,6 @@
               }
             }
           ]);
-          return Slider;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
         /***/
@@ -759,955 +726,848 @@
         );
 
         var _excluded = ["animating"];
-        function _typeof(obj) {
+        function _typeof(o) {
           "@babel/helpers - typeof";
           return (
             (_typeof =
               "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-                ? function(obj) {
-                    return typeof obj;
+                ? function(o) {
+                    return typeof o;
                   }
-                : function(obj) {
-                    return obj &&
+                : function(o) {
+                    return o &&
                       "function" == typeof Symbol &&
-                      obj.constructor === Symbol &&
-                      obj !== Symbol.prototype
+                      o.constructor === Symbol &&
+                      o !== Symbol.prototype
                       ? "symbol"
-                      : typeof obj;
+                      : typeof o;
                   }),
-            _typeof(obj)
+            _typeof(o)
           );
         }
         function _extends() {
-          _extends = Object.assign
-            ? Object.assign.bind()
-            : function(target) {
-                for (var i = 1; i < arguments.length; i++) {
-                  var source = arguments[i];
-                  for (var key in source) {
-                    if (Object.prototype.hasOwnProperty.call(source, key)) {
-                      target[key] = source[key];
-                    }
+          return (
+            (_extends = Object.assign
+              ? Object.assign.bind()
+              : function(n) {
+                  for (var e = 1; e < arguments.length; e++) {
+                    var t = arguments[e];
+                    for (var r in t)
+                      ({}.hasOwnProperty.call(t, r) && (n[r] = t[r]));
                   }
-                }
-                return target;
-              };
-          return _extends.apply(this, arguments);
+                  return n;
+                }),
+            _extends.apply(null, arguments)
+          );
         }
-        function _objectWithoutProperties(source, excluded) {
-          if (source == null) return {};
-          var target = _objectWithoutPropertiesLoose(source, excluded);
-          var key, i;
+        function _objectWithoutProperties(e, t) {
+          if (null == e) return {};
+          var o,
+            r,
+            i = _objectWithoutPropertiesLoose(e, t);
           if (Object.getOwnPropertySymbols) {
-            var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-            for (i = 0; i < sourceSymbolKeys.length; i++) {
-              key = sourceSymbolKeys[i];
-              if (excluded.indexOf(key) >= 0) continue;
-              if (!Object.prototype.propertyIsEnumerable.call(source, key))
-                continue;
-              target[key] = source[key];
+            var s = Object.getOwnPropertySymbols(e);
+            for (r = 0; r < s.length; r++)
+              (o = s[r]),
+                t.includes(o) ||
+                  ({}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]));
+          }
+          return i;
+        }
+        function _objectWithoutPropertiesLoose(r, e) {
+          if (null == r) return {};
+          var t = {};
+          for (var n in r)
+            if ({}.hasOwnProperty.call(r, n)) {
+              if (e.includes(n)) continue;
+              t[n] = r[n];
             }
-          }
-          return target;
+          return t;
         }
-        function _objectWithoutPropertiesLoose(source, excluded) {
-          if (source == null) return {};
-          var target = {};
-          var sourceKeys = Object.keys(source);
-          var key, i;
-          for (i = 0; i < sourceKeys.length; i++) {
-            key = sourceKeys[i];
-            if (excluded.indexOf(key) >= 0) continue;
-            target[key] = source[key];
-          }
-          return target;
-        }
-        function ownKeys(object, enumerableOnly) {
-          var keys = Object.keys(object);
+        function ownKeys(e, r) {
+          var t = Object.keys(e);
           if (Object.getOwnPropertySymbols) {
-            var symbols = Object.getOwnPropertySymbols(object);
-            enumerableOnly &&
-              (symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            var o = Object.getOwnPropertySymbols(e);
+            r &&
+              (o = o.filter(function(r) {
+                return Object.getOwnPropertyDescriptor(e, r).enumerable;
               })),
-              keys.push.apply(keys, symbols);
+              t.push.apply(t, o);
           }
-          return keys;
+          return t;
         }
-        function _objectSpread(target) {
-          for (var i = 1; i < arguments.length; i++) {
-            var source = null != arguments[i] ? arguments[i] : {};
-            i % 2
-              ? ownKeys(Object(source), !0).forEach(function(key) {
-                  _defineProperty(target, key, source[key]);
+        function _objectSpread(e) {
+          for (var r = 1; r < arguments.length; r++) {
+            var t = null != arguments[r] ? arguments[r] : {};
+            r % 2
+              ? ownKeys(Object(t), !0).forEach(function(r) {
+                  _defineProperty(e, r, t[r]);
                 })
               : Object.getOwnPropertyDescriptors
-              ? Object.defineProperties(
-                  target,
-                  Object.getOwnPropertyDescriptors(source)
-                )
-              : ownKeys(Object(source)).forEach(function(key) {
+              ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
+              : ownKeys(Object(t)).forEach(function(r) {
                   Object.defineProperty(
-                    target,
-                    key,
-                    Object.getOwnPropertyDescriptor(source, key)
+                    e,
+                    r,
+                    Object.getOwnPropertyDescriptor(t, r)
                   );
                 });
           }
-          return target;
+          return e;
         }
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
+        function _classCallCheck(a, n) {
+          if (!(a instanceof n))
             throw new TypeError("Cannot call a class as a function");
+        }
+        function _defineProperties(e, r) {
+          for (var t = 0; t < r.length; t++) {
+            var o = r[t];
+            (o.enumerable = o.enumerable || !1),
+              (o.configurable = !0),
+              "value" in o && (o.writable = !0),
+              Object.defineProperty(e, _toPropertyKey(o.key), o);
           }
         }
-        function _defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps) _defineProperties(Constructor, staticProps);
-          Object.defineProperty(Constructor, "prototype", { writable: false });
-          return Constructor;
-        }
-        function _inherits(subClass, superClass) {
-          if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError(
-              "Super expression must either be null or a function"
-            );
-          }
-          subClass.prototype = Object.create(
-            superClass && superClass.prototype,
-            {
-              constructor: {
-                value: subClass,
-                writable: true,
-                configurable: true
-              }
-            }
+        function _createClass(e, r, t) {
+          return (
+            r && _defineProperties(e.prototype, r),
+            t && _defineProperties(e, t),
+            Object.defineProperty(e, "prototype", { writable: !1 }),
+            e
           );
-          Object.defineProperty(subClass, "prototype", { writable: false });
-          if (superClass) _setPrototypeOf(subClass, superClass);
         }
-        function _setPrototypeOf(o, p) {
-          _setPrototypeOf = Object.setPrototypeOf
-            ? Object.setPrototypeOf.bind()
-            : function _setPrototypeOf(o, p) {
-                o.__proto__ = p;
-                return o;
-              };
-          return _setPrototypeOf(o, p);
+        function _callSuper(t, o, e) {
+          return (
+            (o = _getPrototypeOf(o)),
+            _possibleConstructorReturn(
+              t,
+              _isNativeReflectConstruct()
+                ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor)
+                : o.apply(t, e)
+            )
+          );
         }
-        function _createSuper(Derived) {
-          var hasNativeReflectConstruct = _isNativeReflectConstruct();
-          return function _createSuperInternal() {
-            var Super = _getPrototypeOf(Derived),
-              result;
-            if (hasNativeReflectConstruct) {
-              var NewTarget = _getPrototypeOf(this).constructor;
-              result = Reflect.construct(Super, arguments, NewTarget);
-            } else {
-              result = Super.apply(this, arguments);
-            }
-            return _possibleConstructorReturn(this, result);
-          };
-        }
-        function _possibleConstructorReturn(self, call) {
-          if (
-            call &&
-            (_typeof(call) === "object" || typeof call === "function")
-          ) {
-            return call;
-          } else if (call !== void 0) {
+        function _possibleConstructorReturn(t, e) {
+          if (e && ("object" == _typeof(e) || "function" == typeof e)) return e;
+          if (void 0 !== e)
             throw new TypeError(
               "Derived constructors may only return object or undefined"
             );
-          }
-          return _assertThisInitialized(self);
+          return _assertThisInitialized(t);
         }
-        function _assertThisInitialized(self) {
-          if (self === void 0) {
+        function _assertThisInitialized(e) {
+          if (void 0 === e)
             throw new ReferenceError(
               "this hasn't been initialised - super() hasn't been called"
             );
-          }
-          return self;
+          return e;
         }
         function _isNativeReflectConstruct() {
-          if (typeof Reflect === "undefined" || !Reflect.construct)
-            return false;
-          if (Reflect.construct.sham) return false;
-          if (typeof Proxy === "function") return true;
           try {
-            Boolean.prototype.valueOf.call(
+            var t = !Boolean.prototype.valueOf.call(
               Reflect.construct(Boolean, [], function() {})
             );
-            return true;
-          } catch (e) {
-            return false;
-          }
+          } catch (t) {}
+          return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
+            return !!t;
+          })();
         }
-        function _getPrototypeOf(o) {
-          _getPrototypeOf = Object.setPrototypeOf
-            ? Object.getPrototypeOf.bind()
-            : function _getPrototypeOf(o) {
-                return o.__proto__ || Object.getPrototypeOf(o);
-              };
-          return _getPrototypeOf(o);
+        function _getPrototypeOf(t) {
+          return (
+            (_getPrototypeOf = Object.setPrototypeOf
+              ? Object.getPrototypeOf.bind()
+              : function(t) {
+                  return t.__proto__ || Object.getPrototypeOf(t);
+                }),
+            _getPrototypeOf(t)
+          );
         }
-        function _defineProperty(obj, key, value) {
-          if (key in obj) {
-            Object.defineProperty(obj, key, {
-              value: value,
-              enumerable: true,
-              configurable: true,
-              writable: true
-            });
-          } else {
-            obj[key] = value;
+        function _inherits(t, e) {
+          if ("function" != typeof e && null !== e)
+            throw new TypeError(
+              "Super expression must either be null or a function"
+            );
+          (t.prototype = Object.create(e && e.prototype, {
+            constructor: { value: t, writable: !0, configurable: !0 }
+          })),
+            Object.defineProperty(t, "prototype", { writable: !1 }),
+            e && _setPrototypeOf(t, e);
+        }
+        function _setPrototypeOf(t, e) {
+          return (
+            (_setPrototypeOf = Object.setPrototypeOf
+              ? Object.setPrototypeOf.bind()
+              : function(t, e) {
+                  return (t.__proto__ = e), t;
+                }),
+            _setPrototypeOf(t, e)
+          );
+        }
+        function _defineProperty(e, r, t) {
+          return (
+            (r = _toPropertyKey(r)) in e
+              ? Object.defineProperty(e, r, {
+                  value: t,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0
+                })
+              : (e[r] = t),
+            e
+          );
+        }
+        function _toPropertyKey(t) {
+          var i = _toPrimitive(t, "string");
+          return "symbol" == _typeof(i) ? i : i + "";
+        }
+        function _toPrimitive(t, r) {
+          if ("object" != _typeof(t) || !t) return t;
+          var e = t[Symbol.toPrimitive];
+          if (void 0 !== e) {
+            var i = e.call(t, r || "default");
+            if ("object" != _typeof(i)) return i;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
           }
-          return obj;
+          return ("string" === r ? String : Number)(t);
         }
 
         var InnerSlider = /*#__PURE__*/ (function(_React$Component) {
-          _inherits(InnerSlider, _React$Component);
-          var _super = _createSuper(InnerSlider);
           function InnerSlider(props) {
             var _this;
             _classCallCheck(this, InnerSlider);
-            _this = _super.call(this, props);
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "listRefHandler",
-              function(ref) {
-                return (_this.list = ref);
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "trackRefHandler",
-              function(ref) {
-                return (_this.track = ref);
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "adaptHeight",
-              function() {
-                if (_this.props.adaptiveHeight && _this.list) {
-                  var elem = _this.list.querySelector(
-                    '[data-index="'.concat(_this.state.currentSlide, '"]')
-                  );
-                  _this.list.style.height =
-                    Object(
-                      _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                        "getHeight"
-                      ]
-                    )(elem) + "px";
-                }
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "componentDidMount",
-              function() {
-                _this.props.onInit && _this.props.onInit();
-                if (_this.props.lazyLoad) {
-                  var slidesToLoad = Object(
-                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "getOnDemandLazySlides"
-                    ]
-                  )(_objectSpread(_objectSpread({}, _this.props), _this.state));
-                  if (slidesToLoad.length > 0) {
-                    _this.setState(function(prevState) {
-                      return {
-                        lazyLoadedList: prevState.lazyLoadedList.concat(
-                          slidesToLoad
-                        )
-                      };
-                    });
-                    if (_this.props.onLazyLoad) {
-                      _this.props.onLazyLoad(slidesToLoad);
-                    }
-                  }
-                }
-                var spec = _objectSpread(
-                  {
-                    listRef: _this.list,
-                    trackRef: _this.track
-                  },
-                  _this.props
+            _this = _callSuper(this, InnerSlider, [props]);
+            _defineProperty(_this, "listRefHandler", function(ref) {
+              return (_this.list = ref);
+            });
+            _defineProperty(_this, "trackRefHandler", function(ref) {
+              return (_this.track = ref);
+            });
+            _defineProperty(_this, "adaptHeight", function() {
+              if (_this.props.adaptiveHeight && _this.list) {
+                var elem = _this.list.querySelector(
+                  '[data-index="'.concat(_this.state.currentSlide, '"]')
                 );
-                _this.updateState(spec, true, function() {
-                  _this.adaptHeight();
-                  _this.props.autoplay && _this.autoPlay("update");
-                });
-                if (_this.props.lazyLoad === "progressive") {
-                  _this.lazyLoadTimer = setInterval(
-                    _this.progressiveLazyLoad,
-                    1000
-                  );
-                }
-                _this.ro = new resize_observer_polyfill__WEBPACK_IMPORTED_MODULE_8__[
-                  "default"
-                ](function() {
-                  if (_this.state.animating) {
-                    _this.onWindowResized(false); // don't set trackStyle hence don't break animation
-                    _this.callbackTimers.push(
-                      setTimeout(function() {
-                        return _this.onWindowResized();
-                      }, _this.props.speed)
-                    );
-                  } else {
-                    _this.onWindowResized();
-                  }
-                });
-                _this.ro.observe(_this.list);
-                document.querySelectorAll &&
-                  Array.prototype.forEach.call(
-                    document.querySelectorAll(".slick-slide"),
-                    function(slide) {
-                      slide.onfocus = _this.props.pauseOnFocus
-                        ? _this.onSlideFocus
-                        : null;
-                      slide.onblur = _this.props.pauseOnFocus
-                        ? _this.onSlideBlur
-                        : null;
-                    }
-                  );
-                if (window.addEventListener) {
-                  window.addEventListener("resize", _this.onWindowResized);
-                } else {
-                  window.attachEvent("onresize", _this.onWindowResized);
-                }
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "componentWillUnmount",
-              function() {
-                if (_this.animationEndCallback) {
-                  clearTimeout(_this.animationEndCallback);
-                }
-                if (_this.lazyLoadTimer) {
-                  clearInterval(_this.lazyLoadTimer);
-                }
-                if (_this.callbackTimers.length) {
-                  _this.callbackTimers.forEach(function(timer) {
-                    return clearTimeout(timer);
-                  });
-                  _this.callbackTimers = [];
-                }
-                if (window.addEventListener) {
-                  window.removeEventListener("resize", _this.onWindowResized);
-                } else {
-                  window.detachEvent("onresize", _this.onWindowResized);
-                }
-                if (_this.autoplayTimer) {
-                  clearInterval(_this.autoplayTimer);
-                }
-                _this.ro.disconnect();
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "componentDidUpdate",
-              function(prevProps) {
-                _this.checkImagesLoad();
-                _this.props.onReInit && _this.props.onReInit();
-                if (_this.props.lazyLoad) {
-                  var slidesToLoad = Object(
-                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "getOnDemandLazySlides"
-                    ]
-                  )(_objectSpread(_objectSpread({}, _this.props), _this.state));
-                  if (slidesToLoad.length > 0) {
-                    _this.setState(function(prevState) {
-                      return {
-                        lazyLoadedList: prevState.lazyLoadedList.concat(
-                          slidesToLoad
-                        )
-                      };
-                    });
-                    if (_this.props.onLazyLoad) {
-                      _this.props.onLazyLoad(slidesToLoad);
-                    }
-                  }
-                }
-                // if (this.props.onLazyLoad) {
-                //   this.props.onLazyLoad([leftMostSlide])
-                // }
-                _this.adaptHeight();
-                var spec = _objectSpread(
-                  _objectSpread(
-                    {
-                      listRef: _this.list,
-                      trackRef: _this.track
-                    },
-                    _this.props
-                  ),
-                  _this.state
-                );
-                var setTrackStyle = _this.didPropsChange(prevProps);
-                setTrackStyle &&
-                  _this.updateState(spec, setTrackStyle, function() {
-                    if (
-                      _this.state.currentSlide >=
-                      react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
-                        _this.props.children
-                      )
-                    ) {
-                      _this.changeSlide({
-                        message: "index",
-                        index:
-                          react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
-                            _this.props.children
-                          ) - _this.props.slidesToShow,
-                        currentSlide: _this.state.currentSlide
-                      });
-                    }
-                    if (_this.props.autoplay) {
-                      _this.autoPlay("update");
-                    } else {
-                      _this.pause("paused");
-                    }
-                  });
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "onWindowResized",
-              function(setTrackStyle) {
-                if (_this.debouncedResize) _this.debouncedResize.cancel();
-                _this.debouncedResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(
-                  function() {
-                    return _this.resizeWindow(setTrackStyle);
-                  },
-                  50
-                );
-                _this.debouncedResize();
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "resizeWindow",
-              function() {
-                var setTrackStyle =
-                  arguments.length > 0 && arguments[0] !== undefined
-                    ? arguments[0]
-                    : true;
-                var isTrackMounted = Boolean(_this.track && _this.track.node);
-                // prevent warning: setting state on unmounted component (server side rendering)
-                if (!isTrackMounted) return;
-                var spec = _objectSpread(
-                  _objectSpread(
-                    {
-                      listRef: _this.list,
-                      trackRef: _this.track
-                    },
-                    _this.props
-                  ),
-                  _this.state
-                );
-                _this.updateState(spec, setTrackStyle, function() {
-                  if (_this.props.autoplay) _this.autoPlay("update");
-                  else _this.pause("paused");
-                });
-                // animating state should be cleared while resizing, otherwise autoplay stops working
-                _this.setState({
-                  animating: false
-                });
-                clearTimeout(_this.animationEndCallback);
-                delete _this.animationEndCallback;
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "updateState",
-              function(spec, setTrackStyle, callback) {
-                var updatedState = Object(
-                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                    "initializedState"
-                  ]
-                )(spec);
-                spec = _objectSpread(
-                  _objectSpread(_objectSpread({}, spec), updatedState),
-                  {},
-                  {
-                    slideIndex: updatedState.currentSlide
-                  }
-                );
-                var targetLeft = Object(
-                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                    "getTrackLeft"
-                  ]
-                )(spec);
-                spec = _objectSpread(
-                  _objectSpread({}, spec),
-                  {},
-                  {
-                    left: targetLeft
-                  }
-                );
-                var trackStyle = Object(
-                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                    "getTrackCSS"
-                  ]
-                )(spec);
-                if (
-                  setTrackStyle ||
-                  react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
-                    _this.props.children
-                  ) !==
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
-                      spec.children
-                    )
-                ) {
-                  updatedState["trackStyle"] = trackStyle;
-                }
-                _this.setState(updatedState, callback);
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "ssrInit",
-              function() {
-                if (_this.props.variableWidth) {
-                  var _trackWidth = 0,
-                    _trackLeft = 0;
-                  var childrenWidths = [];
-                  var preClones = Object(
-                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "getPreClones"
-                    ]
-                  )(
-                    _objectSpread(
-                      _objectSpread(
-                        _objectSpread({}, _this.props),
-                        _this.state
-                      ),
-                      {},
-                      {
-                        slideCount: _this.props.children.length
-                      }
-                    )
-                  );
-                  var postClones = Object(
-                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "getPostClones"
-                    ]
-                  )(
-                    _objectSpread(
-                      _objectSpread(
-                        _objectSpread({}, _this.props),
-                        _this.state
-                      ),
-                      {},
-                      {
-                        slideCount: _this.props.children.length
-                      }
-                    )
-                  );
-                  _this.props.children.forEach(function(child) {
-                    childrenWidths.push(child.props.style.width);
-                    _trackWidth += child.props.style.width;
-                  });
-                  for (var i = 0; i < preClones; i++) {
-                    _trackLeft += childrenWidths[childrenWidths.length - 1 - i];
-                    _trackWidth +=
-                      childrenWidths[childrenWidths.length - 1 - i];
-                  }
-                  for (var _i = 0; _i < postClones; _i++) {
-                    _trackWidth += childrenWidths[_i];
-                  }
-                  for (var _i2 = 0; _i2 < _this.state.currentSlide; _i2++) {
-                    _trackLeft += childrenWidths[_i2];
-                  }
-                  var _trackStyle = {
-                    width: _trackWidth + "px",
-                    left: -_trackLeft + "px"
-                  };
-                  if (_this.props.centerMode) {
-                    var currentWidth = "".concat(
-                      childrenWidths[_this.state.currentSlide],
-                      "px"
-                    );
-                    _trackStyle.left = "calc("
-                      .concat(_trackStyle.left, " + (100% - ")
-                      .concat(currentWidth, ") / 2 ) ");
-                  }
-                  return {
-                    trackStyle: _trackStyle
-                  };
-                }
-                var childrenCount = react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
-                  _this.props.children
-                );
-                var spec = _objectSpread(
-                  _objectSpread(_objectSpread({}, _this.props), _this.state),
-                  {},
-                  {
-                    slideCount: childrenCount
-                  }
-                );
-                var slideCount =
+                _this.list.style.height =
                   Object(
                     _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "getPreClones"
+                      "getHeight"
                     ]
-                  )(spec) +
-                  Object(
-                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "getPostClones"
-                    ]
-                  )(spec) +
-                  childrenCount;
-                var trackWidth = (100 / _this.props.slidesToShow) * slideCount;
-                var slideWidth = 100 / slideCount;
-                var trackLeft =
-                  (-slideWidth *
-                    (Object(
-                      _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                        "getPreClones"
-                      ]
-                    )(spec) +
-                      _this.state.currentSlide) *
-                    trackWidth) /
-                  100;
-                if (_this.props.centerMode) {
-                  trackLeft += (100 - (slideWidth * trackWidth) / 100) / 2;
-                }
-                var trackStyle = {
-                  width: trackWidth + "%",
-                  left: trackLeft + "%"
-                };
-                return {
-                  slideWidth: slideWidth + "%",
-                  trackStyle: trackStyle
-                };
+                  )(elem) + "px";
               }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "checkImagesLoad",
-              function() {
-                var images =
-                  (_this.list &&
-                    _this.list.querySelectorAll &&
-                    _this.list.querySelectorAll(".slick-slide img")) ||
-                  [];
-                var imagesCount = images.length,
-                  loadedCount = 0;
-                Array.prototype.forEach.call(images, function(image) {
-                  var handler = function handler() {
-                    return (
-                      ++loadedCount &&
-                      loadedCount >= imagesCount &&
-                      _this.onWindowResized()
-                    );
-                  };
-                  if (!image.onclick) {
-                    image.onclick = function() {
-                      return image.parentNode.focus();
-                    };
-                  } else {
-                    var prevClickHandler = image.onclick;
-                    image.onclick = function(e) {
-                      prevClickHandler(e);
-                      image.parentNode.focus();
-                    };
-                  }
-                  if (!image.onload) {
-                    if (_this.props.lazyLoad) {
-                      image.onload = function() {
-                        _this.adaptHeight();
-                        _this.callbackTimers.push(
-                          setTimeout(_this.onWindowResized, _this.props.speed)
-                        );
-                      };
-                    } else {
-                      image.onload = handler;
-                      image.onerror = function() {
-                        handler();
-                        _this.props.onLazyLoadError &&
-                          _this.props.onLazyLoadError();
-                      };
-                    }
-                  }
-                });
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "progressiveLazyLoad",
-              function() {
-                var slidesToLoad = [];
-                var spec = _objectSpread(
-                  _objectSpread({}, _this.props),
-                  _this.state
-                );
-                for (
-                  var index = _this.state.currentSlide;
-                  index <
-                  _this.state.slideCount +
-                    Object(
-                      _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                        "getPostClones"
-                      ]
-                    )(spec);
-                  index++
-                ) {
-                  if (_this.state.lazyLoadedList.indexOf(index) < 0) {
-                    slidesToLoad.push(index);
-                    break;
-                  }
-                }
-                for (
-                  var _index = _this.state.currentSlide - 1;
-                  _index >=
-                  -Object(
-                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "getPreClones"
-                    ]
-                  )(spec);
-                  _index--
-                ) {
-                  if (_this.state.lazyLoadedList.indexOf(_index) < 0) {
-                    slidesToLoad.push(_index);
-                    break;
-                  }
-                }
+            });
+            _defineProperty(_this, "componentDidMount", function() {
+              _this.props.onInit && _this.props.onInit();
+              if (_this.props.lazyLoad) {
+                var slidesToLoad = Object(
+                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                    "getOnDemandLazySlides"
+                  ]
+                )(_objectSpread(_objectSpread({}, _this.props), _this.state));
                 if (slidesToLoad.length > 0) {
-                  _this.setState(function(state) {
+                  _this.setState(function(prevState) {
                     return {
-                      lazyLoadedList: state.lazyLoadedList.concat(slidesToLoad)
+                      lazyLoadedList: prevState.lazyLoadedList.concat(
+                        slidesToLoad
+                      )
                     };
                   });
                   if (_this.props.onLazyLoad) {
                     _this.props.onLazyLoad(slidesToLoad);
                   }
-                } else {
-                  if (_this.lazyLoadTimer) {
-                    clearInterval(_this.lazyLoadTimer);
-                    delete _this.lazyLoadTimer;
-                  }
                 }
               }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slideHandler",
-              function(index) {
-                var dontAnimate =
-                  arguments.length > 1 && arguments[1] !== undefined
-                    ? arguments[1]
-                    : false;
-                var _this$props = _this.props,
-                  asNavFor = _this$props.asNavFor,
-                  beforeChange = _this$props.beforeChange,
-                  onLazyLoad = _this$props.onLazyLoad,
-                  speed = _this$props.speed,
-                  afterChange = _this$props.afterChange;
-                // capture currentslide before state is updated
-                var currentSlide = _this.state.currentSlide;
-                var _slideHandler = Object(
-                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "slideHandler"
-                    ]
-                  )(
-                    _objectSpread(
-                      _objectSpread(
-                        _objectSpread(
-                          {
-                            index: index
-                          },
-                          _this.props
-                        ),
-                        _this.state
-                      ),
-                      {},
-                      {
-                        trackRef: _this.track,
-                        useCSS: _this.props.useCSS && !dontAnimate
-                      }
-                    )
-                  ),
-                  state = _slideHandler.state,
-                  nextState = _slideHandler.nextState;
-                if (!state) return;
-                beforeChange && beforeChange(currentSlide, state.currentSlide);
-                var slidesToLoad = state.lazyLoadedList.filter(function(value) {
-                  return _this.state.lazyLoadedList.indexOf(value) < 0;
-                });
-                onLazyLoad &&
-                  slidesToLoad.length > 0 &&
-                  onLazyLoad(slidesToLoad);
-                if (!_this.props.waitForAnimate && _this.animationEndCallback) {
-                  clearTimeout(_this.animationEndCallback);
-                  afterChange && afterChange(currentSlide);
-                  delete _this.animationEndCallback;
-                }
-                _this.setState(state, function() {
-                  // asNavForIndex check is to avoid recursive calls of slideHandler in waitForAnimate=false mode
-                  if (asNavFor && _this.asNavForIndex !== index) {
-                    _this.asNavForIndex = index;
-                    asNavFor.innerSlider.slideHandler(index);
-                  }
-                  if (!nextState) return;
-                  _this.animationEndCallback = setTimeout(function() {
-                    var animating = nextState.animating,
-                      firstBatch = _objectWithoutProperties(
-                        nextState,
-                        _excluded
-                      );
-                    _this.setState(firstBatch, function() {
-                      _this.callbackTimers.push(
-                        setTimeout(function() {
-                          return _this.setState({
-                            animating: animating
-                          });
-                        }, 10)
-                      );
-                      afterChange && afterChange(state.currentSlide);
-                      delete _this.animationEndCallback;
-                    });
-                  }, speed);
-                });
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "changeSlide",
-              function(options) {
-                var dontAnimate =
-                  arguments.length > 1 && arguments[1] !== undefined
-                    ? arguments[1]
-                    : false;
-                var spec = _objectSpread(
-                  _objectSpread({}, _this.props),
-                  _this.state
-                );
-                var targetSlide = Object(
-                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                    "changeSlide"
-                  ]
-                )(spec, options);
-                if (targetSlide !== 0 && !targetSlide) return;
-                if (dontAnimate === true) {
-                  _this.slideHandler(targetSlide, dontAnimate);
-                } else {
-                  _this.slideHandler(targetSlide);
-                }
+              var spec = _objectSpread(
+                {
+                  listRef: _this.list,
+                  trackRef: _this.track
+                },
+                _this.props
+              );
+              _this.updateState(spec, true, function() {
+                _this.adaptHeight();
                 _this.props.autoplay && _this.autoPlay("update");
-                if (_this.props.focusOnSelect) {
-                  var nodes = _this.list.querySelectorAll(".slick-current");
-                  nodes[0] && nodes[0].focus();
-                }
+              });
+              if (_this.props.lazyLoad === "progressive") {
+                _this.lazyLoadTimer = setInterval(
+                  _this.progressiveLazyLoad,
+                  1000
+                );
               }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "clickHandler",
-              function(e) {
-                if (_this.clickable === false) {
-                  e.stopPropagation();
-                  e.preventDefault();
+              _this.ro = new resize_observer_polyfill__WEBPACK_IMPORTED_MODULE_8__[
+                "default"
+              ](function() {
+                if (_this.state.animating) {
+                  _this.onWindowResized(false); // don't set trackStyle hence don't break animation
+                  _this.callbackTimers.push(
+                    setTimeout(function() {
+                      return _this.onWindowResized();
+                    }, _this.props.speed)
+                  );
+                } else {
+                  _this.onWindowResized();
                 }
-                _this.clickable = true;
+              });
+              _this.ro.observe(_this.list);
+              document.querySelectorAll &&
+                Array.prototype.forEach.call(
+                  document.querySelectorAll(".slick-slide"),
+                  function(slide) {
+                    slide.onfocus = _this.props.pauseOnFocus
+                      ? _this.onSlideFocus
+                      : null;
+                    slide.onblur = _this.props.pauseOnFocus
+                      ? _this.onSlideBlur
+                      : null;
+                  }
+                );
+              if (window.addEventListener) {
+                window.addEventListener("resize", _this.onWindowResized);
+              } else {
+                window.attachEvent("onresize", _this.onWindowResized);
               }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "keyHandler",
-              function(e) {
-                var dir = Object(
+            });
+            _defineProperty(_this, "componentWillUnmount", function() {
+              if (_this.animationEndCallback) {
+                clearTimeout(_this.animationEndCallback);
+              }
+              if (_this.lazyLoadTimer) {
+                clearInterval(_this.lazyLoadTimer);
+              }
+              if (_this.callbackTimers.length) {
+                _this.callbackTimers.forEach(function(timer) {
+                  return clearTimeout(timer);
+                });
+                _this.callbackTimers = [];
+              }
+              if (window.addEventListener) {
+                window.removeEventListener("resize", _this.onWindowResized);
+              } else {
+                window.detachEvent("onresize", _this.onWindowResized);
+              }
+              if (_this.autoplayTimer) {
+                clearInterval(_this.autoplayTimer);
+              }
+              _this.ro.disconnect();
+            });
+            _defineProperty(_this, "componentDidUpdate", function(prevProps) {
+              _this.checkImagesLoad();
+              _this.props.onReInit && _this.props.onReInit();
+              if (_this.props.lazyLoad) {
+                var slidesToLoad = Object(
                   _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                    "keyHandler"
+                    "getOnDemandLazySlides"
                   ]
-                )(e, _this.props.accessibility, _this.props.rtl);
-                dir !== "" &&
-                  _this.changeSlide({
-                    message: dir
+                )(_objectSpread(_objectSpread({}, _this.props), _this.state));
+                if (slidesToLoad.length > 0) {
+                  _this.setState(function(prevState) {
+                    return {
+                      lazyLoadedList: prevState.lazyLoadedList.concat(
+                        slidesToLoad
+                      )
+                    };
                   });
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "selectHandler",
-              function(options) {
-                _this.changeSlide(options);
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "disableBodyScroll",
-              function() {
-                var preventDefault = function preventDefault(e) {
-                  e = e || window.event;
-                  if (e.preventDefault) e.preventDefault();
-                  e.returnValue = false;
-                };
-                window.ontouchmove = preventDefault;
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "enableBodyScroll",
-              function() {
-                window.ontouchmove = null;
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "swipeStart",
-              function(e) {
-                if (_this.props.verticalSwiping) {
-                  _this.disableBodyScroll();
+                  if (_this.props.onLazyLoad) {
+                    _this.props.onLazyLoad(slidesToLoad);
+                  }
                 }
-                var state = Object(
-                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                    "swipeStart"
-                  ]
-                )(e, _this.props.swipe, _this.props.draggable);
-                state !== "" && _this.setState(state);
               }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "swipeMove",
-              function(e) {
-                var state = Object(
+              // if (this.props.onLazyLoad) {
+              //   this.props.onLazyLoad([leftMostSlide])
+              // }
+              _this.adaptHeight();
+              var spec = _objectSpread(
+                _objectSpread(
+                  {
+                    listRef: _this.list,
+                    trackRef: _this.track
+                  },
+                  _this.props
+                ),
+                _this.state
+              );
+              var setTrackStyle = _this.didPropsChange(prevProps);
+              setTrackStyle &&
+                _this.updateState(spec, setTrackStyle, function() {
+                  if (
+                    _this.state.currentSlide >=
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
+                      _this.props.children
+                    )
+                  ) {
+                    _this.changeSlide({
+                      message: "index",
+                      index:
+                        react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
+                          _this.props.children
+                        ) - _this.props.slidesToShow,
+                      currentSlide: _this.state.currentSlide
+                    });
+                  }
+                  if (_this.props.autoplay) {
+                    _this.autoPlay("update");
+                  } else {
+                    _this.pause("paused");
+                  }
+                });
+            });
+            _defineProperty(_this, "onWindowResized", function(setTrackStyle) {
+              if (_this.debouncedResize) _this.debouncedResize.cancel();
+              _this.debouncedResize = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(
+                function() {
+                  return _this.resizeWindow(setTrackStyle);
+                },
+                50
+              );
+              _this.debouncedResize();
+            });
+            _defineProperty(_this, "resizeWindow", function() {
+              var setTrackStyle =
+                arguments.length > 0 && arguments[0] !== undefined
+                  ? arguments[0]
+                  : true;
+              var isTrackMounted = Boolean(_this.track && _this.track.node);
+              // prevent warning: setting state on unmounted component (server side rendering)
+              if (!isTrackMounted) return;
+              var spec = _objectSpread(
+                _objectSpread(
+                  {
+                    listRef: _this.list,
+                    trackRef: _this.track
+                  },
+                  _this.props
+                ),
+                _this.state
+              );
+              _this.updateState(spec, setTrackStyle, function() {
+                if (_this.props.autoplay) _this.autoPlay("update");
+                else _this.pause("paused");
+              });
+              // animating state should be cleared while resizing, otherwise autoplay stops working
+              _this.setState({
+                animating: false
+              });
+              clearTimeout(_this.animationEndCallback);
+              delete _this.animationEndCallback;
+            });
+            _defineProperty(_this, "updateState", function(
+              spec,
+              setTrackStyle,
+              callback
+            ) {
+              var updatedState = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "initializedState"
+                ]
+              )(spec);
+              spec = _objectSpread(
+                _objectSpread(_objectSpread({}, spec), updatedState),
+                {},
+                {
+                  slideIndex: updatedState.currentSlide
+                }
+              );
+              var targetLeft = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "getTrackLeft"
+                ]
+              )(spec);
+              spec = _objectSpread(
+                _objectSpread({}, spec),
+                {},
+                {
+                  left: targetLeft
+                }
+              );
+              var trackStyle = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "getTrackCSS"
+                ]
+              )(spec);
+              if (
+                setTrackStyle ||
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
+                  _this.props.children
+                ) !==
+                  react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
+                    spec.children
+                  )
+              ) {
+                updatedState["trackStyle"] = trackStyle;
+              }
+              _this.setState(updatedState, callback);
+            });
+            _defineProperty(_this, "ssrInit", function() {
+              if (_this.props.variableWidth) {
+                var _trackWidth = 0,
+                  _trackLeft = 0;
+                var childrenWidths = [];
+                var preClones = Object(
                   _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                    "swipeMove"
+                    "getPreClones"
                   ]
                 )(
-                  e,
                   _objectSpread(
                     _objectSpread(_objectSpread({}, _this.props), _this.state),
                     {},
                     {
-                      trackRef: _this.track,
-                      listRef: _this.list,
-                      slideIndex: _this.state.currentSlide
+                      slideCount: _this.props.children.length
                     }
                   )
                 );
-                if (!state) return;
-                if (state["swiping"]) {
-                  _this.clickable = false;
+                var postClones = Object(
+                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                    "getPostClones"
+                  ]
+                )(
+                  _objectSpread(
+                    _objectSpread(_objectSpread({}, _this.props), _this.state),
+                    {},
+                    {
+                      slideCount: _this.props.children.length
+                    }
+                  )
+                );
+                _this.props.children.forEach(function(child) {
+                  childrenWidths.push(child.props.style.width);
+                  _trackWidth += child.props.style.width;
+                });
+                for (var i = 0; i < preClones; i++) {
+                  _trackLeft += childrenWidths[childrenWidths.length - 1 - i];
+                  _trackWidth += childrenWidths[childrenWidths.length - 1 - i];
                 }
-                _this.setState(state);
+                for (var _i = 0; _i < postClones; _i++) {
+                  _trackWidth += childrenWidths[_i];
+                }
+                for (var _i2 = 0; _i2 < _this.state.currentSlide; _i2++) {
+                  _trackLeft += childrenWidths[_i2];
+                }
+                var _trackStyle = {
+                  width: _trackWidth + "px",
+                  left: -_trackLeft + "px"
+                };
+                if (_this.props.centerMode) {
+                  var currentWidth = "".concat(
+                    childrenWidths[_this.state.currentSlide],
+                    "px"
+                  );
+                  _trackStyle.left = "calc("
+                    .concat(_trackStyle.left, " + (100% - ")
+                    .concat(currentWidth, ") / 2 ) ");
+                }
+                return {
+                  trackStyle: _trackStyle
+                };
               }
-            );
-            _defineProperty(_assertThisInitialized(_this), "swipeEnd", function(
-              e
-            ) {
+              var childrenCount = react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(
+                _this.props.children
+              );
+              var spec = _objectSpread(
+                _objectSpread(_objectSpread({}, _this.props), _this.state),
+                {},
+                {
+                  slideCount: childrenCount
+                }
+              );
+              var slideCount =
+                Object(
+                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                    "getPreClones"
+                  ]
+                )(spec) +
+                Object(
+                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                    "getPostClones"
+                  ]
+                )(spec) +
+                childrenCount;
+              var trackWidth = (100 / _this.props.slidesToShow) * slideCount;
+              var slideWidth = 100 / slideCount;
+              var trackLeft =
+                (-slideWidth *
+                  (Object(
+                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                      "getPreClones"
+                    ]
+                  )(spec) +
+                    _this.state.currentSlide) *
+                  trackWidth) /
+                100;
+              if (_this.props.centerMode) {
+                trackLeft += (100 - (slideWidth * trackWidth) / 100) / 2;
+              }
+              var trackStyle = {
+                width: trackWidth + "%",
+                left: trackLeft + "%"
+              };
+              return {
+                slideWidth: slideWidth + "%",
+                trackStyle: trackStyle
+              };
+            });
+            _defineProperty(_this, "checkImagesLoad", function() {
+              var images =
+                (_this.list &&
+                  _this.list.querySelectorAll &&
+                  _this.list.querySelectorAll(".slick-slide img")) ||
+                [];
+              var imagesCount = images.length,
+                loadedCount = 0;
+              Array.prototype.forEach.call(images, function(image) {
+                var handler = function handler() {
+                  return (
+                    ++loadedCount &&
+                    loadedCount >= imagesCount &&
+                    _this.onWindowResized()
+                  );
+                };
+                if (!image.onclick) {
+                  image.onclick = function() {
+                    return image.parentNode.focus();
+                  };
+                } else {
+                  var prevClickHandler = image.onclick;
+                  image.onclick = function(e) {
+                    prevClickHandler(e);
+                    image.parentNode.focus();
+                  };
+                }
+                if (!image.onload) {
+                  if (_this.props.lazyLoad) {
+                    image.onload = function() {
+                      _this.adaptHeight();
+                      _this.callbackTimers.push(
+                        setTimeout(_this.onWindowResized, _this.props.speed)
+                      );
+                    };
+                  } else {
+                    image.onload = handler;
+                    image.onerror = function() {
+                      handler();
+                      _this.props.onLazyLoadError &&
+                        _this.props.onLazyLoadError();
+                    };
+                  }
+                }
+              });
+            });
+            _defineProperty(_this, "progressiveLazyLoad", function() {
+              var slidesToLoad = [];
+              var spec = _objectSpread(
+                _objectSpread({}, _this.props),
+                _this.state
+              );
+              for (
+                var index = _this.state.currentSlide;
+                index <
+                _this.state.slideCount +
+                  Object(
+                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                      "getPostClones"
+                    ]
+                  )(spec);
+                index++
+              ) {
+                if (_this.state.lazyLoadedList.indexOf(index) < 0) {
+                  slidesToLoad.push(index);
+                  break;
+                }
+              }
+              for (
+                var _index = _this.state.currentSlide - 1;
+                _index >=
+                -Object(
+                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                    "getPreClones"
+                  ]
+                )(spec);
+                _index--
+              ) {
+                if (_this.state.lazyLoadedList.indexOf(_index) < 0) {
+                  slidesToLoad.push(_index);
+                  break;
+                }
+              }
+              if (slidesToLoad.length > 0) {
+                _this.setState(function(state) {
+                  return {
+                    lazyLoadedList: state.lazyLoadedList.concat(slidesToLoad)
+                  };
+                });
+                if (_this.props.onLazyLoad) {
+                  _this.props.onLazyLoad(slidesToLoad);
+                }
+              } else {
+                if (_this.lazyLoadTimer) {
+                  clearInterval(_this.lazyLoadTimer);
+                  delete _this.lazyLoadTimer;
+                }
+              }
+            });
+            _defineProperty(_this, "slideHandler", function(index) {
+              var dontAnimate =
+                arguments.length > 1 && arguments[1] !== undefined
+                  ? arguments[1]
+                  : false;
+              var _this$props = _this.props,
+                asNavFor = _this$props.asNavFor,
+                beforeChange = _this$props.beforeChange,
+                onLazyLoad = _this$props.onLazyLoad,
+                speed = _this$props.speed,
+                afterChange = _this$props.afterChange;
+              // capture currentslide before state is updated
+              var currentSlide = _this.state.currentSlide;
+              var _slideHandler = Object(
+                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                    "slideHandler"
+                  ]
+                )(
+                  _objectSpread(
+                    _objectSpread(
+                      _objectSpread(
+                        {
+                          index: index
+                        },
+                        _this.props
+                      ),
+                      _this.state
+                    ),
+                    {},
+                    {
+                      trackRef: _this.track,
+                      useCSS: _this.props.useCSS && !dontAnimate
+                    }
+                  )
+                ),
+                state = _slideHandler.state,
+                nextState = _slideHandler.nextState;
+              if (!state) return;
+              beforeChange && beforeChange(currentSlide, state.currentSlide);
+              var slidesToLoad = state.lazyLoadedList.filter(function(value) {
+                return _this.state.lazyLoadedList.indexOf(value) < 0;
+              });
+              onLazyLoad && slidesToLoad.length > 0 && onLazyLoad(slidesToLoad);
+              if (!_this.props.waitForAnimate && _this.animationEndCallback) {
+                clearTimeout(_this.animationEndCallback);
+                afterChange && afterChange(currentSlide);
+                delete _this.animationEndCallback;
+              }
+              _this.setState(state, function() {
+                // asNavForIndex check is to avoid recursive calls of slideHandler in waitForAnimate=false mode
+                if (asNavFor && _this.asNavForIndex !== index) {
+                  _this.asNavForIndex = index;
+                  asNavFor.innerSlider.slideHandler(index);
+                }
+                if (!nextState) return;
+                _this.animationEndCallback = setTimeout(function() {
+                  var animating = nextState.animating,
+                    firstBatch = _objectWithoutProperties(nextState, _excluded);
+                  _this.setState(firstBatch, function() {
+                    _this.callbackTimers.push(
+                      setTimeout(function() {
+                        return _this.setState({
+                          animating: animating
+                        });
+                      }, 10)
+                    );
+                    afterChange && afterChange(state.currentSlide);
+                    delete _this.animationEndCallback;
+                  });
+                }, speed);
+              });
+            });
+            _defineProperty(_this, "changeSlide", function(options) {
+              var dontAnimate =
+                arguments.length > 1 && arguments[1] !== undefined
+                  ? arguments[1]
+                  : false;
+              var spec = _objectSpread(
+                _objectSpread({}, _this.props),
+                _this.state
+              );
+              var targetSlide = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "changeSlide"
+                ]
+              )(spec, options);
+              if (targetSlide !== 0 && !targetSlide) return;
+              if (dontAnimate === true) {
+                _this.slideHandler(targetSlide, dontAnimate);
+              } else {
+                _this.slideHandler(targetSlide);
+              }
+              _this.props.autoplay && _this.autoPlay("update");
+              if (_this.props.focusOnSelect) {
+                var nodes = _this.list.querySelectorAll(".slick-current");
+                nodes[0] && nodes[0].focus();
+              }
+            });
+            _defineProperty(_this, "clickHandler", function(e) {
+              if (_this.clickable === false) {
+                e.stopPropagation();
+                e.preventDefault();
+              }
+              _this.clickable = true;
+            });
+            _defineProperty(_this, "keyHandler", function(e) {
+              var dir = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "keyHandler"
+                ]
+              )(e, _this.props.accessibility, _this.props.rtl);
+              dir !== "" &&
+                _this.changeSlide({
+                  message: dir
+                });
+            });
+            _defineProperty(_this, "selectHandler", function(options) {
+              _this.changeSlide(options);
+            });
+            _defineProperty(_this, "disableBodyScroll", function() {
+              var preventDefault = function preventDefault(e) {
+                e = e || window.event;
+                if (e.preventDefault) e.preventDefault();
+                e.returnValue = false;
+              };
+              window.ontouchmove = preventDefault;
+            });
+            _defineProperty(_this, "enableBodyScroll", function() {
+              window.ontouchmove = null;
+            });
+            _defineProperty(_this, "swipeStart", function(e) {
+              if (_this.props.verticalSwiping) {
+                _this.disableBodyScroll();
+              }
+              var state = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "swipeStart"
+                ]
+              )(e, _this.props.swipe, _this.props.draggable);
+              state !== "" && _this.setState(state);
+            });
+            _defineProperty(_this, "swipeMove", function(e) {
+              var state = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "swipeMove"
+                ]
+              )(
+                e,
+                _objectSpread(
+                  _objectSpread(_objectSpread({}, _this.props), _this.state),
+                  {},
+                  {
+                    trackRef: _this.track,
+                    listRef: _this.list,
+                    slideIndex: _this.state.currentSlide
+                  }
+                )
+              );
+              if (!state) return;
+              if (state["swiping"]) {
+                _this.clickable = false;
+              }
+              _this.setState(state);
+            });
+            _defineProperty(_this, "swipeEnd", function(e) {
               var state = Object(
                 _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__["swipeEnd"]
               )(
@@ -1732,66 +1592,52 @@
                 _this.enableBodyScroll();
               }
             });
-            _defineProperty(_assertThisInitialized(_this), "touchEnd", function(
-              e
-            ) {
+            _defineProperty(_this, "touchEnd", function(e) {
               _this.swipeEnd(e);
               _this.clickable = true;
             });
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slickPrev",
-              function() {
-                // this and fellow methods are wrapped in setTimeout
-                // to make sure initialize setState has happened before
-                // any of such methods are called
-                _this.callbackTimers.push(
-                  setTimeout(function() {
-                    return _this.changeSlide({
-                      message: "previous"
-                    });
-                  }, 0)
-                );
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slickNext",
-              function() {
-                _this.callbackTimers.push(
-                  setTimeout(function() {
-                    return _this.changeSlide({
-                      message: "next"
-                    });
-                  }, 0)
-                );
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "slickGoTo",
-              function(slide) {
-                var dontAnimate =
-                  arguments.length > 1 && arguments[1] !== undefined
-                    ? arguments[1]
-                    : false;
-                slide = Number(slide);
-                if (isNaN(slide)) return "";
-                _this.callbackTimers.push(
-                  setTimeout(function() {
-                    return _this.changeSlide(
-                      {
-                        message: "index",
-                        index: slide,
-                        currentSlide: _this.state.currentSlide
-                      },
-                      dontAnimate
-                    );
-                  }, 0)
-                );
-              }
-            );
-            _defineProperty(_assertThisInitialized(_this), "play", function() {
+            _defineProperty(_this, "slickPrev", function() {
+              // this and fellow methods are wrapped in setTimeout
+              // to make sure initialize setState has happened before
+              // any of such methods are called
+              _this.callbackTimers.push(
+                setTimeout(function() {
+                  return _this.changeSlide({
+                    message: "previous"
+                  });
+                }, 0)
+              );
+            });
+            _defineProperty(_this, "slickNext", function() {
+              _this.callbackTimers.push(
+                setTimeout(function() {
+                  return _this.changeSlide({
+                    message: "next"
+                  });
+                }, 0)
+              );
+            });
+            _defineProperty(_this, "slickGoTo", function(slide) {
+              var dontAnimate =
+                arguments.length > 1 && arguments[1] !== undefined
+                  ? arguments[1]
+                  : false;
+              slide = Number(slide);
+              if (isNaN(slide)) return "";
+              _this.callbackTimers.push(
+                setTimeout(function() {
+                  return _this.changeSlide(
+                    {
+                      message: "index",
+                      index: slide,
+                      currentSlide: _this.state.currentSlide
+                    },
+                    dontAnimate
+                  );
+                }, 0)
+              );
+            });
+            _defineProperty(_this, "play", function() {
               var nextIndex;
               if (_this.props.rtl) {
                 nextIndex =
@@ -1812,9 +1658,7 @@
               }
               _this.slideHandler(nextIndex);
             });
-            _defineProperty(_assertThisInitialized(_this), "autoPlay", function(
-              playType
-            ) {
+            _defineProperty(_this, "autoPlay", function(playType) {
               if (_this.autoplayTimer) {
                 clearInterval(_this.autoplayTimer);
               }
@@ -1844,9 +1688,7 @@
                 autoplaying: "playing"
               });
             });
-            _defineProperty(_assertThisInitialized(_this), "pause", function(
-              pauseType
-            ) {
+            _defineProperty(_this, "pause", function(pauseType) {
               if (_this.autoplayTimer) {
                 clearInterval(_this.autoplayTimer);
                 _this.autoplayTimer = null;
@@ -1871,287 +1713,259 @@
                 }
               }
             });
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "onDotsOver",
-              function() {
-                return _this.props.autoplay && _this.pause("hovered");
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "onDotsLeave",
-              function() {
-                return (
-                  _this.props.autoplay &&
-                  _this.state.autoplaying === "hovered" &&
-                  _this.autoPlay("leave")
-                );
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "onTrackOver",
-              function() {
-                return _this.props.autoplay && _this.pause("hovered");
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "onTrackLeave",
-              function() {
-                return (
-                  _this.props.autoplay &&
-                  _this.state.autoplaying === "hovered" &&
-                  _this.autoPlay("leave")
-                );
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "onSlideFocus",
-              function() {
-                return _this.props.autoplay && _this.pause("focused");
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "onSlideBlur",
-              function() {
-                return (
-                  _this.props.autoplay &&
-                  _this.state.autoplaying === "focused" &&
-                  _this.autoPlay("blur")
-                );
-              }
-            );
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "render",
-              function() {
-                var _this$props$classes, _this$props$classes2;
-                var className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(
-                  "slick-slider",
-                  _this.props.className,
-                  (_this$props$classes = _this.props.classes) === null ||
-                    _this$props$classes === void 0
-                    ? void 0
-                    : _this$props$classes.slider,
-                  {
-                    "slick-vertical": _this.props.vertical,
-                    "slick-initialized": true
-                  }
-                );
-                var spec = _objectSpread(
-                  _objectSpread({}, _this.props),
-                  _this.state
-                );
-                var trackProps = Object(
+            _defineProperty(_this, "onDotsOver", function() {
+              return _this.props.autoplay && _this.pause("hovered");
+            });
+            _defineProperty(_this, "onDotsLeave", function() {
+              return (
+                _this.props.autoplay &&
+                _this.state.autoplaying === "hovered" &&
+                _this.autoPlay("leave")
+              );
+            });
+            _defineProperty(_this, "onTrackOver", function() {
+              return _this.props.autoplay && _this.pause("hovered");
+            });
+            _defineProperty(_this, "onTrackLeave", function() {
+              return (
+                _this.props.autoplay &&
+                _this.state.autoplaying === "hovered" &&
+                _this.autoPlay("leave")
+              );
+            });
+            _defineProperty(_this, "onSlideFocus", function() {
+              return _this.props.autoplay && _this.pause("focused");
+            });
+            _defineProperty(_this, "onSlideBlur", function() {
+              return (
+                _this.props.autoplay &&
+                _this.state.autoplaying === "focused" &&
+                _this.autoPlay("blur")
+              );
+            });
+            _defineProperty(_this, "render", function() {
+              var _this$props$classes, _this$props$classes2;
+              var className = classnames__WEBPACK_IMPORTED_MODULE_3___default()(
+                "slick-slider",
+                _this.props.className,
+                (_this$props$classes = _this.props.classes) === null ||
+                  _this$props$classes === void 0
+                  ? void 0
+                  : _this$props$classes.slider,
+                {
+                  "slick-vertical": _this.props.vertical,
+                  "slick-initialized": true
+                }
+              );
+              var spec = _objectSpread(
+                _objectSpread({}, _this.props),
+                _this.state
+              );
+              var trackProps = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "extractObject"
+                ]
+              )(spec, [
+                "fade",
+                "cssEase",
+                "speed",
+                "infinite",
+                "centerMode",
+                "focusOnSelect",
+                "currentSlide",
+                "lazyLoad",
+                "lazyLoadedList",
+                "rtl",
+                "slideWidth",
+                "slideHeight",
+                "listHeight",
+                "vertical",
+                "slidesToShow",
+                "slidesToScroll",
+                "slideCount",
+                "trackStyle",
+                "variableWidth",
+                "unslick",
+                "centerPadding",
+                "targetSlide",
+                "useCSS",
+                "omitLazyForSlides",
+                "classes"
+              ]);
+              var pauseOnHover = _this.props.pauseOnHover;
+              trackProps = _objectSpread(
+                _objectSpread({}, trackProps),
+                {},
+                {
+                  onMouseEnter: pauseOnHover ? _this.onTrackOver : null,
+                  onMouseLeave: pauseOnHover ? _this.onTrackLeave : null,
+                  onMouseOver: pauseOnHover ? _this.onTrackOver : null,
+                  focusOnSelect:
+                    _this.props.focusOnSelect && _this.clickable
+                      ? _this.selectHandler
+                      : null
+                }
+              );
+              var dots;
+              if (
+                _this.props.dots === true &&
+                _this.state.slideCount >= _this.props.slidesToShow
+              ) {
+                var dotProps = Object(
                   _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
                     "extractObject"
                   ]
                 )(spec, [
-                  "fade",
-                  "cssEase",
-                  "speed",
-                  "infinite",
-                  "centerMode",
-                  "focusOnSelect",
-                  "currentSlide",
-                  "lazyLoad",
-                  "lazyLoadedList",
-                  "rtl",
-                  "slideWidth",
-                  "slideHeight",
-                  "listHeight",
-                  "vertical",
-                  "slidesToShow",
-                  "slidesToScroll",
+                  "dotsClass",
                   "slideCount",
-                  "trackStyle",
-                  "variableWidth",
-                  "unslick",
-                  "centerPadding",
-                  "targetSlide",
-                  "useCSS",
-                  "omitLazyForSlides",
+                  "slidesToShow",
+                  "currentSlide",
+                  "slidesToScroll",
+                  "clickHandler",
+                  "children",
+                  "customPaging",
+                  "infinite",
+                  "appendDots",
                   "classes"
                 ]);
-                var pauseOnHover = _this.props.pauseOnHover;
-                trackProps = _objectSpread(
-                  _objectSpread({}, trackProps),
+                var pauseOnDotsHover = _this.props.pauseOnDotsHover;
+                dotProps = _objectSpread(
+                  _objectSpread({}, dotProps),
                   {},
                   {
-                    onMouseEnter: pauseOnHover ? _this.onTrackOver : null,
-                    onMouseLeave: pauseOnHover ? _this.onTrackLeave : null,
-                    onMouseOver: pauseOnHover ? _this.onTrackOver : null,
-                    focusOnSelect:
-                      _this.props.focusOnSelect && _this.clickable
-                        ? _this.selectHandler
-                        : null
+                    clickHandler: _this.changeSlide,
+                    onMouseEnter: pauseOnDotsHover ? _this.onDotsLeave : null,
+                    onMouseOver: pauseOnDotsHover ? _this.onDotsOver : null,
+                    onMouseLeave: pauseOnDotsHover ? _this.onDotsLeave : null
                   }
                 );
-                var dots;
-                if (
-                  _this.props.dots === true &&
-                  _this.state.slideCount >= _this.props.slidesToShow
-                ) {
-                  var dotProps = Object(
-                    _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                      "extractObject"
-                    ]
-                  )(spec, [
-                    "dotsClass",
-                    "slideCount",
-                    "slidesToShow",
-                    "currentSlide",
-                    "slidesToScroll",
-                    "clickHandler",
-                    "children",
-                    "customPaging",
-                    "infinite",
-                    "appendDots",
-                    "classes"
-                  ]);
-                  var pauseOnDotsHover = _this.props.pauseOnDotsHover;
-                  dotProps = _objectSpread(
-                    _objectSpread({}, dotProps),
-                    {},
-                    {
-                      clickHandler: _this.changeSlide,
-                      onMouseEnter: pauseOnDotsHover ? _this.onDotsLeave : null,
-                      onMouseOver: pauseOnDotsHover ? _this.onDotsOver : null,
-                      onMouseLeave: pauseOnDotsHover ? _this.onDotsLeave : null
-                    }
-                  );
-                  dots = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    _dots__WEBPACK_IMPORTED_MODULE_6__["Dots"],
-                    dotProps
-                  );
-                }
-                var prevArrow, nextArrow;
-                var arrowProps = Object(
-                  _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
-                    "extractObject"
-                  ]
-                )(spec, [
-                  "infinite",
-                  "centerMode",
-                  "currentSlide",
-                  "slideCount",
-                  "slidesToShow",
-                  "prevArrow",
-                  "nextArrow",
-                  "classes"
-                ]);
-                arrowProps.clickHandler = _this.changeSlide;
-                if (_this.props.arrows) {
-                  prevArrow = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    _arrows__WEBPACK_IMPORTED_MODULE_7__["PrevArrow"],
-                    arrowProps
-                  );
-                  nextArrow = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    _arrows__WEBPACK_IMPORTED_MODULE_7__["NextArrow"],
-                    arrowProps
-                  );
-                }
-                var verticalHeightStyle = null;
-                if (_this.props.vertical) {
-                  verticalHeightStyle = {
-                    height: _this.state.listHeight
-                  };
-                }
-                var centerPaddingStyle = null;
-                if (_this.props.vertical === false) {
-                  if (_this.props.centerMode === true) {
-                    centerPaddingStyle = {
-                      padding: "0px " + _this.props.centerPadding
-                    };
-                  }
-                } else {
-                  if (_this.props.centerMode === true) {
-                    centerPaddingStyle = {
-                      padding: _this.props.centerPadding + " 0px"
-                    };
-                  }
-                }
-                var listStyle = _objectSpread(
-                  _objectSpread({}, verticalHeightStyle),
-                  centerPaddingStyle
-                );
-                var touchMove = _this.props.touchMove;
-                var listProps = {
-                  className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(
-                    (_this$props$classes2 = _this.props.classes) === null ||
-                      _this$props$classes2 === void 0
-                      ? void 0
-                      : _this$props$classes2.list,
-                    "slick-list"
-                  ),
-                  style: listStyle,
-                  onClick: _this.clickHandler,
-                  onMouseDown: touchMove ? _this.swipeStart : null,
-                  onMouseMove:
-                    _this.state.dragging && touchMove ? _this.swipeMove : null,
-                  onMouseUp: touchMove ? _this.swipeEnd : null,
-                  onMouseLeave:
-                    _this.state.dragging && touchMove ? _this.swipeEnd : null,
-                  onTouchStart: touchMove ? _this.swipeStart : null,
-                  onTouchMove:
-                    _this.state.dragging && touchMove ? _this.swipeMove : null,
-                  onTouchEnd: touchMove ? _this.touchEnd : null,
-                  onTouchCancel:
-                    _this.state.dragging && touchMove ? _this.swipeEnd : null,
-                  onKeyDown: _this.props.accessibility ? _this.keyHandler : null
-                };
-                var innerSliderProps = {
-                  className: className,
-                  dir: "ltr",
-                  style: _this.props.style
-                };
-                if (_this.props.unslick) {
-                  var _this$props$classes3;
-                  listProps = {
-                    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(
-                      (_this$props$classes3 = _this.props.classes) === null ||
-                        _this$props$classes3 === void 0
-                        ? void 0
-                        : _this$props$classes3.list,
-                      "slick-list"
-                    )
-                  };
-                  innerSliderProps = {
-                    className: className
-                  };
-                }
-                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                  "div",
-                  innerSliderProps,
-                  !_this.props.unslick ? prevArrow : "",
-                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    "div",
-                    _extends(
-                      {
-                        ref: _this.listRefHandler
-                      },
-                      listProps
-                    ),
-                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                      _track__WEBPACK_IMPORTED_MODULE_5__["Track"],
-                      _extends(
-                        {
-                          ref: _this.trackRefHandler
-                        },
-                        trackProps
-                      ),
-                      _this.props.children
-                    )
-                  ),
-                  !_this.props.unslick ? nextArrow : "",
-                  !_this.props.unslick ? dots : ""
+                dots = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                  _dots__WEBPACK_IMPORTED_MODULE_6__["Dots"],
+                  dotProps
                 );
               }
-            );
+              var prevArrow, nextArrow;
+              var arrowProps = Object(
+                _utils_innerSliderUtils__WEBPACK_IMPORTED_MODULE_4__[
+                  "extractObject"
+                ]
+              )(spec, [
+                "infinite",
+                "centerMode",
+                "currentSlide",
+                "slideCount",
+                "slidesToShow",
+                "prevArrow",
+                "nextArrow",
+                "classes"
+              ]);
+              arrowProps.clickHandler = _this.changeSlide;
+              if (_this.props.arrows) {
+                prevArrow = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                  _arrows__WEBPACK_IMPORTED_MODULE_7__["PrevArrow"],
+                  arrowProps
+                );
+                nextArrow = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                  _arrows__WEBPACK_IMPORTED_MODULE_7__["NextArrow"],
+                  arrowProps
+                );
+              }
+              var verticalHeightStyle = null;
+              if (_this.props.vertical) {
+                verticalHeightStyle = {
+                  height: _this.state.listHeight
+                };
+              }
+              var centerPaddingStyle = null;
+              if (_this.props.vertical === false) {
+                if (_this.props.centerMode === true) {
+                  centerPaddingStyle = {
+                    padding: "0px " + _this.props.centerPadding
+                  };
+                }
+              } else {
+                if (_this.props.centerMode === true) {
+                  centerPaddingStyle = {
+                    padding: _this.props.centerPadding + " 0px"
+                  };
+                }
+              }
+              var listStyle = _objectSpread(
+                _objectSpread({}, verticalHeightStyle),
+                centerPaddingStyle
+              );
+              var touchMove = _this.props.touchMove;
+              var listProps = {
+                className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(
+                  (_this$props$classes2 = _this.props.classes) === null ||
+                    _this$props$classes2 === void 0
+                    ? void 0
+                    : _this$props$classes2.list,
+                  "slick-list"
+                ),
+                style: listStyle,
+                onClick: _this.clickHandler,
+                onMouseDown: touchMove ? _this.swipeStart : null,
+                onMouseMove:
+                  _this.state.dragging && touchMove ? _this.swipeMove : null,
+                onMouseUp: touchMove ? _this.swipeEnd : null,
+                onMouseLeave:
+                  _this.state.dragging && touchMove ? _this.swipeEnd : null,
+                onTouchStart: touchMove ? _this.swipeStart : null,
+                onTouchMove:
+                  _this.state.dragging && touchMove ? _this.swipeMove : null,
+                onTouchEnd: touchMove ? _this.touchEnd : null,
+                onTouchCancel:
+                  _this.state.dragging && touchMove ? _this.swipeEnd : null,
+                onKeyDown: _this.props.accessibility ? _this.keyHandler : null
+              };
+              var innerSliderProps = {
+                className: className,
+                dir: "ltr",
+                style: _this.props.style
+              };
+              if (_this.props.unslick) {
+                var _this$props$classes3;
+                listProps = {
+                  className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(
+                    (_this$props$classes3 = _this.props.classes) === null ||
+                      _this$props$classes3 === void 0
+                      ? void 0
+                      : _this$props$classes3.list,
+                    "slick-list"
+                  )
+                };
+                innerSliderProps = {
+                  className: className
+                };
+              }
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                "div",
+                innerSliderProps,
+                !_this.props.unslick ? prevArrow : "",
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                  "div",
+                  _extends(
+                    {
+                      ref: _this.listRefHandler
+                    },
+                    listProps
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                    _track__WEBPACK_IMPORTED_MODULE_5__["Track"],
+                    _extends(
+                      {
+                        ref: _this.trackRefHandler
+                      },
+                      trackProps
+                    ),
+                    _this.props.children
+                  )
+                ),
+                !_this.props.unslick ? nextArrow : "",
+                !_this.props.unslick ? dots : ""
+              );
+            });
             _this.list = null;
             _this.track = null;
             _this.state = _objectSpread(
@@ -2177,7 +1991,8 @@
             );
             return _this;
           }
-          _createClass(InnerSlider, [
+          _inherits(InnerSlider, _React$Component);
+          return _createClass(InnerSlider, [
             {
               key: "didPropsChange",
               value: function didPropsChange(prevProps) {
@@ -2215,7 +2030,6 @@
               }
             }
           ]);
-          return InnerSlider;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
         /***/
@@ -2704,44 +2518,61 @@
           "use strict";
 
           var hasOwn = {}.hasOwnProperty;
-          var nativeCodeString = "[native code]";
 
           function classNames() {
-            var classes = [];
+            var classes = "";
 
             for (var i = 0; i < arguments.length; i++) {
               var arg = arguments[i];
-              if (!arg) continue;
-
-              var argType = typeof arg;
-
-              if (argType === "string" || argType === "number") {
-                classes.push(arg);
-              } else if (Array.isArray(arg)) {
-                if (arg.length) {
-                  var inner = classNames.apply(null, arg);
-                  if (inner) {
-                    classes.push(inner);
-                  }
-                }
-              } else if (argType === "object") {
-                if (
-                  arg.toString !== Object.prototype.toString &&
-                  !arg.toString.toString().includes("[native code]")
-                ) {
-                  classes.push(arg.toString());
-                  continue;
-                }
-
-                for (var key in arg) {
-                  if (hasOwn.call(arg, key) && arg[key]) {
-                    classes.push(key);
-                  }
-                }
+              if (arg) {
+                classes = appendClass(classes, parseValue(arg));
               }
             }
 
-            return classes.join(" ");
+            return classes;
+          }
+
+          function parseValue(arg) {
+            if (typeof arg === "string" || typeof arg === "number") {
+              return arg;
+            }
+
+            if (typeof arg !== "object") {
+              return "";
+            }
+
+            if (Array.isArray(arg)) {
+              return classNames.apply(null, arg);
+            }
+
+            if (
+              arg.toString !== Object.prototype.toString &&
+              !arg.toString.toString().includes("[native code]")
+            ) {
+              return arg.toString();
+            }
+
+            var classes = "";
+
+            for (var key in arg) {
+              if (hasOwn.call(arg, key) && arg[key]) {
+                classes = appendClass(classes, key);
+              }
+            }
+
+            return classes;
+          }
+
+          function appendClass(value, newClass) {
+            if (!newClass) {
+              return value;
+            }
+
+            if (value) {
+              return value + " " + newClass;
+            }
+
+            return value + newClass;
           }
 
           if (true && module.exports) {
@@ -3009,52 +2840,82 @@
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_0__
         );
-        function ownKeys(object, enumerableOnly) {
-          var keys = Object.keys(object);
-          if (Object.getOwnPropertySymbols) {
-            var symbols = Object.getOwnPropertySymbols(object);
-            enumerableOnly &&
-              (symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-              })),
-              keys.push.apply(keys, symbols);
-          }
-          return keys;
+        function _typeof(o) {
+          "@babel/helpers - typeof";
+          return (
+            (_typeof =
+              "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
+                ? function(o) {
+                    return typeof o;
+                  }
+                : function(o) {
+                    return o &&
+                      "function" == typeof Symbol &&
+                      o.constructor === Symbol &&
+                      o !== Symbol.prototype
+                      ? "symbol"
+                      : typeof o;
+                  }),
+            _typeof(o)
+          );
         }
-        function _objectSpread(target) {
-          for (var i = 1; i < arguments.length; i++) {
-            var source = null != arguments[i] ? arguments[i] : {};
-            i % 2
-              ? ownKeys(Object(source), !0).forEach(function(key) {
-                  _defineProperty(target, key, source[key]);
+        function ownKeys(e, r) {
+          var t = Object.keys(e);
+          if (Object.getOwnPropertySymbols) {
+            var o = Object.getOwnPropertySymbols(e);
+            r &&
+              (o = o.filter(function(r) {
+                return Object.getOwnPropertyDescriptor(e, r).enumerable;
+              })),
+              t.push.apply(t, o);
+          }
+          return t;
+        }
+        function _objectSpread(e) {
+          for (var r = 1; r < arguments.length; r++) {
+            var t = null != arguments[r] ? arguments[r] : {};
+            r % 2
+              ? ownKeys(Object(t), !0).forEach(function(r) {
+                  _defineProperty(e, r, t[r]);
                 })
               : Object.getOwnPropertyDescriptors
-              ? Object.defineProperties(
-                  target,
-                  Object.getOwnPropertyDescriptors(source)
-                )
-              : ownKeys(Object(source)).forEach(function(key) {
+              ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
+              : ownKeys(Object(t)).forEach(function(r) {
                   Object.defineProperty(
-                    target,
-                    key,
-                    Object.getOwnPropertyDescriptor(source, key)
+                    e,
+                    r,
+                    Object.getOwnPropertyDescriptor(t, r)
                   );
                 });
           }
-          return target;
+          return e;
         }
-        function _defineProperty(obj, key, value) {
-          if (key in obj) {
-            Object.defineProperty(obj, key, {
-              value: value,
-              enumerable: true,
-              configurable: true,
-              writable: true
-            });
-          } else {
-            obj[key] = value;
+        function _defineProperty(e, r, t) {
+          return (
+            (r = _toPropertyKey(r)) in e
+              ? Object.defineProperty(e, r, {
+                  value: t,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0
+                })
+              : (e[r] = t),
+            e
+          );
+        }
+        function _toPropertyKey(t) {
+          var i = _toPrimitive(t, "string");
+          return "symbol" == _typeof(i) ? i : i + "";
+        }
+        function _toPrimitive(t, r) {
+          if ("object" != _typeof(t) || !t) return t;
+          var e = t[Symbol.toPrimitive];
+          if (void 0 !== e) {
+            var i = e.call(t, r || "default");
+            if ("object" != _typeof(i)) return i;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
           }
-          return obj;
+          return ("string" === r ? String : Number)(t);
         }
 
         function clamp(number, lowerBound, upperBound) {
@@ -4048,197 +3909,190 @@
           8
         );
 
-        function _typeof(obj) {
+        function _typeof(o) {
           "@babel/helpers - typeof";
           return (
             (_typeof =
               "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-                ? function(obj) {
-                    return typeof obj;
+                ? function(o) {
+                    return typeof o;
                   }
-                : function(obj) {
-                    return obj &&
+                : function(o) {
+                    return o &&
                       "function" == typeof Symbol &&
-                      obj.constructor === Symbol &&
-                      obj !== Symbol.prototype
+                      o.constructor === Symbol &&
+                      o !== Symbol.prototype
                       ? "symbol"
-                      : typeof obj;
+                      : typeof o;
                   }),
-            _typeof(obj)
+            _typeof(o)
           );
         }
         function _extends() {
-          _extends = Object.assign
-            ? Object.assign.bind()
-            : function(target) {
-                for (var i = 1; i < arguments.length; i++) {
-                  var source = arguments[i];
-                  for (var key in source) {
-                    if (Object.prototype.hasOwnProperty.call(source, key)) {
-                      target[key] = source[key];
-                    }
+          return (
+            (_extends = Object.assign
+              ? Object.assign.bind()
+              : function(n) {
+                  for (var e = 1; e < arguments.length; e++) {
+                    var t = arguments[e];
+                    for (var r in t)
+                      ({}.hasOwnProperty.call(t, r) && (n[r] = t[r]));
                   }
-                }
-                return target;
-              };
-          return _extends.apply(this, arguments);
-        }
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-          }
-        }
-        function _defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps) _defineProperties(Constructor, staticProps);
-          Object.defineProperty(Constructor, "prototype", { writable: false });
-          return Constructor;
-        }
-        function _inherits(subClass, superClass) {
-          if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError(
-              "Super expression must either be null or a function"
-            );
-          }
-          subClass.prototype = Object.create(
-            superClass && superClass.prototype,
-            {
-              constructor: {
-                value: subClass,
-                writable: true,
-                configurable: true
-              }
-            }
+                  return n;
+                }),
+            _extends.apply(null, arguments)
           );
-          Object.defineProperty(subClass, "prototype", { writable: false });
-          if (superClass) _setPrototypeOf(subClass, superClass);
         }
-        function _setPrototypeOf(o, p) {
-          _setPrototypeOf = Object.setPrototypeOf
-            ? Object.setPrototypeOf.bind()
-            : function _setPrototypeOf(o, p) {
-                o.__proto__ = p;
-                return o;
-              };
-          return _setPrototypeOf(o, p);
+        function _classCallCheck(a, n) {
+          if (!(a instanceof n))
+            throw new TypeError("Cannot call a class as a function");
         }
-        function _createSuper(Derived) {
-          var hasNativeReflectConstruct = _isNativeReflectConstruct();
-          return function _createSuperInternal() {
-            var Super = _getPrototypeOf(Derived),
-              result;
-            if (hasNativeReflectConstruct) {
-              var NewTarget = _getPrototypeOf(this).constructor;
-              result = Reflect.construct(Super, arguments, NewTarget);
-            } else {
-              result = Super.apply(this, arguments);
-            }
-            return _possibleConstructorReturn(this, result);
-          };
+        function _defineProperties(e, r) {
+          for (var t = 0; t < r.length; t++) {
+            var o = r[t];
+            (o.enumerable = o.enumerable || !1),
+              (o.configurable = !0),
+              "value" in o && (o.writable = !0),
+              Object.defineProperty(e, _toPropertyKey(o.key), o);
+          }
         }
-        function _possibleConstructorReturn(self, call) {
-          if (
-            call &&
-            (_typeof(call) === "object" || typeof call === "function")
-          ) {
-            return call;
-          } else if (call !== void 0) {
+        function _createClass(e, r, t) {
+          return (
+            r && _defineProperties(e.prototype, r),
+            t && _defineProperties(e, t),
+            Object.defineProperty(e, "prototype", { writable: !1 }),
+            e
+          );
+        }
+        function _callSuper(t, o, e) {
+          return (
+            (o = _getPrototypeOf(o)),
+            _possibleConstructorReturn(
+              t,
+              _isNativeReflectConstruct()
+                ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor)
+                : o.apply(t, e)
+            )
+          );
+        }
+        function _possibleConstructorReturn(t, e) {
+          if (e && ("object" == _typeof(e) || "function" == typeof e)) return e;
+          if (void 0 !== e)
             throw new TypeError(
               "Derived constructors may only return object or undefined"
             );
-          }
-          return _assertThisInitialized(self);
+          return _assertThisInitialized(t);
         }
-        function _assertThisInitialized(self) {
-          if (self === void 0) {
+        function _assertThisInitialized(e) {
+          if (void 0 === e)
             throw new ReferenceError(
               "this hasn't been initialised - super() hasn't been called"
             );
-          }
-          return self;
+          return e;
         }
         function _isNativeReflectConstruct() {
-          if (typeof Reflect === "undefined" || !Reflect.construct)
-            return false;
-          if (Reflect.construct.sham) return false;
-          if (typeof Proxy === "function") return true;
           try {
-            Boolean.prototype.valueOf.call(
+            var t = !Boolean.prototype.valueOf.call(
               Reflect.construct(Boolean, [], function() {})
             );
-            return true;
-          } catch (e) {
-            return false;
-          }
+          } catch (t) {}
+          return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
+            return !!t;
+          })();
         }
-        function _getPrototypeOf(o) {
-          _getPrototypeOf = Object.setPrototypeOf
-            ? Object.getPrototypeOf.bind()
-            : function _getPrototypeOf(o) {
-                return o.__proto__ || Object.getPrototypeOf(o);
-              };
-          return _getPrototypeOf(o);
+        function _getPrototypeOf(t) {
+          return (
+            (_getPrototypeOf = Object.setPrototypeOf
+              ? Object.getPrototypeOf.bind()
+              : function(t) {
+                  return t.__proto__ || Object.getPrototypeOf(t);
+                }),
+            _getPrototypeOf(t)
+          );
         }
-        function ownKeys(object, enumerableOnly) {
-          var keys = Object.keys(object);
+        function _inherits(t, e) {
+          if ("function" != typeof e && null !== e)
+            throw new TypeError(
+              "Super expression must either be null or a function"
+            );
+          (t.prototype = Object.create(e && e.prototype, {
+            constructor: { value: t, writable: !0, configurable: !0 }
+          })),
+            Object.defineProperty(t, "prototype", { writable: !1 }),
+            e && _setPrototypeOf(t, e);
+        }
+        function _setPrototypeOf(t, e) {
+          return (
+            (_setPrototypeOf = Object.setPrototypeOf
+              ? Object.setPrototypeOf.bind()
+              : function(t, e) {
+                  return (t.__proto__ = e), t;
+                }),
+            _setPrototypeOf(t, e)
+          );
+        }
+        function ownKeys(e, r) {
+          var t = Object.keys(e);
           if (Object.getOwnPropertySymbols) {
-            var symbols = Object.getOwnPropertySymbols(object);
-            enumerableOnly &&
-              (symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            var o = Object.getOwnPropertySymbols(e);
+            r &&
+              (o = o.filter(function(r) {
+                return Object.getOwnPropertyDescriptor(e, r).enumerable;
               })),
-              keys.push.apply(keys, symbols);
+              t.push.apply(t, o);
           }
-          return keys;
+          return t;
         }
-        function _objectSpread(target) {
-          for (var i = 1; i < arguments.length; i++) {
-            var source = null != arguments[i] ? arguments[i] : {};
-            i % 2
-              ? ownKeys(Object(source), !0).forEach(function(key) {
-                  _defineProperty(target, key, source[key]);
+        function _objectSpread(e) {
+          for (var r = 1; r < arguments.length; r++) {
+            var t = null != arguments[r] ? arguments[r] : {};
+            r % 2
+              ? ownKeys(Object(t), !0).forEach(function(r) {
+                  _defineProperty(e, r, t[r]);
                 })
               : Object.getOwnPropertyDescriptors
-              ? Object.defineProperties(
-                  target,
-                  Object.getOwnPropertyDescriptors(source)
-                )
-              : ownKeys(Object(source)).forEach(function(key) {
+              ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
+              : ownKeys(Object(t)).forEach(function(r) {
                   Object.defineProperty(
-                    target,
-                    key,
-                    Object.getOwnPropertyDescriptor(source, key)
+                    e,
+                    r,
+                    Object.getOwnPropertyDescriptor(t, r)
                   );
                 });
           }
-          return target;
+          return e;
         }
-        function _defineProperty(obj, key, value) {
-          if (key in obj) {
-            Object.defineProperty(obj, key, {
-              value: value,
-              enumerable: true,
-              configurable: true,
-              writable: true
-            });
-          } else {
-            obj[key] = value;
+        function _defineProperty(e, r, t) {
+          return (
+            (r = _toPropertyKey(r)) in e
+              ? Object.defineProperty(e, r, {
+                  value: t,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0
+                })
+              : (e[r] = t),
+            e
+          );
+        }
+        function _toPropertyKey(t) {
+          var i = _toPrimitive(t, "string");
+          return "symbol" == _typeof(i) ? i : i + "";
+        }
+        function _toPrimitive(t, r) {
+          if ("object" != _typeof(t) || !t) return t;
+          var e = t[Symbol.toPrimitive];
+          if (void 0 !== e) {
+            var i = e.call(t, r || "default");
+            if ("object" != _typeof(i)) return i;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
           }
-          return obj;
+          return ("string" === r ? String : Number)(t);
         }
 
         // given specifications/props for a slide, fetch all the classes that need to be applied to the slide
         var getSlideClasses = function getSlideClasses(spec) {
-          var _spec$classes, _spec$classes2, _ref;
+          var _spec$classes, _spec$classes2;
           var slickActive, slickCenter, slickCloned;
           var centerOffset, index;
           if (spec.rtl) {
@@ -4270,15 +4124,14 @@
             focusedSlide = spec.targetSlide;
           }
           var slickCurrent = index === focusedSlide;
-          return (
-            (_ref = {
-              "slick-slide": true,
-              "slick-active": slickActive,
-              "slick-center": slickCenter,
-              "slick-cloned": slickCloned
-            }),
+          return _defineProperty(
             _defineProperty(
-              _ref,
+              {
+                "slick-slide": true,
+                "slick-active": slickActive,
+                "slick-center": slickCenter,
+                "slick-cloned": slickCloned
+              },
               "slick-cloned ".concat(
                 (_spec$classes = spec.classes) === null ||
                   _spec$classes === void 0
@@ -4291,8 +4144,8 @@
                   ? void 0
                   : _spec$classes2.cloned)
             ),
-            _defineProperty(_ref, "slick-current", slickCurrent),
-            _ref
+            "slick-current",
+            slickCurrent
           );
         };
         var getSlideStyle = function getSlideStyle(spec) {
@@ -4550,8 +4403,6 @@
           }
         };
         var Track = /*#__PURE__*/ (function(_React$PureComponent) {
-          _inherits(Track, _React$PureComponent);
-          var _super = _createSuper(Track);
           function Track() {
             var _this;
             _classCallCheck(this, Track);
@@ -4562,18 +4413,15 @@
             ) {
               args[_key] = arguments[_key];
             }
-            _this = _super.call.apply(_super, [this].concat(args));
-            _defineProperty(_assertThisInitialized(_this), "node", null);
-            _defineProperty(
-              _assertThisInitialized(_this),
-              "handleRef",
-              function(ref) {
-                _this.node = ref;
-              }
-            );
+            _this = _callSuper(this, Track, [].concat(args));
+            _defineProperty(_this, "node", null);
+            _defineProperty(_this, "handleRef", function(ref) {
+              _this.node = ref;
+            });
             return _this;
           }
-          _createClass(Track, [
+          _inherits(Track, _React$PureComponent);
+          return _createClass(Track, [
             {
               key: "render",
               value: function render() {
@@ -4609,7 +4457,6 @@
               }
             }
           ]);
-          return Track;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
 
         /***/
@@ -4641,176 +4488,170 @@
           8
         );
 
-        function _typeof(obj) {
+        function _typeof(o) {
           "@babel/helpers - typeof";
           return (
             (_typeof =
               "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-                ? function(obj) {
-                    return typeof obj;
+                ? function(o) {
+                    return typeof o;
                   }
-                : function(obj) {
-                    return obj &&
+                : function(o) {
+                    return o &&
                       "function" == typeof Symbol &&
-                      obj.constructor === Symbol &&
-                      obj !== Symbol.prototype
+                      o.constructor === Symbol &&
+                      o !== Symbol.prototype
                       ? "symbol"
-                      : typeof obj;
+                      : typeof o;
                   }),
-            _typeof(obj)
+            _typeof(o)
           );
         }
-        function ownKeys(object, enumerableOnly) {
-          var keys = Object.keys(object);
+        function ownKeys(e, r) {
+          var t = Object.keys(e);
           if (Object.getOwnPropertySymbols) {
-            var symbols = Object.getOwnPropertySymbols(object);
-            enumerableOnly &&
-              (symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            var o = Object.getOwnPropertySymbols(e);
+            r &&
+              (o = o.filter(function(r) {
+                return Object.getOwnPropertyDescriptor(e, r).enumerable;
               })),
-              keys.push.apply(keys, symbols);
+              t.push.apply(t, o);
           }
-          return keys;
+          return t;
         }
-        function _objectSpread(target) {
-          for (var i = 1; i < arguments.length; i++) {
-            var source = null != arguments[i] ? arguments[i] : {};
-            i % 2
-              ? ownKeys(Object(source), !0).forEach(function(key) {
-                  _defineProperty(target, key, source[key]);
+        function _objectSpread(e) {
+          for (var r = 1; r < arguments.length; r++) {
+            var t = null != arguments[r] ? arguments[r] : {};
+            r % 2
+              ? ownKeys(Object(t), !0).forEach(function(r) {
+                  _defineProperty(e, r, t[r]);
                 })
               : Object.getOwnPropertyDescriptors
-              ? Object.defineProperties(
-                  target,
-                  Object.getOwnPropertyDescriptors(source)
-                )
-              : ownKeys(Object(source)).forEach(function(key) {
+              ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
+              : ownKeys(Object(t)).forEach(function(r) {
                   Object.defineProperty(
-                    target,
-                    key,
-                    Object.getOwnPropertyDescriptor(source, key)
+                    e,
+                    r,
+                    Object.getOwnPropertyDescriptor(t, r)
                   );
                 });
           }
-          return target;
+          return e;
         }
-        function _defineProperty(obj, key, value) {
-          if (key in obj) {
-            Object.defineProperty(obj, key, {
-              value: value,
-              enumerable: true,
-              configurable: true,
-              writable: true
-            });
-          } else {
-            obj[key] = value;
-          }
-          return obj;
-        }
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-          }
-        }
-        function _defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps) _defineProperties(Constructor, staticProps);
-          Object.defineProperty(Constructor, "prototype", { writable: false });
-          return Constructor;
-        }
-        function _inherits(subClass, superClass) {
-          if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError(
-              "Super expression must either be null or a function"
-            );
-          }
-          subClass.prototype = Object.create(
-            superClass && superClass.prototype,
-            {
-              constructor: {
-                value: subClass,
-                writable: true,
-                configurable: true
-              }
-            }
+        function _defineProperty(e, r, t) {
+          return (
+            (r = _toPropertyKey(r)) in e
+              ? Object.defineProperty(e, r, {
+                  value: t,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0
+                })
+              : (e[r] = t),
+            e
           );
-          Object.defineProperty(subClass, "prototype", { writable: false });
-          if (superClass) _setPrototypeOf(subClass, superClass);
         }
-        function _setPrototypeOf(o, p) {
-          _setPrototypeOf = Object.setPrototypeOf
-            ? Object.setPrototypeOf.bind()
-            : function _setPrototypeOf(o, p) {
-                o.__proto__ = p;
-                return o;
-              };
-          return _setPrototypeOf(o, p);
+        function _classCallCheck(a, n) {
+          if (!(a instanceof n))
+            throw new TypeError("Cannot call a class as a function");
         }
-        function _createSuper(Derived) {
-          var hasNativeReflectConstruct = _isNativeReflectConstruct();
-          return function _createSuperInternal() {
-            var Super = _getPrototypeOf(Derived),
-              result;
-            if (hasNativeReflectConstruct) {
-              var NewTarget = _getPrototypeOf(this).constructor;
-              result = Reflect.construct(Super, arguments, NewTarget);
-            } else {
-              result = Super.apply(this, arguments);
-            }
-            return _possibleConstructorReturn(this, result);
-          };
+        function _defineProperties(e, r) {
+          for (var t = 0; t < r.length; t++) {
+            var o = r[t];
+            (o.enumerable = o.enumerable || !1),
+              (o.configurable = !0),
+              "value" in o && (o.writable = !0),
+              Object.defineProperty(e, _toPropertyKey(o.key), o);
+          }
         }
-        function _possibleConstructorReturn(self, call) {
-          if (
-            call &&
-            (_typeof(call) === "object" || typeof call === "function")
-          ) {
-            return call;
-          } else if (call !== void 0) {
+        function _createClass(e, r, t) {
+          return (
+            r && _defineProperties(e.prototype, r),
+            t && _defineProperties(e, t),
+            Object.defineProperty(e, "prototype", { writable: !1 }),
+            e
+          );
+        }
+        function _toPropertyKey(t) {
+          var i = _toPrimitive(t, "string");
+          return "symbol" == _typeof(i) ? i : i + "";
+        }
+        function _toPrimitive(t, r) {
+          if ("object" != _typeof(t) || !t) return t;
+          var e = t[Symbol.toPrimitive];
+          if (void 0 !== e) {
+            var i = e.call(t, r || "default");
+            if ("object" != _typeof(i)) return i;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
+          }
+          return ("string" === r ? String : Number)(t);
+        }
+        function _callSuper(t, o, e) {
+          return (
+            (o = _getPrototypeOf(o)),
+            _possibleConstructorReturn(
+              t,
+              _isNativeReflectConstruct()
+                ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor)
+                : o.apply(t, e)
+            )
+          );
+        }
+        function _possibleConstructorReturn(t, e) {
+          if (e && ("object" == _typeof(e) || "function" == typeof e)) return e;
+          if (void 0 !== e)
             throw new TypeError(
               "Derived constructors may only return object or undefined"
             );
-          }
-          return _assertThisInitialized(self);
+          return _assertThisInitialized(t);
         }
-        function _assertThisInitialized(self) {
-          if (self === void 0) {
+        function _assertThisInitialized(e) {
+          if (void 0 === e)
             throw new ReferenceError(
               "this hasn't been initialised - super() hasn't been called"
             );
-          }
-          return self;
+          return e;
         }
         function _isNativeReflectConstruct() {
-          if (typeof Reflect === "undefined" || !Reflect.construct)
-            return false;
-          if (Reflect.construct.sham) return false;
-          if (typeof Proxy === "function") return true;
           try {
-            Boolean.prototype.valueOf.call(
+            var t = !Boolean.prototype.valueOf.call(
               Reflect.construct(Boolean, [], function() {})
             );
-            return true;
-          } catch (e) {
-            return false;
-          }
+          } catch (t) {}
+          return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
+            return !!t;
+          })();
         }
-        function _getPrototypeOf(o) {
-          _getPrototypeOf = Object.setPrototypeOf
-            ? Object.getPrototypeOf.bind()
-            : function _getPrototypeOf(o) {
-                return o.__proto__ || Object.getPrototypeOf(o);
-              };
-          return _getPrototypeOf(o);
+        function _getPrototypeOf(t) {
+          return (
+            (_getPrototypeOf = Object.setPrototypeOf
+              ? Object.getPrototypeOf.bind()
+              : function(t) {
+                  return t.__proto__ || Object.getPrototypeOf(t);
+                }),
+            _getPrototypeOf(t)
+          );
+        }
+        function _inherits(t, e) {
+          if ("function" != typeof e && null !== e)
+            throw new TypeError(
+              "Super expression must either be null or a function"
+            );
+          (t.prototype = Object.create(e && e.prototype, {
+            constructor: { value: t, writable: !0, configurable: !0 }
+          })),
+            Object.defineProperty(t, "prototype", { writable: !1 }),
+            e && _setPrototypeOf(t, e);
+        }
+        function _setPrototypeOf(t, e) {
+          return (
+            (_setPrototypeOf = Object.setPrototypeOf
+              ? Object.setPrototypeOf.bind()
+              : function(t, e) {
+                  return (t.__proto__ = e), t;
+                }),
+            _setPrototypeOf(t, e)
+          );
         }
 
         var getDotCount = function getDotCount(spec) {
@@ -4826,13 +4667,12 @@
           return dots;
         };
         var Dots = /*#__PURE__*/ (function(_React$PureComponent) {
-          _inherits(Dots, _React$PureComponent);
-          var _super = _createSuper(Dots);
           function Dots() {
             _classCallCheck(this, Dots);
-            return _super.apply(this, arguments);
+            return _callSuper(this, Dots, arguments);
           }
-          _createClass(Dots, [
+          _inherits(Dots, _React$PureComponent);
+          return _createClass(Dots, [
             {
               key: "clickHandler",
               value: function clickHandler(options, e) {
@@ -4945,7 +4785,6 @@
               }
             }
           ]);
-          return Dots;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
 
         /***/
@@ -4984,202 +4823,194 @@
           8
         );
 
-        function _typeof(obj) {
+        function _typeof(o) {
           "@babel/helpers - typeof";
           return (
             (_typeof =
               "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-                ? function(obj) {
-                    return typeof obj;
+                ? function(o) {
+                    return typeof o;
                   }
-                : function(obj) {
-                    return obj &&
+                : function(o) {
+                    return o &&
                       "function" == typeof Symbol &&
-                      obj.constructor === Symbol &&
-                      obj !== Symbol.prototype
+                      o.constructor === Symbol &&
+                      o !== Symbol.prototype
                       ? "symbol"
-                      : typeof obj;
+                      : typeof o;
                   }),
-            _typeof(obj)
+            _typeof(o)
           );
         }
         function _extends() {
-          _extends = Object.assign
-            ? Object.assign.bind()
-            : function(target) {
-                for (var i = 1; i < arguments.length; i++) {
-                  var source = arguments[i];
-                  for (var key in source) {
-                    if (Object.prototype.hasOwnProperty.call(source, key)) {
-                      target[key] = source[key];
-                    }
+          return (
+            (_extends = Object.assign
+              ? Object.assign.bind()
+              : function(n) {
+                  for (var e = 1; e < arguments.length; e++) {
+                    var t = arguments[e];
+                    for (var r in t)
+                      ({}.hasOwnProperty.call(t, r) && (n[r] = t[r]));
                   }
-                }
-                return target;
-              };
-          return _extends.apply(this, arguments);
+                  return n;
+                }),
+            _extends.apply(null, arguments)
+          );
         }
-        function ownKeys(object, enumerableOnly) {
-          var keys = Object.keys(object);
+        function ownKeys(e, r) {
+          var t = Object.keys(e);
           if (Object.getOwnPropertySymbols) {
-            var symbols = Object.getOwnPropertySymbols(object);
-            enumerableOnly &&
-              (symbols = symbols.filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+            var o = Object.getOwnPropertySymbols(e);
+            r &&
+              (o = o.filter(function(r) {
+                return Object.getOwnPropertyDescriptor(e, r).enumerable;
               })),
-              keys.push.apply(keys, symbols);
+              t.push.apply(t, o);
           }
-          return keys;
+          return t;
         }
-        function _objectSpread(target) {
-          for (var i = 1; i < arguments.length; i++) {
-            var source = null != arguments[i] ? arguments[i] : {};
-            i % 2
-              ? ownKeys(Object(source), !0).forEach(function(key) {
-                  _defineProperty(target, key, source[key]);
+        function _objectSpread(e) {
+          for (var r = 1; r < arguments.length; r++) {
+            var t = null != arguments[r] ? arguments[r] : {};
+            r % 2
+              ? ownKeys(Object(t), !0).forEach(function(r) {
+                  _defineProperty(e, r, t[r]);
                 })
               : Object.getOwnPropertyDescriptors
-              ? Object.defineProperties(
-                  target,
-                  Object.getOwnPropertyDescriptors(source)
-                )
-              : ownKeys(Object(source)).forEach(function(key) {
+              ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
+              : ownKeys(Object(t)).forEach(function(r) {
                   Object.defineProperty(
-                    target,
-                    key,
-                    Object.getOwnPropertyDescriptor(source, key)
+                    e,
+                    r,
+                    Object.getOwnPropertyDescriptor(t, r)
                   );
                 });
           }
-          return target;
+          return e;
         }
-        function _defineProperty(obj, key, value) {
-          if (key in obj) {
-            Object.defineProperty(obj, key, {
-              value: value,
-              enumerable: true,
-              configurable: true,
-              writable: true
-            });
-          } else {
-            obj[key] = value;
-          }
-          return obj;
-        }
-        function _classCallCheck(instance, Constructor) {
-          if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-          }
-        }
-        function _defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-        function _createClass(Constructor, protoProps, staticProps) {
-          if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-          if (staticProps) _defineProperties(Constructor, staticProps);
-          Object.defineProperty(Constructor, "prototype", { writable: false });
-          return Constructor;
-        }
-        function _inherits(subClass, superClass) {
-          if (typeof superClass !== "function" && superClass !== null) {
-            throw new TypeError(
-              "Super expression must either be null or a function"
-            );
-          }
-          subClass.prototype = Object.create(
-            superClass && superClass.prototype,
-            {
-              constructor: {
-                value: subClass,
-                writable: true,
-                configurable: true
-              }
-            }
+        function _defineProperty(e, r, t) {
+          return (
+            (r = _toPropertyKey(r)) in e
+              ? Object.defineProperty(e, r, {
+                  value: t,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0
+                })
+              : (e[r] = t),
+            e
           );
-          Object.defineProperty(subClass, "prototype", { writable: false });
-          if (superClass) _setPrototypeOf(subClass, superClass);
         }
-        function _setPrototypeOf(o, p) {
-          _setPrototypeOf = Object.setPrototypeOf
-            ? Object.setPrototypeOf.bind()
-            : function _setPrototypeOf(o, p) {
-                o.__proto__ = p;
-                return o;
-              };
-          return _setPrototypeOf(o, p);
+        function _classCallCheck(a, n) {
+          if (!(a instanceof n))
+            throw new TypeError("Cannot call a class as a function");
         }
-        function _createSuper(Derived) {
-          var hasNativeReflectConstruct = _isNativeReflectConstruct();
-          return function _createSuperInternal() {
-            var Super = _getPrototypeOf(Derived),
-              result;
-            if (hasNativeReflectConstruct) {
-              var NewTarget = _getPrototypeOf(this).constructor;
-              result = Reflect.construct(Super, arguments, NewTarget);
-            } else {
-              result = Super.apply(this, arguments);
-            }
-            return _possibleConstructorReturn(this, result);
-          };
+        function _defineProperties(e, r) {
+          for (var t = 0; t < r.length; t++) {
+            var o = r[t];
+            (o.enumerable = o.enumerable || !1),
+              (o.configurable = !0),
+              "value" in o && (o.writable = !0),
+              Object.defineProperty(e, _toPropertyKey(o.key), o);
+          }
         }
-        function _possibleConstructorReturn(self, call) {
-          if (
-            call &&
-            (_typeof(call) === "object" || typeof call === "function")
-          ) {
-            return call;
-          } else if (call !== void 0) {
+        function _createClass(e, r, t) {
+          return (
+            r && _defineProperties(e.prototype, r),
+            t && _defineProperties(e, t),
+            Object.defineProperty(e, "prototype", { writable: !1 }),
+            e
+          );
+        }
+        function _toPropertyKey(t) {
+          var i = _toPrimitive(t, "string");
+          return "symbol" == _typeof(i) ? i : i + "";
+        }
+        function _toPrimitive(t, r) {
+          if ("object" != _typeof(t) || !t) return t;
+          var e = t[Symbol.toPrimitive];
+          if (void 0 !== e) {
+            var i = e.call(t, r || "default");
+            if ("object" != _typeof(i)) return i;
+            throw new TypeError("@@toPrimitive must return a primitive value.");
+          }
+          return ("string" === r ? String : Number)(t);
+        }
+        function _callSuper(t, o, e) {
+          return (
+            (o = _getPrototypeOf(o)),
+            _possibleConstructorReturn(
+              t,
+              _isNativeReflectConstruct()
+                ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor)
+                : o.apply(t, e)
+            )
+          );
+        }
+        function _possibleConstructorReturn(t, e) {
+          if (e && ("object" == _typeof(e) || "function" == typeof e)) return e;
+          if (void 0 !== e)
             throw new TypeError(
               "Derived constructors may only return object or undefined"
             );
-          }
-          return _assertThisInitialized(self);
+          return _assertThisInitialized(t);
         }
-        function _assertThisInitialized(self) {
-          if (self === void 0) {
+        function _assertThisInitialized(e) {
+          if (void 0 === e)
             throw new ReferenceError(
               "this hasn't been initialised - super() hasn't been called"
             );
-          }
-          return self;
+          return e;
         }
         function _isNativeReflectConstruct() {
-          if (typeof Reflect === "undefined" || !Reflect.construct)
-            return false;
-          if (Reflect.construct.sham) return false;
-          if (typeof Proxy === "function") return true;
           try {
-            Boolean.prototype.valueOf.call(
+            var t = !Boolean.prototype.valueOf.call(
               Reflect.construct(Boolean, [], function() {})
             );
-            return true;
-          } catch (e) {
-            return false;
-          }
+          } catch (t) {}
+          return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
+            return !!t;
+          })();
         }
-        function _getPrototypeOf(o) {
-          _getPrototypeOf = Object.setPrototypeOf
-            ? Object.getPrototypeOf.bind()
-            : function _getPrototypeOf(o) {
-                return o.__proto__ || Object.getPrototypeOf(o);
-              };
-          return _getPrototypeOf(o);
+        function _getPrototypeOf(t) {
+          return (
+            (_getPrototypeOf = Object.setPrototypeOf
+              ? Object.getPrototypeOf.bind()
+              : function(t) {
+                  return t.__proto__ || Object.getPrototypeOf(t);
+                }),
+            _getPrototypeOf(t)
+          );
+        }
+        function _inherits(t, e) {
+          if ("function" != typeof e && null !== e)
+            throw new TypeError(
+              "Super expression must either be null or a function"
+            );
+          (t.prototype = Object.create(e && e.prototype, {
+            constructor: { value: t, writable: !0, configurable: !0 }
+          })),
+            Object.defineProperty(t, "prototype", { writable: !1 }),
+            e && _setPrototypeOf(t, e);
+        }
+        function _setPrototypeOf(t, e) {
+          return (
+            (_setPrototypeOf = Object.setPrototypeOf
+              ? Object.setPrototypeOf.bind()
+              : function(t, e) {
+                  return (t.__proto__ = e), t;
+                }),
+            _setPrototypeOf(t, e)
+          );
         }
 
         var PrevArrow = /*#__PURE__*/ (function(_React$PureComponent) {
-          _inherits(PrevArrow, _React$PureComponent);
-          var _super = _createSuper(PrevArrow);
           function PrevArrow() {
             _classCallCheck(this, PrevArrow);
-            return _super.apply(this, arguments);
+            return _callSuper(this, PrevArrow, arguments);
           }
-          _createClass(PrevArrow, [
+          _inherits(PrevArrow, _React$PureComponent);
+          return _createClass(PrevArrow, [
             {
               key: "clickHandler",
               value: function clickHandler(options, e) {
@@ -5269,16 +5100,14 @@
               }
             }
           ]);
-          return PrevArrow;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
         var NextArrow = /*#__PURE__*/ (function(_React$PureComponent2) {
-          _inherits(NextArrow, _React$PureComponent2);
-          var _super2 = _createSuper(NextArrow);
           function NextArrow() {
             _classCallCheck(this, NextArrow);
-            return _super2.apply(this, arguments);
+            return _callSuper(this, NextArrow, arguments);
           }
-          _createClass(NextArrow, [
+          _inherits(NextArrow, _React$PureComponent2);
+          return _createClass(NextArrow, [
             {
               key: "clickHandler",
               value: function clickHandler(options, e) {
@@ -5370,7 +5199,6 @@
               }
             }
           ]);
-          return NextArrow;
         })(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
 
         /***/
